@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --site-header-height: 4.5rem;
+  --color-brand-primary: #1269c7;
+  --color-background: #fafafa;
+  --color-foreground: #0f172a;
+  --color-muted: #64748b;
+  --color-border: #e2e8f0;
+  --color-card: #ffffff;
+  --color-card-foreground: #0f172a;
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --max-width-content: 90rem;
+  --spacing-section-y: 4rem;
+  --spacing-section-y-md: 6rem;
+  --spacing-section-y-lg: 7rem;
+}
+
+.dark {
+  --color-background: #0a0a0a;
+  --color-foreground: #f1f5f9;
+  --color-muted: #94a3b8;
+  --color-border: #334155;
+  --color-card: #111827;
+  --color-card-foreground: #f1f5f9;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+::selection {
+  background-color: color-mix(in srgb, var(--color-brand-primary) 25%, transparent);
+}
