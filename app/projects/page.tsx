@@ -38,7 +38,7 @@ export default function ProjectsPage() {
 
               return (
                 <Col key={project.id} span={6} className="mt-6 md:mt-8">
-                  <Card className="flex h-full flex-col">
+                  <Card chipSeed={project.id} className="flex h-full flex-col">
                     <SectionHeading as="h2" className="text-lg">
                       {project.title}
                     </SectionHeading>

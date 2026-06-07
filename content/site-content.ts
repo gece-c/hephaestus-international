@@ -9,9 +9,10 @@ export const siteConfig = {
   tagline: "Center of Excellence and Ethics",
   url: "https://hephaestus.international",
   contactEmail: "info@hephaestus.international",
-  linkedInLabel: "Hephaestus Labs Institute on LinkedIn",
-  // TODO: Confirm LinkedIn URL with stakeholder
-  linkedInUrl: "https://www.linkedin.com/company/hephaestus-labs-institute",
+  linkedInLabel: "FloLabs Innovation on LinkedIn",
+  linkedInUrl: "https://www.linkedin.com/company/flolabs-innovation/",
+  youtubeUrl: "https://www.youtube.com/@flolabsinnovation",
+  youtubeLabel: "FloLabs Innovation on YouTube",
 } as const;
 
 export const contentTodos = [
@@ -21,6 +22,8 @@ export const contentTodos = [
   "Slide 2 trailing = on Lemnos date line",
   "Privacy policy body: legal review required",
   "Contact form endpoint: confirm API vs mailto",
+  "Footer Merch link: confirm destination URL with stakeholder",
+  "Footer YouTube URL: confirm channel URL with stakeholder",
 ] as const;
 
 export const navPrimaryLinks = [
@@ -37,14 +40,56 @@ export const navUtilityLinks = [
 
 export const navLinks = [...navPrimaryLinks, ...navUtilityLinks] as const;
 
-export const footerProjectLinks = [
-  { label: "CAIPO", href: "https://caipo.ai/" },
-  { label: "Moodchanger.ai", href: "https://moodchanger.ai/" },
-  { label: "Moodchanger for Pets", href: "https://moodchanger.ai/pets" },
-  { label: "Flo Travel", href: "https://flotravel.ai/" },
-  { label: "Hephaestus Labs Institute", href: "https://hephaestus.international/" },
-  { label: "Flo Studios", href: "https://flostudios.ai/" },
-] as const;
+export const siteFooter = {
+  projectLine: "a FloLabs project",
+  description:
+    "Where ancient history meets modern innovation. Where craft becomes code, curiosity becomes capability, and intention becomes infrastructure.",
+  tagline: "Live long and prosper.",
+  newsletter: {
+    title: "Newsletter",
+    prompt: "Receive the newest FloLabs updates at:",
+    placeholder: "Enter your email...",
+    submitLabel: "Subscribe to newsletter",
+  },
+  socialTitle: "Social Media",
+  checkMoreTitle: "Check More",
+  navigation: {
+    title: "Navigation",
+    links: [
+      ...navPrimaryLinks,
+      navUtilityLinks[0],
+    ],
+  },
+  company: {
+    title: "Company",
+    links: [
+      { label: "About Us", href: "/about" },
+      { label: "Careers", href: "/internships" },
+      { label: "Merch", href: "/contact" },
+    ],
+  },
+  projectColumns: [
+    [
+      { id: "caipo", label: "CAIPO" },
+      { id: "moodchanger", label: "MoodChanger" },
+      { id: "humanoid-robots", label: "RoboCollective" },
+      {
+        id: "athletic-performance-intelligence",
+        label: "Athletic Performance",
+      },
+    ],
+    [
+      { id: "flobrain", label: "FloBrain" },
+      { id: "flotravel", label: "FloTravel" },
+      { id: "space-ventures", label: "Space Ventures Institute" },
+      { id: "connecting-the-dots", label: "Connecting the Dots" },
+    ],
+    [
+      { id: "flolabs-international", label: "FloLabs International" },
+      { id: "flostudios", label: "FloStudios" },
+    ],
+  ],
+} as const;
 
 export const hero = {
   title: "Hephaestus International",
@@ -58,11 +103,16 @@ export const hero = {
 export const didYouKnow = {
   leadIn: "Did you know …",
   facts: [
-    'Hephaestus is pronounced "Efestos"',
-    "Lemnos, situated in Greece, a magnificent place yet undiscovered wonder of the world",
-    "Hephaestus was probably there around 2,000 BC, or maybe earlier, around 10,000 BC when the first inhabitants were there.=",
-    "Talos the first trace of artificial intelligence created by Hephaestus",
+    'Hephaestus is pronounced "Efestos".',
+    "Lemnos, situated in Greece, a magnificent place yet undiscovered wonder of the world...",
+    "Lemnos was believed to be one of Hephaestus\u2019 favourite places, and ancient stories connected the island with his forge.",
+    "Hephaestus was probably there around 2,000 BC, or maybe earlier, around 10,000 BC when the first inhabitants were there.",
+    "Greek myth imagined Hephaestus building self-moving golden tripods, almost like ancient robot servants for the gods.",
+    "Hephaestus was said to have golden assistants with intelligence, speech, and strength, a very old mythological image of artificial helpers.",
+    "Talos is the first trace of artificial intelligence created by Hephaestus.",
     'The famous "Pandora\'s Box" saying comes from Greek mythology, where Hephaestus created Pandora with the jar containing all manner of mystery and evil.',
+    "One myth says Hephaestus created a magical golden chair that trapped Hera until Dionysus brought him back to Olympus.",
+    "Hephaestus once made an almost invisible bronze net to trap Ares and Aphrodite, proving that even on Olympus, the best revenge was engineering.",
   ],
   closing: "Ready to hear the story?",
 } as const;
@@ -349,12 +399,12 @@ export const projectsCatalog = [
   {
     id: "connecting-the-dots",
     title: "Connecting The Dots",
-    href: "https://www.flolabs.ai/",
+    href: "https://www.youtube.com/@flolabsinnovation",
   },
   {
     id: "flobrain",
     title: "FloBrain",
-    href: "https://www.flolabs.ai/",
+    href: "https://www.flobrain.ai/",
     storytellingId: "flobrain",
   },
   {
@@ -384,13 +434,22 @@ export const projectsCatalog = [
     title: "Legal & Ethics Ventures Institute",
     href: "https://www.legalethicsventuresinstitute.com/",
   },
-  { id: "moodchanger", title: "MoodChanger", href: "https://moodchanger.ai/" },
+  {
+    id: "moodchanger",
+    title: "MoodChanger",
+    href: "https://www.moodchanger.ai/",
+  },
   {
     id: "moodchanger-pets",
     title: "MoodChanger for Pets",
     href: "https://moodchanger.ai/pets",
   },
-  { id: "roboshows", title: "RoboShows", storytellingId: "roboshows" },
+  {
+    id: "roboshows",
+    title: "RoboShows",
+    href: "https://www.robocollective.ai/",
+    storytellingId: "roboshows",
+  },
   {
     id: "space-ventures",
     title: "Space Ventures Institute",

@@ -80,14 +80,9 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       )}
       <div className="mt-10 flex flex-wrap gap-4">
         {externalHref ? (
-          <a
-            href={externalHref}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-11 items-center justify-center rounded-lg border border-brand-primary bg-brand-primary px-5 py-2.5 text-sm font-medium text-white hover:opacity-90"
-          >
+          <Button href={externalHref} external>
             {projectsPage.externalSiteLabel}
-          </a>
+          </Button>
         ) : null}
         <Button href="/projects" variant="secondary">
           {projectsPage.backToProjectsLabel}

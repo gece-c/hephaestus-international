@@ -1,4 +1,4 @@
-import { ecosystem, projectsCatalog } from "@/content/site-content";
+import { ecosystem, projectsCatalog, siteFooter } from "@/content/site-content";
 
 export type ProjectEntry = (typeof projectsCatalog)[number];
 export type ProjectId = ProjectEntry["id"];
@@ -57,4 +57,38 @@ export function getProjectExternalHref(
   project: ProjectEntry,
 ): string | undefined {
   return "href" in project ? project.href : undefined;
+}
+
+/** Split sorted projects into vertical columns for the footer grid. */
+export function getFooterProjectLinkColumns(
+  columnCount = 3,
+): readonly (readonly ProjectEntry[])[] {
+  const sorted = getProjectsCatalogSorted();
+  const columnSize = Math.ceil(sorted.length / columnCount);
+
+  return Array.from({ length: columnCount }, (_, index) =>
+    sorted.slice(index * columnSize, (index + 1) * columnSize),
+  );
+}
+
+export type FooterProjectLink = {
+  project: ProjectEntry;
+  label: string;
+};
+
+/** Footer project links in the approved column layout and display labels. */
+export function getFooterProjectLinks(): readonly (readonly FooterProjectLink[])[] {
+  return siteFooter.projectColumns.map((column) =>
+    column.map(({ id, label }) => {
+      const project = getProjectById(id);
+      if (!project) {
+        throw new Error(`Unknown footer project id: ${id}`);
+      }
+      return { project, label };
+    }),
+  );
+}
+
+export function getFooterProjectHref(project: ProjectEntry): string {
+  return getProjectExternalHref(project) ?? `/projects/${project.id}`;
 }

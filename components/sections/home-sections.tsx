@@ -5,7 +5,11 @@ import { Col, Container, Section } from "@/components/layout/container";
 import { ContentColumn } from "@/components/layout/content-column";
 import { TransitionBlock } from "@/components/sections/transition-block";
 import { HeroBackdrop } from "@/components/ui/hero-backdrop";
-import { imageBleedClass, SectionBackdrop } from "@/components/ui/section-image";
+import {
+  imageBleedClass,
+  SectionBackdrop,
+  SectionCoverBackdrop,
+} from "@/components/ui/section-image";
 import {
   Eyebrow,
   Prose,
@@ -29,6 +33,22 @@ import {
   closingCta,
 } from "@/content/site-content";
 import { siteImages } from "@/lib/site-images";
+import {
+  cardRadiusClass,
+  glassSurfaceClass,
+  glassTextClass,
+  photoCoverOverlayClass,
+  photoCoverOverlayStrongClass,
+  photoGradientBottomClosingClass,
+  photoGradientBottomHeavyClass,
+  photoGradientLeftClass,
+  photoGradientVerticalSoftClass,
+  photoRadialCenterClass,
+  photoRadialLeftClass,
+  photoTintClosingClass,
+  photoTintMediumClass,
+  photoTintStrongClass,
+} from "@/lib/ui-styles";
 
 export function HeroSection() {
   return (
@@ -56,30 +76,47 @@ export function HeroSection() {
 
 export function DidYouKnowSection() {
   return (
-    <Section id="did-you-know" variant="muted">
-      <Container>
-        <ContentColumn centered className="mb-8">
-          <SectionHeading as="h2" className="text-2xl md:text-3xl">
-            {didYouKnow.leadIn}
-          </SectionHeading>
-        </ContentColumn>
-        <ContentColumn width="full">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            {didYouKnow.facts.map((fact) => (
-              <Card key={fact} className="h-full min-w-0">
-                <p className="text-sm leading-relaxed text-pretty md:text-base">
-                  {fact}
-                </p>
-              </Card>
-            ))}
-          </div>
-          <Card className="mt-4">
-            <p className="text-base leading-relaxed text-pretty font-medium md:text-lg">
-              {didYouKnow.closing}
-            </p>
-          </Card>
-        </ContentColumn>
-      </Container>
+    <Section id="did-you-know" padding="none">
+      <SectionCoverBackdrop
+        image={siteImages.didYouKnowBackground}
+        alt="Aerial view of the Lemnos coastline in Greece"
+        overlayClassName={photoCoverOverlayClass}
+      >
+        <Container className="py-16 md:py-24 lg:py-28">
+          <ContentColumn centered className="mb-8">
+            <div
+              className={`inline-flex ${cardRadiusClass} ${glassSurfaceClass} px-5 py-3`}
+            >
+              <SectionHeading
+                as="h2"
+                className={`text-2xl md:text-3xl ${glassTextClass}`}
+              >
+                {didYouKnow.leadIn}
+              </SectionHeading>
+            </div>
+          </ContentColumn>
+          <ContentColumn width="full">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+              {didYouKnow.facts.map((fact, index) => (
+                <Card key={fact} chipSeed={index} className="h-full min-w-0">
+                  <p
+                    className={`text-sm leading-relaxed text-pretty md:text-base ${glassTextClass}`}
+                  >
+                    {fact}
+                  </p>
+                </Card>
+              ))}
+            </div>
+            <Card chipSeed="did-you-know-closing" className="mt-4">
+              <p
+                className={`text-base leading-relaxed text-pretty font-medium md:text-lg ${glassTextClass}`}
+              >
+                {didYouKnow.closing}
+              </p>
+            </Card>
+          </ContentColumn>
+        </Container>
+      </SectionCoverBackdrop>
     </Section>
   );
 }
@@ -122,33 +159,48 @@ export function PositioningSection() {
 
 export function PillarsSection() {
   return (
-    <Section id="pillars" variant="accent">
-      <Container>
-        <ContentColumn centered className="mb-12">
-          <SectionHeading>{pillars.title}</SectionHeading>
-        </ContentColumn>
-        <ContentColumn>
-          <div className="grid gap-6 md:grid-cols-3">
-            {pillars.items.map((pillar) => (
-              <Card key={pillar.number} className="h-full">
-                <span className="text-3xl font-bold text-brand-primary">
-                  {pillar.number}
-                </span>
-                <h3 className="mt-4 text-xl font-semibold text-balance">
-                  {pillar.title}
-                </h3>
-                <div className="mt-4 text-sm text-muted">
-                  {pillar.paragraphs.map((paragraph) => (
-                    <p key={paragraph} className="text-pretty leading-relaxed">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              </Card>
-            ))}
-          </div>
-        </ContentColumn>
-      </Container>
+    <Section id="pillars" padding="none">
+      <SectionCoverBackdrop
+        image={siteImages.pillarsBackground}
+        alt="Circuit board assembly on a manufacturing line"
+        overlayClassName={photoCoverOverlayStrongClass}
+      >
+        <Container className="py-16 md:py-24 lg:py-28">
+          <ContentColumn centered className="mb-12">
+            <div
+              className={`inline-flex ${cardRadiusClass} ${glassSurfaceClass} px-5 py-3`}
+            >
+              <SectionHeading
+                as="h2"
+                className={`text-2xl md:text-3xl ${glassTextClass}`}
+              >
+                {pillars.title}
+              </SectionHeading>
+            </div>
+          </ContentColumn>
+          <ContentColumn width="full">
+            <div className="grid gap-6 md:grid-cols-3">
+              {pillars.items.map((pillar) => (
+                <Card key={pillar.number} chipSeed={pillar.number} className="h-full">
+                  <span className="text-3xl font-bold text-brand-primary">
+                    {pillar.number}
+                  </span>
+                  <h3 className={`mt-4 text-xl font-semibold text-balance ${glassTextClass}`}>
+                    {pillar.title}
+                  </h3>
+                  <div className={`mt-4 text-sm ${glassTextClass}`}>
+                    {pillar.paragraphs.map((paragraph) => (
+                      <p key={paragraph} className="text-pretty leading-relaxed">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </ContentColumn>
+        </Container>
+      </SectionCoverBackdrop>
     </Section>
   );
 }
@@ -171,7 +223,7 @@ export function MappingLegacySection() {
         alt={mappingLegacy.title}
         contentAlign="upper-center"
         contentClassName="pt-[4%] sm:pt-[5%] md:pt-[6%] lg:pt-[7%]"
-        overlay="none"
+        overlay="top"
       >
         <Container>
           <ContentColumn
@@ -379,16 +431,13 @@ export function NameOriginsSection() {
           sizes="100vw"
           className="block h-auto w-full"
         />
+        <div className={`pointer-events-none absolute inset-0 z-[5] ${photoTintStrongClass}`} aria-hidden />
         <div
-          className="pointer-events-none absolute inset-0 z-[5] bg-black/28 dark:bg-black/50"
+          className={`pointer-events-none absolute inset-0 z-[5] ${photoRadialLeftClass}`}
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-0 z-[5] bg-[radial-gradient(ellipse_75%_55%_at_32%_42%,rgba(0,0,0,0.38),transparent_75%)] dark:bg-[radial-gradient(ellipse_75%_55%_at_32%_42%,rgba(0,0,0,0.55),transparent_72%)]"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute inset-0 z-[5] bg-gradient-to-b from-black/18 via-black/8 to-black/22 dark:from-black/60 dark:via-black/50 dark:to-black/55"
+          className={`pointer-events-none absolute inset-0 z-[5] ${photoGradientVerticalSoftClass}`}
           aria-hidden
         />
         <div className="absolute inset-0 z-10">
@@ -451,16 +500,13 @@ export function LearningEngineSection() {
           sizes="100vw"
           className="block h-auto w-full"
         />
+        <div className={`pointer-events-none absolute inset-0 z-[5] ${photoTintMediumClass}`} aria-hidden />
         <div
-          className="pointer-events-none absolute inset-0 z-[5] bg-black/18 dark:bg-black/30"
+          className={`pointer-events-none absolute inset-0 z-[5] ${photoGradientLeftClass}`}
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-0 z-[5] bg-gradient-to-r from-black/45 via-black/22 to-black/8 dark:from-black/55 dark:via-black/30 dark:to-black/10"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-[70%] bg-gradient-to-t from-black/60 via-black/35 to-transparent md:h-[65%] dark:from-black/65 dark:via-black/40"
+          className={`pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-[70%] md:h-[65%] ${photoGradientBottomHeavyClass}`}
           aria-hidden
         />
         <div className="absolute inset-0 z-10 flex flex-col justify-end py-12 md:py-16 lg:py-20">
@@ -498,31 +544,48 @@ export function FormBridgeTransition() {
 
 export function EcosystemSection() {
   return (
-    <Section id="ecosystem">
-      <Container>
-        <ContentColumn centered className="mb-12">
-          <SectionHeading>{ecosystem.title}</SectionHeading>
-          <p className="mt-4 text-lg text-muted text-pretty">
-            {ecosystem.subtitle}
-          </p>
-        </ContentColumn>
-        <ContentColumn>
-          <div className="space-y-6">
-            {ecosystem.items.map((item) => (
-              <Card key={item.id}>
-                <SectionHeading as="h3">{item.title}</SectionHeading>
-                <div className="mt-4 space-y-3 text-sm text-muted md:text-base">
-                  {item.paragraphs.map((paragraph) => (
-                    <p key={paragraph} className="text-pretty leading-relaxed">
-                      {paragraph}
-                    </p>
-                  ))}
-                </div>
-              </Card>
-            ))}
-          </div>
-        </ContentColumn>
-      </Container>
+    <Section id="ecosystem" padding="none">
+      <SectionCoverBackdrop
+        image={siteImages.ecosystemBackground}
+        alt="Electronic components organized in a parts tray"
+        overlayClassName="bg-background/40 dark:bg-black/50"
+      >
+        <Container className="py-16 md:py-24 lg:py-28">
+          <ContentColumn centered className="mb-12">
+            <div
+              className={`inline-flex ${cardRadiusClass} ${glassSurfaceClass} px-5 py-3`}
+            >
+              <SectionHeading
+                as="h2"
+                className={`text-2xl md:text-3xl ${glassTextClass}`}
+              >
+                {ecosystem.title}
+              </SectionHeading>
+            </div>
+            <p className={`mt-4 text-lg text-pretty ${glassTextClass}`}>
+              {ecosystem.subtitle}
+            </p>
+          </ContentColumn>
+          <ContentColumn>
+            <div className="space-y-6">
+              {ecosystem.items.map((item) => (
+                <Card key={item.id} chipSeed={item.id}>
+                  <SectionHeading as="h3" className={glassTextClass}>
+                    {item.title}
+                  </SectionHeading>
+                  <div className={`mt-4 space-y-3 text-sm md:text-base ${glassTextClass}`}>
+                    {item.paragraphs.map((paragraph) => (
+                      <p key={paragraph} className="text-pretty leading-relaxed">
+                        {paragraph}
+                      </p>
+                    ))}
+                  </div>
+                </Card>
+              ))}
+            </div>
+          </ContentColumn>
+        </Container>
+      </SectionCoverBackdrop>
     </Section>
   );
 }
@@ -544,16 +607,13 @@ export function ClosingCtaSection() {
           sizes="100vw"
           className="block h-auto w-full"
         />
+        <div className={`pointer-events-none absolute inset-0 z-[5] ${photoTintClosingClass}`} aria-hidden />
         <div
-          className="pointer-events-none absolute inset-0 z-[5] bg-black/22 dark:bg-black/35"
+          className={`pointer-events-none absolute inset-0 z-[5] ${photoRadialCenterClass}`}
           aria-hidden
         />
         <div
-          className="pointer-events-none absolute inset-0 z-[5] bg-[radial-gradient(ellipse_65%_55%_at_50%_42%,rgba(0,0,0,0.5),transparent_72%)] dark:bg-[radial-gradient(ellipse_65%_55%_at_50%_42%,rgba(0,0,0,0.6),transparent_72%)]"
-          aria-hidden
-        />
-        <div
-          className="pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-[55%] bg-gradient-to-t from-black/65 via-black/35 to-transparent dark:from-black/75 dark:via-black/45"
+          className={`pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-[55%] ${photoGradientBottomClosingClass}`}
           aria-hidden
         />
         <div className="absolute inset-0 z-10 flex flex-col justify-end py-16 md:py-20 lg:py-24">

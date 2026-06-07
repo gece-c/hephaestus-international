@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { siteConfig } from "@/content/site-content";
+import { Button } from "@/components/ui/button";
+import { inputRadiusClass } from "@/lib/ui-styles";
 
 export function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sent">("idle");
@@ -18,18 +20,15 @@ export function ContactForm() {
     setStatus("sent");
   }
 
+  const fieldClassName = `w-full ${inputRadiusClass} border border-border bg-background px-4 py-3 text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary`;
+
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
         <label htmlFor="name" className="mb-1 block text-sm font-medium text-pretty">
           Name *
         </label>
-        <input
-          id="name"
-          name="name"
-          required
-          className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary"
-        />
+        <input id="name" name="name" required className={fieldClassName} />
       </div>
       <div>
         <label htmlFor="email" className="mb-1 block text-sm font-medium text-pretty">
@@ -40,19 +39,14 @@ export function ContactForm() {
           name="email"
           type="email"
           required
-          className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary"
+          className={fieldClassName}
         />
       </div>
       <div>
         <label htmlFor="subject" className="mb-1 block text-sm font-medium text-pretty">
           Subject *
         </label>
-        <input
-          id="subject"
-          name="subject"
-          required
-          className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary"
-        />
+        <input id="subject" name="subject" required className={fieldClassName} />
       </div>
       <div>
         <label htmlFor="message" className="mb-1 block text-sm font-medium text-pretty">
@@ -63,15 +57,10 @@ export function ContactForm() {
           name="message"
           required
           rows={5}
-          className="w-full rounded-lg border border-border bg-background px-4 py-3 text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary"
+          className={fieldClassName}
         />
       </div>
-      <button
-        type="submit"
-        className="min-h-11 rounded-lg bg-brand-primary px-5 py-2.5 text-sm font-medium text-pretty text-balance text-white hover:opacity-90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary"
-      >
-        Send Message
-      </button>
+      <Button type="submit">Send Message</Button>
       {status === "sent" && (
         <p className="text-sm text-muted text-pretty" role="status">
           Your mail client should open to complete sending.

@@ -1,6 +1,14 @@
 import Image from "next/image";
 import { type ReactNode } from "react";
 import type { SiteImageAsset } from "@/lib/site-images";
+import {
+  photoCoverOverlayClass,
+  photoGradientBottomClass,
+  photoGradientBottomHeavyClass,
+  photoGradientCenterClass,
+  photoGradientTopClass,
+  photoTintClass,
+} from "@/lib/ui-styles";
 
 /** Breaks out of the content container to the full viewport width. */
 export const imageBleedClass =
@@ -56,6 +64,43 @@ export function SectionFullImage({
 }
 
 /**
+ * Full-width cover image behind section content (fills height of content area).
+ */
+export function SectionCoverBackdrop({
+  image,
+  alt,
+  children,
+  priority = false,
+  className = "",
+  overlayClassName = photoCoverOverlayClass,
+}: {
+  image: SiteImageAsset;
+  alt: string;
+  children: ReactNode;
+  priority?: boolean;
+  className?: string;
+  overlayClassName?: string;
+}) {
+  return (
+    <div className={`relative isolate overflow-hidden ${className}`}>
+      <Image
+        src={image.src}
+        alt={alt}
+        fill
+        sizes="100vw"
+        className="object-cover object-center"
+        priority={priority}
+      />
+      <div
+        className={`pointer-events-none absolute inset-0 ${overlayClassName}`}
+        aria-hidden
+      />
+      <div className="relative z-10">{children}</div>
+    </div>
+  );
+}
+
+/**
  * Full-bleed image at native aspect ratio with overlaid copy (nothing cropped).
  */
 export function SectionBackdrop({
@@ -75,8 +120,8 @@ export function SectionBackdrop({
   className?: string;
   contentClassName?: string;
   contentAlign?: "bottom" | "center" | "upper-center";
-  /** "heavy" = taller gradient; "none" = no overlay gradient */
-  overlay?: "default" | "heavy" | "none";
+  /** "heavy" = taller gradient; "top" = upper gradient for top-aligned copy; "none" = no overlay gradient */
+  overlay?: "default" | "heavy" | "top" | "none";
 }) {
   const centered = contentAlign === "center";
   const alignClass =
@@ -97,23 +142,32 @@ export function SectionBackdrop({
         className="block h-auto w-full"
         priority={priority}
       />
-      {overlay !== "none" &&
-        (centered ? (
-          <div
-            className="pointer-events-none absolute inset-0 bg-gradient-to-b from-black/25 via-black/10 to-black/55"
-            aria-hidden
-          />
-        ) : overlay === "heavy" ? (
-          <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-[70%] bg-gradient-to-t from-black/90 via-black/60 to-transparent md:h-[65%]"
-            aria-hidden
-          />
-        ) : (
-          <div
-            className="pointer-events-none absolute inset-x-0 bottom-0 h-[50%] bg-gradient-to-t from-black/85 via-black/50 to-transparent md:h-[45%]"
-            aria-hidden
-          />
-        ))}
+      {overlay !== "none" && (
+        <>
+          <div className={`pointer-events-none absolute inset-0 ${photoTintClass}`} aria-hidden />
+          {centered ? (
+            <div
+              className={`pointer-events-none absolute inset-0 ${photoGradientCenterClass}`}
+              aria-hidden
+            />
+          ) : overlay === "top" ? (
+            <div
+              className={`pointer-events-none absolute inset-x-0 top-0 h-[40%] md:h-[35%] ${photoGradientTopClass}`}
+              aria-hidden
+            />
+          ) : overlay === "heavy" ? (
+            <div
+              className={`pointer-events-none absolute inset-x-0 bottom-0 h-[70%] md:h-[65%] ${photoGradientBottomHeavyClass}`}
+              aria-hidden
+            />
+          ) : (
+            <div
+              className={`pointer-events-none absolute inset-x-0 bottom-0 h-[50%] md:h-[45%] ${photoGradientBottomClass}`}
+              aria-hidden
+            />
+          )}
+        </>
+      )}
       <div
         className={`absolute inset-0 z-10 flex flex-col ${alignClass} ${contentClassName}`}
       >

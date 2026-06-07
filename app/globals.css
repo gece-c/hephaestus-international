@@ -16,6 +16,9 @@
   --spacing-section-y: 4rem;
   --spacing-section-y-md: 6rem;
   --spacing-section-y-lg: 7rem;
+  --radius-button: 0;
+  --radius-card: 0;
+  --radius-input: 0;
 }
 
 .dark {
@@ -42,4 +45,223 @@ body {
 
 ::selection {
   background-color: color-mix(in srgb, var(--color-brand-primary) 25%, transparent);
+}
+
+/* Worn stone — small pieces chipped from edges plus faint cracks. */
+.chipped-surface,
+.chipped-surface-v1,
+.chipped-surface-v2,
+.chipped-surface-v3 {
+  position: relative;
+  overflow: visible;
+  filter:
+    drop-shadow(0 1px 2px rgb(0 0 0 / 0.06))
+    drop-shadow(0 6px 14px rgb(0 0 0 / 0.07));
+}
+
+.dark .chipped-surface,
+.dark .chipped-surface-v1,
+.dark .chipped-surface-v2,
+.dark .chipped-surface-v3 {
+  filter:
+    drop-shadow(0 1px 2px rgb(0 0 0 / 0.35))
+    drop-shadow(0 8px 18px rgb(0 0 0 / 0.45));
+}
+
+.chipped-surface {
+  clip-path: polygon(
+    10px 0%,
+    17% 0%,
+    18% 6px,
+    19% 0%,
+    calc(100% - 10px) 0%,
+    100% 8px,
+    100% 51%,
+    calc(100% - 5px) 53%,
+    100% 55%,
+    100% calc(100% - 10px),
+    calc(100% - 7px) 100%,
+    calc(100% - 46px) 100%,
+    calc(100% - 47px) calc(100% - 5px),
+    calc(100% - 45px) 100%,
+    9px 100%,
+    0% calc(100% - 8px),
+    0% 61%,
+    5px 59%,
+    0% 57%,
+    0% 10px
+  );
+}
+
+.chipped-surface-v1 {
+  clip-path: polygon(
+    8px 0%,
+    42% 0%,
+    43% 5px,
+    44% 0%,
+    calc(100% - 12px) 0%,
+    100% 10px,
+    100% 38%,
+    calc(100% - 6px) 40%,
+    100% 42%,
+    100% calc(100% - 14px),
+    calc(100% - 10px) 100%,
+    14px 100%,
+    0% calc(100% - 9px),
+    0% 72%,
+    6px 70%,
+    0% 68%,
+    0% 9px
+  );
+}
+
+.chipped-surface-v2 {
+  clip-path: polygon(
+    12px 0%,
+    calc(100% - 8px) 0%,
+    100% 7px,
+    100% 24%,
+    calc(100% - 4px) 26%,
+    100% 28%,
+    100% calc(100% - 12px),
+    calc(100% - 52px) 100%,
+    calc(100% - 53px) calc(100% - 6px),
+    calc(100% - 50px) 100%,
+    11px 100%,
+    0% calc(100% - 11px),
+    0% 48%,
+    4px 46%,
+    0% 44%,
+    0% 12px
+  );
+}
+
+.chipped-surface-v3 {
+  clip-path: polygon(
+    9px 0%,
+    28% 0%,
+    29% 7px,
+    30% 0%,
+    71% 0%,
+    72% 4px,
+    73% 0%,
+    calc(100% - 9px) 0%,
+    100% 11px,
+    100% calc(100% - 8px),
+    calc(100% - 6px) 100%,
+    38% 100%,
+    37% calc(100% - 5px),
+    39% 100%,
+    8px 100%,
+    0% calc(100% - 10px),
+    0% 33%,
+    5px 31%,
+    0% 29%,
+    0% 9px
+  );
+}
+
+/* Exposed stone faces along each chip — visible even when the cutout blends in. */
+.chipped-surface::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='%230f172a' stroke-linecap='square' stroke-width='0.55' vector-effect='non-scaling-stroke'%3E%3Cpath d='M0 10 L10 0'/%3E%3Cpath d='M90 0 L100 8'/%3E%3Cpath d='M100 90 L92 100'/%3E%3Cpath d='M8 100 L0 92'/%3E%3Cpath d='M18 0 L19 6 L20 0'/%3E%3Cpath d='M100 51 L95 53 L100 55'/%3E%3Cpath d='M55 100 L53 95 L55 100'/%3E%3Cpath d='M0 59 L5 61 L0 63'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 100% 100%;
+}
+
+.chipped-surface-v1::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='%230f172a' stroke-linecap='square' stroke-width='0.55' vector-effect='non-scaling-stroke'%3E%3Cpath d='M0 9 L8 0'/%3E%3Cpath d='M88 0 L100 10'/%3E%3Cpath d='M100 86 L90 100'/%3E%3Cpath d='M14 100 L0 91'/%3E%3Cpath d='M43 0 L44 5 L45 0'/%3E%3Cpath d='M100 38 L94 40 L100 42'/%3E%3Cpath d='M0 70 L6 72 L0 74'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 100% 100%;
+}
+
+.chipped-surface-v2::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='%230f172a' stroke-linecap='square' stroke-width='0.55' vector-effect='non-scaling-stroke'%3E%3Cpath d='M0 12 L12 0'/%3E%3Cpath d='M92 0 L100 7'/%3E%3Cpath d='M100 88 L88 100'/%3E%3Cpath d='M11 100 L0 89'/%3E%3Cpath d='M100 24 L96 26 L100 28'/%3E%3Cpath d='M48 100 L50 94 L52 100'/%3E%3Cpath d='M0 46 L4 48 L0 50'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 100% 100%;
+}
+
+.chipped-surface-v3::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='%230f172a' stroke-linecap='square' stroke-width='0.55' vector-effect='non-scaling-stroke'%3E%3Cpath d='M0 9 L9 0'/%3E%3Cpath d='M91 0 L100 11'/%3E%3Cpath d='M100 92 L94 100'/%3E%3Cpath d='M8 100 L0 90'/%3E%3Cpath d='M29 0 L30 7 L31 0'/%3E%3Cpath d='M71 0 L72 4 L73 0'/%3E%3Cpath d='M38 100 L37 95 L39 100'/%3E%3Cpath d='M0 31 L5 33 L0 35'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 100% 100%;
+}
+
+.dark .chipped-surface::after,
+.dark .chipped-surface-v1::after,
+.dark .chipped-surface-v2::after,
+.dark .chipped-surface-v3::after {
+  opacity: 0.32;
+}
+
+.dark .chipped-surface::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='%2394a3b8' stroke-linecap='square' stroke-width='0.45' vector-effect='non-scaling-stroke'%3E%3Cpath d='M0 10 L10 0'/%3E%3Cpath d='M90 0 L100 8'/%3E%3Cpath d='M100 90 L92 100'/%3E%3Cpath d='M8 100 L0 92'/%3E%3Cpath d='M18 0 L19 6 L20 0'/%3E%3Cpath d='M100 51 L95 53 L100 55'/%3E%3Cpath d='M55 100 L53 95 L55 100'/%3E%3Cpath d='M0 59 L5 61 L0 63'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.dark .chipped-surface-v1::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='%2394a3b8' stroke-linecap='square' stroke-width='0.45' vector-effect='non-scaling-stroke'%3E%3Cpath d='M0 9 L8 0'/%3E%3Cpath d='M88 0 L100 10'/%3E%3Cpath d='M100 86 L90 100'/%3E%3Cpath d='M14 100 L0 91'/%3E%3Cpath d='M43 0 L44 5 L45 0'/%3E%3Cpath d='M100 38 L94 40 L100 42'/%3E%3Cpath d='M0 70 L6 72 L0 74'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.dark .chipped-surface-v2::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='%2394a3b8' stroke-linecap='square' stroke-width='0.45' vector-effect='non-scaling-stroke'%3E%3Cpath d='M0 12 L12 0'/%3E%3Cpath d='M92 0 L100 7'/%3E%3Cpath d='M100 88 L88 100'/%3E%3Cpath d='M11 100 L0 89'/%3E%3Cpath d='M100 24 L96 26 L100 28'/%3E%3Cpath d='M48 100 L50 94 L52 100'/%3E%3Cpath d='M0 46 L4 48 L0 50'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.dark .chipped-surface-v3::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cg fill='none' stroke='%2394a3b8' stroke-linecap='square' stroke-width='0.45' vector-effect='non-scaling-stroke'%3E%3Cpath d='M0 9 L9 0'/%3E%3Cpath d='M91 0 L100 11'/%3E%3Cpath d='M100 92 L94 100'/%3E%3Cpath d='M8 100 L0 90'/%3E%3Cpath d='M29 0 L30 7 L31 0'/%3E%3Cpath d='M71 0 L72 4 L73 0'/%3E%3Cpath d='M38 100 L37 95 L39 100'/%3E%3Cpath d='M0 31 L5 33 L0 35'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.chipped-surface::before,
+.chipped-surface-v1::before,
+.chipped-surface-v2::before,
+.chipped-surface-v3::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0.06;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%230f172a' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke-width='0.5' d='M14 172 L30 136 L33 133 L40 96 L43 93'/%3E%3Cpath stroke-width='0.42' d='M172 22 L148 56 L146 74 L144 78'/%3E%3Cpath stroke-width='0.38' d='M96 184 L94 146 L92 126'/%3E%3Cpath stroke-width='0.35' d='M48 38 L54 44 L58 54'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+
+.chipped-surface-v1::before {
+  background-position: 12px 8px;
+}
+
+.chipped-surface-v2::before {
+  background-position: 48px 24px;
+}
+
+.chipped-surface-v3::before {
+  background-position: 80px 16px;
+}
+
+.dark .chipped-surface::before,
+.dark .chipped-surface-v1::before,
+.dark .chipped-surface-v2::before,
+.dark .chipped-surface-v3::before {
+  opacity: 0.045;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke-width='0.45' d='M14 172 L30 136 L33 133 L40 96 L43 93'/%3E%3Cpath stroke-width='0.38' d='M172 22 L148 56 L146 74 L144 78'/%3E%3Cpath stroke-width='0.34' d='M96 184 L94 146 L92 126'/%3E%3Cpath stroke-width='0.32' d='M48 38 L54 44 L58 54'/%3E%3C/g%3E%3C/svg%3E");
 }

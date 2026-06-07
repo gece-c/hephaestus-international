@@ -52,8 +52,10 @@ function LogoMark({ className }: { className?: string }) {
 
 export function BrandLogo({
   className = "h-9 w-9 text-brand-primary",
+  showTitle = true,
 }: {
   className?: string;
+  showTitle?: boolean;
 }) {
   return (
     <Link
@@ -62,9 +64,11 @@ export function BrandLogo({
     >
       <LogoMark className={className} />
       <span className="sr-only">{siteConfig.name}</span>
-      <span className="hidden text-base font-semibold tracking-tight text-balance text-foreground sm:inline md:text-lg">
-        {siteConfig.name}
-      </span>
+      {showTitle ? (
+        <span className="hidden text-base font-semibold tracking-tight text-balance text-foreground sm:inline md:text-lg">
+          {siteConfig.name}
+        </span>
+      ) : null}
     </Link>
   );
 }

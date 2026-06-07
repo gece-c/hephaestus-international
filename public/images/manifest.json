@@ -6,59 +6,59 @@
   ],
   "assets": [
     {
-      "file": "/images/hero-background.jpeg",
+      "file": "/images/hero-background.webp",
       "source": "pdf-extracted/slide-01-img-03.jpeg",
-      "description": "Slide 1 \u2014 hero background"
+      "description": "Slide 1 — hero background"
     },
     {
-      "file": "/images/positioning.jpeg",
+      "file": "/images/positioning.webp",
       "source": "pdf-extracted/slide-03-img-01.jpeg",
-      "description": "Slide 3 \u2014 brand positioning"
+      "description": "Slide 3 — brand positioning"
     },
     {
-      "file": "/images/roots-transition.jpeg",
+      "file": "/images/roots-transition.webp",
       "source": "pdf-extracted/slide-05-img-01.jpeg",
-      "description": "Slide 5 \u2014 everything starts somewhere"
+      "description": "Slide 5 — everything starts somewhere"
     },
     {
-      "file": "/images/mapping-legacy.jpeg",
+      "file": "/images/mapping-legacy.webp",
       "source": "pdf-extracted/slide-06-img-01.jpeg",
-      "description": "Slide 6 \u2014 mapping the legacy"
+      "description": "Slide 6 — mapping the legacy"
     },
     {
-      "file": "/images/lemnos.jpeg",
+      "file": "/images/lemnos.webp",
       "source": "pdf-extracted/slide-07-img-01.jpeg",
-      "description": "Slide 7 \u2014 where legacy becomes innovation"
+      "description": "Slide 7 — where legacy becomes innovation"
     },
     {
-      "file": "/images/name-bridge.jpeg",
+      "file": "/images/name-bridge.webp",
       "source": "pdf-extracted/slide-08-img-01.jpeg",
-      "description": "Slide 8 \u2014 before a name exists (bridge)"
+      "description": "Slide 8 — before a name exists (bridge)"
     },
     {
-      "file": "/images/name-origins.jpeg",
+      "file": "/images/name-origins.webp",
       "source": "pdf-extracted/slide-09-img-01.jpeg",
-      "description": "Slide 9 \u2014 origins of the name"
+      "description": "Slide 9 — origins of the name"
     },
     {
-      "file": "/images/engine-bridge.jpeg",
+      "file": "/images/engine-bridge.webp",
       "source": "pdf-extracted/slide-10-img-01.jpeg",
-      "description": "Slide 10 \u2014 place and force (bridge)"
+      "description": "Slide 10 — place and force (bridge)"
     },
     {
-      "file": "/images/learning-engine.jpeg",
+      "file": "/images/learning-engine.webp",
       "source": "pdf-extracted/slide-11-img-01.jpeg",
-      "description": "Slide 11 \u2014 the learning engine"
+      "description": "Slide 11 — the learning engine"
     },
     {
-      "file": "/images/ecosystem-bridge.jpeg",
+      "file": "/images/ecosystem-bridge.webp",
       "source": "pdf-extracted/slide-12-img-01.jpeg",
-      "description": "Slide 12 \u2014 intelligence takes form (bridge)"
+      "description": "Slide 12 — intelligence takes form (bridge)"
     },
     {
-      "file": "/images/closing.jpeg",
+      "file": "/images/closing.webp",
       "source": "pdf-extracted/slide-14-img-03.jpeg",
-      "description": "Slide 14 \u2014 join us CTA background"
+      "description": "Slide 14 — join us CTA background"
     }
   ]
 }

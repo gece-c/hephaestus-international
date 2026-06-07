@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { navLinks } from "@/content/site-content";
+import { buttonChromeClass, buttonRadiusClass, glassSurfaceClass } from "@/lib/ui-styles";
 
 export function MobileNav() {
   const [open, setOpen] = useState(false);
@@ -12,7 +13,7 @@ export function MobileNav() {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="min-h-11 rounded-lg border border-border px-4 text-sm font-medium"
+        className={`min-h-11 ${buttonChromeClass} border border-border px-4 text-sm font-medium`}
         aria-expanded={open}
         aria-controls="mobile-menu"
       >
@@ -21,7 +22,7 @@ export function MobileNav() {
       {open && (
         <nav
           id="mobile-menu"
-          className="absolute left-0 right-0 top-full z-50 border-b border-border bg-background p-4 shadow-lg"
+          className={`absolute left-0 right-0 top-full z-50 p-4 shadow-lg ${glassSurfaceClass}`}
         >
           <ul className="flex flex-col gap-2">
             {navLinks.map((link) => (
@@ -30,8 +31,8 @@ export function MobileNav() {
                   href={link.href}
                   className={
                     link.href === "/contact"
-                      ? "block rounded-lg px-3 py-3 text-sm font-medium text-brand-primary hover:bg-card"
-                      : "block rounded-lg px-3 py-3 text-sm font-medium hover:bg-card"
+                      ? `block ${buttonRadiusClass} px-3 py-3 text-sm font-medium text-brand-primary hover:bg-card`
+                      : `block ${buttonRadiusClass} px-3 py-3 text-sm font-medium hover:bg-card`
                   }
                   onClick={() => setOpen(false)}
                 >
