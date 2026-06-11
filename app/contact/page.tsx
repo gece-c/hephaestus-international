@@ -4,6 +4,7 @@ import { PageShell } from "@/components/layout/page-shell";
 import { ProseParagraph, SectionHeading } from "@/components/ui/typography";
 import { contactPage, siteConfig } from "@/content/site-content";
 import { buildMetadata } from "@/lib/metadata";
+import { type } from "@/lib/typography";
 
 export const metadata: Metadata = buildMetadata({
   title: `${contactPage.title} | Hephaestus International`,
@@ -14,17 +15,17 @@ export const metadata: Metadata = buildMetadata({
 export default function ContactPage() {
   return (
     <PageShell title={contactPage.heading}>
-      <ProseParagraph className="text-lg text-foreground">
+      <ProseParagraph className={`${type.titleLarge} text-foreground`}>
         {contactPage.intro}
       </ProseParagraph>
       <div>
-        <SectionHeading as="h2" className="mb-4 text-xl">
+        <SectionHeading as="h2" className="mb-4">
           {contactPage.formTitle}
         </SectionHeading>
         <ContactForm />
       </div>
       <div>
-        <SectionHeading as="h2" className="mb-4 text-xl">
+        <SectionHeading as="h2" className="mb-4">
           {contactPage.otherTitle}
         </SectionHeading>
         <ProseParagraph>

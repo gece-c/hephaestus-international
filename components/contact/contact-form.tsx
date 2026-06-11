@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { siteConfig } from "@/content/site-content";
 import { Button } from "@/components/ui/button";
+import { type } from "@/lib/typography";
 import { inputRadiusClass } from "@/lib/ui-styles";
 
 export function ContactForm() {
@@ -20,18 +21,18 @@ export function ContactForm() {
     setStatus("sent");
   }
 
-  const fieldClassName = `w-full ${inputRadiusClass} border border-border bg-background px-4 py-3 text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary`;
+  const fieldClassName = `w-full ${inputRadiusClass} border border-border bg-background px-4 py-3 ${type.bodyLarge} focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand-primary`;
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label htmlFor="name" className="mb-1 block text-sm font-medium text-pretty">
+        <label htmlFor="name" className={`mb-1 block ${type.labelLarge} text-pretty`}>
           Name *
         </label>
         <input id="name" name="name" required className={fieldClassName} />
       </div>
       <div>
-        <label htmlFor="email" className="mb-1 block text-sm font-medium text-pretty">
+        <label htmlFor="email" className={`mb-1 block ${type.labelLarge} text-pretty`}>
           Email *
         </label>
         <input
@@ -43,13 +44,13 @@ export function ContactForm() {
         />
       </div>
       <div>
-        <label htmlFor="subject" className="mb-1 block text-sm font-medium text-pretty">
+        <label htmlFor="subject" className={`mb-1 block ${type.labelLarge} text-pretty`}>
           Subject *
         </label>
         <input id="subject" name="subject" required className={fieldClassName} />
       </div>
       <div>
-        <label htmlFor="message" className="mb-1 block text-sm font-medium text-pretty">
+        <label htmlFor="message" className={`mb-1 block ${type.labelLarge} text-pretty`}>
           Message *
         </label>
         <textarea
@@ -62,7 +63,7 @@ export function ContactForm() {
       </div>
       <Button type="submit">Send Message</Button>
       {status === "sent" && (
-        <p className="text-sm text-muted text-pretty" role="status">
+        <p className={`${type.bodyMedium} text-muted text-pretty`} role="status">
           Your mail client should open to complete sending.
         </p>
       )}

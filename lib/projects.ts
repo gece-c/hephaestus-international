@@ -30,27 +30,46 @@ export function isProjectId(id: string): id is ProjectId {
 }
 
 export function getProjectDetailTitle(project: ProjectEntry): string {
-  if ("storytellingId" in project && project.storytellingId) {
-    return storytellingById[project.storytellingId].title;
-  }
   return project.title;
 }
 
 export function getProjectDetailParagraphs(
   project: ProjectEntry,
 ): readonly string[] {
+  if ("paragraphs" in project && project.paragraphs.length > 0) {
+    return project.paragraphs;
+  }
   if ("storytellingId" in project && project.storytellingId) {
-    return storytellingById[project.storytellingId].paragraphs;
+    const storytelling = storytellingById[project.storytellingId];
+    return [storytelling.title, ...storytelling.paragraphs];
   }
   return [];
 }
 
-/** Teaser for list tiles: first approved paragraph only, when available. */
+export function getProjectFocusPoints(
+  project: ProjectEntry,
+): readonly string[] {
+  return "focusPoints" in project ? project.focusPoints : [];
+}
+
+/** Teaser for list tiles: first body paragraph only (excludes storytelling headlines). */
 export function getProjectTileIntro(project: ProjectEntry): string | undefined {
-  const [first] = getProjectDetailParagraphs(project);
+  const [first] = getProjectTileIntroParagraphs(project);
   if (!first) return undefined;
   if (first.length <= 160) return first;
   return `${first.slice(0, 157).trimEnd()}…`;
+}
+
+function getProjectTileIntroParagraphs(
+  project: ProjectEntry,
+): readonly string[] {
+  if ("paragraphs" in project && project.paragraphs.length > 0) {
+    return project.paragraphs;
+  }
+  if ("storytellingId" in project && project.storytellingId) {
+    return storytellingById[project.storytellingId].paragraphs;
+  }
+  return [];
 }
 
 export function getProjectExternalHref(

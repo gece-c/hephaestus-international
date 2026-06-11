@@ -1,0 +1,50 @@
+---
+description: FloLabs design, layout, content, and QA rules from AI Design and Coding Guide
+globs: "**/*.{tsx,ts,css}"
+alwaysApply: true
+---
+
+# FloLabs design guide (required)
+
+Source: `AI Design and Coding Guide.md` and tokens in `app/globals.css`.
+
+## Content (§1)
+
+- Preserve user-pasted copy exactly; do not rewrite without explicit approval.
+- No em-dashes (—); use commas or colons.
+- Spell project names correctly: FloLabs, CAIPO, FloBrain, MoodChanger, Hephaestus, Flo Chronos.
+- Simple, clear language; short button labels; no invented product claims.
+
+## Layout (§4–§5)
+
+- Use `Container`, `Section`, `Col`, `ContentColumn` from `@/components/layout/*`.
+- Grid: 4 cols mobile (320–767px), 8 cols tablet (768–1023px), 12 cols desktop (1024px+).
+- Center in `--max-width-content` (90rem); verify 1440px+ large desktop.
+- Fluid containers; no fixed widths that cause horizontal scroll; images scale in parents.
+- Check mobile, tablet, and desktop for every section.
+
+## Spacing & components (§7–§8)
+
+- Use spacing tokens (`--spacing-section-y*`, `--spacing-card`, `--spacing-gutter-*`).
+- Reuse `Button`, `Card`, `lib/ui-styles`, and `components/ui/*`; avoid one-off styles.
+- Interactive elements: `--min-touch-target` (44px). Cards/buttons use `--radius-*` tokens.
+
+## Design & theme (§3, §10)
+
+- Clean, professional layouts; no random gradients, neon glows, or generic AI aesthetics.
+- Full light/dark support via semantic color tokens; readable text and visible borders in both.
+
+## Typography (§6)
+
+- M3 type scale only — see `.cursor/rules/typography.mdc`.
+- Headings use `text-balance`; prevent orphan words on headings and CTAs.
+
+## Assets & SEO (§9, §11)
+
+- `public/logo.svg` in header and as favicon (`currentColor`, both themes).
+- OG/Twitter meta with `public/og-image.png` (16:9). Consistent icon sizes and image framing.
+
+## Before finishing (§13)
+
+- No overflow, orphan words, or theme flash on reload.
+- Header, footer, buttons, and forms match global component styles.

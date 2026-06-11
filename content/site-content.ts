@@ -22,7 +22,6 @@ export const contentTodos = [
   "Slide 2 trailing = on Lemnos date line",
   "Privacy policy body: legal review required",
   "Contact form endpoint: confirm API vs mailto",
-  "Footer Merch link: confirm destination URL with stakeholder",
   "Footer YouTube URL: confirm channel URL with stakeholder",
 ] as const;
 
@@ -65,7 +64,10 @@ export const siteFooter = {
     links: [
       { label: "About Us", href: "/about" },
       { label: "Careers", href: "/internships" },
-      { label: "Merch", href: "/contact" },
+      {
+        label: "Merch",
+        href: "https://flolabsrd.notion.site/merch-background",
+      },
     ],
   },
   projectColumns: [
@@ -381,7 +383,8 @@ export const privacyPage = {
 
 /**
  * Initiative names and external URLs.
- * storytellingId: approved Version 3 PDF copy only (ecosystem.items).
+ * storytellingId: approved Version 3 PDF copy (ecosystem.items).
+ * paragraphs / focusPoints: project-specific copy on the catalog entry.
  */
 /** Alphabetical by title. Display order is also enforced in getProjectsCatalogSorted(). */
 export const projectsCatalog = [
@@ -400,6 +403,16 @@ export const projectsCatalog = [
     id: "connecting-the-dots",
     title: "Connecting The Dots",
     href: "https://www.youtube.com/@flolabsinnovation",
+    paragraphs: [
+      "Connecting the Dots is a FloLabs media and storytelling project that turns conversations, meetings, and founder insights into clear episodes about innovation. The series helps explain how different FloLabs projects, ideas, and teams connect across AI, robotics, entrepreneurship, education, and real-world problem solving. It gives viewers a behind-the-scenes look at the challenges, thinking, and vision behind building something new.",
+    ],
+    focusPoints: [
+      "Thought leadership and storytelling",
+      "Behind-the-scenes FloLabs conversations",
+      "AI, robotics, entrepreneurship, and education",
+      "Connecting different projects into one bigger vision",
+      "Making complex ideas easier to understand publicly",
+    ],
   },
   {
     id: "flobrain",
@@ -466,6 +479,7 @@ export const projectsPage = {
   viewDetailsLabel: "View details",
   backToProjectsLabel: "All projects",
   externalSiteLabel: "Visit site",
+  focusPointsTitle: "Focus points:",
   noApprovedCopyNote:
     "Approved presentation copy is not available for this initiative. Use the project site link below when provided.",
 } as const;

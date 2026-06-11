@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { ProseParagraph } from "@/components/ui/typography";
 import { closingCta, internshipsPage } from "@/content/site-content";
 import { buildMetadata } from "@/lib/metadata";
+import { type } from "@/lib/typography";
 
 export const metadata: Metadata = buildMetadata({
   title: `${internshipsPage.title} | Hephaestus International`,
@@ -14,11 +15,11 @@ export const metadata: Metadata = buildMetadata({
 export default function InternshipsPage() {
   return (
     <PageShell title={internshipsPage.heading}>
-      <ProseParagraph className="text-lg text-foreground">
+      <ProseParagraph className={`${type.titleLarge} text-foreground`}>
         {internshipsPage.intro}
       </ProseParagraph>
       <ProseParagraph>{internshipsPage.note}</ProseParagraph>
-      <p className="text-foreground font-medium text-pretty">
+      <p className={`${type.titleMedium} text-foreground text-pretty`}>
         {closingCta.tagline}
       </p>
       <Button href="/contact">{internshipsPage.ctaLabel}</Button>

@@ -33,6 +33,7 @@ import {
   closingCta,
 } from "@/content/site-content";
 import { siteImages } from "@/lib/site-images";
+import { type } from "@/lib/typography";
 import {
   cardRadiusClass,
   glassSurfaceClass,
@@ -59,10 +60,10 @@ export function HeroSection() {
     >
       <div className="mx-auto w-full max-w-3xl text-center [&_h1]:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_10px_rgb(0_0_0_/_0.9),0_4px_28px_rgb(0_0_0_/_0.65)] [&_p]:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_8px_rgb(0_0_0_/_0.88),0_4px_20px_rgb(0_0_0_/_0.6)]">
         <Eyebrow className="text-white">{hero.subtitle}</Eyebrow>
-        <SectionHeading as="h1" className="mt-4 text-white">
+        <SectionHeading as="h1" scale="hero" className="mt-4 text-white">
           {hero.title}
         </SectionHeading>
-        <div className="mt-8 space-y-3 text-lg text-pretty text-white/90 md:text-xl">
+        <div className={`mt-8 space-y-3 ${type.bodyLarge} text-pretty text-white/90`}>
           {hero.taglines.map((line) => (
             <p key={line} className="text-balance">
               {line}
@@ -87,10 +88,7 @@ export function DidYouKnowSection() {
             <div
               className={`inline-flex ${cardRadiusClass} ${glassSurfaceClass} px-5 py-3`}
             >
-              <SectionHeading
-                as="h2"
-                className={`text-2xl md:text-3xl ${glassTextClass}`}
-              >
+              <SectionHeading as="h2" className={glassTextClass}>
                 {didYouKnow.leadIn}
               </SectionHeading>
             </div>
@@ -99,18 +97,14 @@ export function DidYouKnowSection() {
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
               {didYouKnow.facts.map((fact, index) => (
                 <Card key={fact} chipSeed={index} className="h-full min-w-0">
-                  <p
-                    className={`text-sm leading-relaxed text-pretty md:text-base ${glassTextClass}`}
-                  >
+                  <p className={`${type.bodyMedium} text-pretty ${glassTextClass}`}>
                     {fact}
                   </p>
                 </Card>
               ))}
             </div>
             <Card chipSeed="did-you-know-closing" className="mt-4">
-              <p
-                className={`text-base leading-relaxed text-pretty font-medium md:text-lg ${glassTextClass}`}
-              >
+              <p className={`${type.titleMedium} text-pretty ${glassTextClass}`}>
                 {didYouKnow.closing}
               </p>
             </Card>
@@ -135,14 +129,11 @@ export function PositioningSection() {
             span={12}
             className="[&_h2]:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_10px_rgb(0_0_0_/_0.9),0_4px_28px_rgb(0_0_0_/_0.65)] [&_p]:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_8px_rgb(0_0_0_/_0.88),0_4px_20px_rgb(0_0_0_/_0.6)]"
           >
-            <SectionHeading className="text-white md:text-4xl lg:text-5xl">
+            <SectionHeading className="text-white">
               {positioning.title}
             </SectionHeading>
             <div className="mt-6 w-full md:mt-8">
-              <Prose
-                size="lg"
-                className="max-w-none text-lg text-white/90 md:text-xl lg:text-2xl"
-              >
+              <Prose size="lg" className="max-w-none text-white/90">
                 {positioning.paragraphs.map((paragraph) => (
                   <ProseParagraph key={paragraph}>
                     {paragraph}
@@ -170,10 +161,7 @@ export function PillarsSection() {
             <div
               className={`inline-flex ${cardRadiusClass} ${glassSurfaceClass} px-5 py-3`}
             >
-              <SectionHeading
-                as="h2"
-                className={`text-2xl md:text-3xl ${glassTextClass}`}
-              >
+              <SectionHeading as="h2" className={glassTextClass}>
                 {pillars.title}
               </SectionHeading>
             </div>
@@ -182,15 +170,15 @@ export function PillarsSection() {
             <div className="grid gap-6 md:grid-cols-3">
               {pillars.items.map((pillar) => (
                 <Card key={pillar.number} chipSeed={pillar.number} className="h-full">
-                  <span className="text-3xl font-bold text-brand-primary">
+                  <span className={`${type.displaySmall} text-brand-primary`}>
                     {pillar.number}
                   </span>
-                  <h3 className={`mt-4 text-xl font-semibold text-balance ${glassTextClass}`}>
+                  <SectionHeading as="h3" className={`mt-4 ${glassTextClass}`}>
                     {pillar.title}
-                  </h3>
-                  <div className={`mt-4 text-sm ${glassTextClass}`}>
+                  </SectionHeading>
+                  <div className={`mt-4 ${type.bodyMedium} ${glassTextClass}`}>
                     {pillar.paragraphs.map((paragraph) => (
-                      <p key={paragraph} className="text-pretty leading-relaxed">
+                      <p key={paragraph} className="text-pretty">
                         {paragraph}
                       </p>
                     ))}
@@ -230,10 +218,7 @@ export function MappingLegacySection() {
             centered
             className="[&_h2]:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_10px_rgb(0_0_0_/_0.9),0_4px_28px_rgb(0_0_0_/_0.65)]"
           >
-            <SectionHeading
-              as="h2"
-              className="text-2xl text-white md:text-3xl lg:text-4xl"
-            >
+            <SectionHeading as="h2" className="text-white">
               {mappingLegacy.title}
             </SectionHeading>
           </ContentColumn>
@@ -286,15 +271,15 @@ export function LemnosSection() {
         image={siteImages.lemnos}
         alt={lemnos.title}
         overlay="heavy"
-        contentClassName="py-12 md:py-16 lg:py-20"
+        contentClassName="py-8 md:py-10"
       >
         <Container>
           <Col span={12} className="lg:col-span-9">
-            <SectionHeading className="text-white drop-shadow-md lg:text-5xl">
+            <SectionHeading className="text-white drop-shadow-md">
               {lemnos.title}
             </SectionHeading>
-            <div className="mt-6 md:mt-8">
-              <Prose className="text-base text-white/90 md:text-lg [&_p]:drop-shadow-sm">
+            <div className="mt-4">
+              <Prose className="!space-y-1.5 text-white/90 [&_p]:drop-shadow-sm">
                 {lemnos.paragraphs.map((paragraph) => (
                   <LemnosParagraph key={paragraph} text={paragraph} />
                 ))}
@@ -358,7 +343,7 @@ function NameOriginsAccentLine({
 
   return (
     <p
-      className={`text-xs font-semibold leading-snug sm:text-sm md:text-base lg:text-lg ${NAME_ORIGINS_TEXT} ${
+      className={`${type.bodyMedium} ${NAME_ORIGINS_TEXT} ${
         align === "right" ? "text-right" : "text-left"
       }`}
     >
@@ -443,13 +428,13 @@ export function NameOriginsSection() {
         <div className="absolute inset-0 z-10">
           <SectionHeading
             as="h2"
-            className={`absolute inset-x-[8%] top-[5%] text-center text-base font-bold sm:text-lg md:text-2xl lg:text-3xl ${NAME_ORIGINS_TEXT}`}
+            className={`absolute inset-x-[8%] top-[5%] text-center ${type.headlineSmall} ${NAME_ORIGINS_TEXT}`}
           >
             {nameOrigins.title}
           </SectionHeading>
           <NameOriginsZigzag />
           <p
-            className={`absolute inset-x-[8%] bottom-[4%] text-center text-xs font-bold underline sm:text-sm md:text-base lg:text-lg ${NAME_ORIGINS_TEXT}`}
+            className={`absolute inset-x-[8%] bottom-[4%] text-center ${type.labelLarge} underline ${NAME_ORIGINS_TEXT}`}
           >
             {nameOrigins.footer}
           </p>
@@ -512,13 +497,11 @@ export function LearningEngineSection() {
         <div className="absolute inset-0 z-10 flex flex-col justify-end py-12 md:py-16 lg:py-20">
           <Container>
             <Col span={12} className="lg:col-span-8">
-              <SectionHeading
-                className={`text-3xl md:text-4xl lg:text-5xl ${LEARNING_ENGINE_TEXT}`}
-              >
+              <SectionHeading className={LEARNING_ENGINE_TEXT}>
                 {learningEngine.title}
               </SectionHeading>
               <div
-                className={`mt-8 w-full space-y-4 text-pretty text-base leading-relaxed text-white/90 md:text-lg ${LEARNING_ENGINE_TEXT}`}
+                className={`mt-8 w-full space-y-4 text-pretty text-white/90 ${type.bodyLarge} ${LEARNING_ENGINE_TEXT}`}
               >
                 {learningEngine.paragraphs.map((paragraph) => (
                   <LearningParagraph key={paragraph} text={paragraph} />
@@ -555,14 +538,11 @@ export function EcosystemSection() {
             <div
               className={`inline-flex ${cardRadiusClass} ${glassSurfaceClass} px-5 py-3`}
             >
-              <SectionHeading
-                as="h2"
-                className={`text-2xl md:text-3xl ${glassTextClass}`}
-              >
+              <SectionHeading as="h2" className={glassTextClass}>
                 {ecosystem.title}
               </SectionHeading>
             </div>
-            <p className={`mt-4 text-lg text-pretty ${glassTextClass}`}>
+            <p className={`mt-4 ${type.titleLarge} text-pretty ${glassTextClass}`}>
               {ecosystem.subtitle}
             </p>
           </ContentColumn>
@@ -573,9 +553,9 @@ export function EcosystemSection() {
                   <SectionHeading as="h3" className={glassTextClass}>
                     {item.title}
                   </SectionHeading>
-                  <div className={`mt-4 space-y-3 text-sm md:text-base ${glassTextClass}`}>
+                  <div className={`mt-4 space-y-3 ${type.bodyMedium} ${glassTextClass}`}>
                     {item.paragraphs.map((paragraph) => (
-                      <p key={paragraph} className="text-pretty leading-relaxed">
+                      <p key={paragraph} className="text-pretty">
                         {paragraph}
                       </p>
                     ))}
@@ -619,30 +599,24 @@ export function ClosingCtaSection() {
         <div className="absolute inset-0 z-10 flex flex-col justify-end py-16 md:py-20 lg:py-24">
           <Container>
             <ContentColumn centered width="narrow">
-              <p
-                className={`text-lg text-pretty text-white/95 md:text-xl ${CLOSING_CTA_TEXT}`}
-              >
+              <p className={`${type.titleLarge} text-pretty text-white/95 ${CLOSING_CTA_TEXT}`}>
                 {closingCta.lead}
               </p>
-              <p
-                className={`mt-8 text-xl font-semibold text-balance md:text-2xl ${CLOSING_CTA_TEXT}`}
-              >
+              <p className={`mt-8 ${type.headlineSmall} text-balance ${CLOSING_CTA_TEXT}`}>
                 {closingCta.prompt}
               </p>
               <ul
-                className={`mt-6 space-y-3 text-lg text-pretty text-white/90 md:text-xl ${CLOSING_CTA_TEXT}`}
+                className={`mt-6 space-y-3 ${type.titleLarge} text-pretty text-white/90 ${CLOSING_CTA_TEXT}`}
               >
                 {closingCta.questions.map((question) => (
                   <li key={question}>{question}</li>
                 ))}
               </ul>
-              <p
-                className={`mt-8 text-2xl font-bold text-balance md:text-3xl ${CLOSING_CTA_TEXT}`}
-              >
+              <p className={`mt-8 ${type.headlineMedium} text-balance ${CLOSING_CTA_TEXT}`}>
                 {closingCta.headline}
               </p>
               <p
-                className={`mt-4 text-lg font-semibold text-balance text-brand-primary [text-shadow:1.25px_0_0_#fff,-1.25px_0_0_#fff,0_1.25px_0_#fff,0_-1.25px_0_#fff,0_1px_2px_rgb(0_0_0_/_0.9),0_2px_8px_rgb(0_0_0_/_0.75)] dark:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_8px_rgb(0_0_0_/_0.88),0_4px_20px_rgb(0_0_0_/_0.6)]`}
+                className={`mt-4 ${type.titleLarge} text-balance text-brand-primary [text-shadow:1.25px_0_0_#fff,-1.25px_0_0_#fff,0_1.25px_0_#fff,0_-1.25px_0_#fff,0_1px_2px_rgb(0_0_0_/_0.9),0_2px_8px_rgb(0_0_0_/_0.75)] dark:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_8px_rgb(0_0_0_/_0.88),0_4px_20px_rgb(0_0_0_/_0.6)]`}
               >
                 {closingCta.tagline}
               </p>

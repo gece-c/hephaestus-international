@@ -1,4 +1,5 @@
 import { type ElementType, type ReactNode } from "react";
+import { type, type TypeScale } from "@/lib/typography";
 
 export function Prose({
   children,
@@ -11,8 +12,8 @@ export function Prose({
 }) {
   const sizeClass =
     size === "lg"
-      ? "text-lg leading-relaxed text-muted md:text-xl"
-      : "text-base leading-relaxed text-muted md:text-lg";
+      ? `${type.titleLarge} text-muted`
+      : `${type.bodyLarge} text-muted`;
 
   return (
     <div className={`w-full space-y-4 text-pretty ${sizeClass} ${className}`}>
@@ -34,21 +35,30 @@ export function ProseParagraph({
 export function SectionHeading({
   children,
   as = "h2",
+  scale = "default",
   className = "",
 }: {
   children: ReactNode;
   as?: "h1" | "h2" | "h3";
+  /** Use `hero` for the home page hero title (displayLarge). */
+  scale?: "default" | "hero";
   className?: string;
 }) {
   const Tag = as as ElementType;
-  const sizeClass =
+  const sizeClass: TypeScale =
     as === "h1"
-      ? "text-4xl font-bold tracking-tight text-balance md:text-5xl lg:text-6xl"
+      ? scale === "hero"
+        ? "displayLarge"
+        : "displaySmall"
       : as === "h3"
-        ? "text-lg font-semibold leading-snug text-balance md:text-xl"
-        : "text-3xl font-bold text-balance md:text-4xl";
+        ? "titleLarge"
+        : "headlineLarge";
 
-  return <Tag className={`${sizeClass} ${className}`}>{children}</Tag>;
+  return (
+    <Tag className={`${type[sizeClass]} text-balance ${className}`}>
+      {children}
+    </Tag>
+  );
 }
 
 export function Eyebrow({
@@ -60,7 +70,7 @@ export function Eyebrow({
 }) {
   return (
     <p
-      className={`text-sm font-semibold uppercase tracking-widest text-brand-primary text-pretty ${className}`}
+      className={`${type.labelSmall} uppercase tracking-widest text-brand-primary text-pretty ${className}`}
     >
       {children}
     </p>

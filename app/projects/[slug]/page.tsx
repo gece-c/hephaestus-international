@@ -11,9 +11,11 @@ import {
   getProjectDetailParagraphs,
   getProjectDetailTitle,
   getProjectExternalHref,
+  getProjectFocusPoints,
   isProjectId,
 } from "@/lib/projects";
 import { buildMetadata } from "@/lib/metadata";
+import { type } from "@/lib/typography";
 
 type PageProps = {
   params: Promise<{ slug: string }>;
@@ -57,18 +59,22 @@ export default async function ProjectDetailPage({ params }: PageProps) {
   }
 
   const paragraphs = getProjectDetailParagraphs(project);
+  const focusPoints = getProjectFocusPoints(project);
   const externalHref = getProjectExternalHref(project);
 
   return (
-    <PageShell title={getProjectDetailTitle(project)}>
-      <p className="mb-8">
+    <PageShell
+      title={getProjectDetailTitle(project)}
+      centered={false}
+      beforeTitle={
         <Link
           href="/projects"
-          className="text-sm font-medium text-brand-primary hover:underline"
+          className={`${type.labelLarge} text-brand-primary hover:underline`}
         >
           ← {projectsPage.backToProjectsLabel}
         </Link>
-      </p>
+      }
+    >
       {paragraphs.length > 0 ? (
         <div className="space-y-4">
           {paragraphs.map((paragraph) => (
@@ -78,6 +84,20 @@ export default async function ProjectDetailPage({ params }: PageProps) {
       ) : (
         <ProseParagraph>{projectsPage.noApprovedCopyNote}</ProseParagraph>
       )}
+      {focusPoints.length > 0 ? (
+        <div className="mt-8">
+          <ProseParagraph className={`${type.titleMedium} text-foreground`}>
+            {projectsPage.focusPointsTitle}
+          </ProseParagraph>
+          <ul className={`mt-4 list-disc space-y-2 pl-5 ${type.bodyLarge} text-muted`}>
+            {focusPoints.map((point) => (
+              <li key={point} className="text-pretty">
+                {point}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
       <div className="mt-10 flex flex-wrap gap-4">
         {externalHref ? (
           <Button href={externalHref} external>

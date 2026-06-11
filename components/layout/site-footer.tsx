@@ -3,11 +3,12 @@ import { BrandLogo } from "@/components/brand/brand-logo";
 import { Container, Col } from "@/components/layout/container";
 import { siteConfig, siteFooter } from "@/content/site-content";
 import { getFooterProjectHref, getFooterProjectLinks } from "@/lib/projects";
+import { type } from "@/lib/typography";
 import { buttonChromeClass, buttonRadiusClass, inputRadiusClass } from "@/lib/ui-styles";
 
 function FooterSectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-sm font-semibold uppercase tracking-[0.2em] text-foreground">
+    <p className={`${type.labelSmall} uppercase tracking-[0.2em] text-foreground`}>
       {children}
     </p>
   );
@@ -22,12 +23,7 @@ function FooterLinkList({
     <ul className="mt-4 space-y-2">
       {links.map((link) => (
         <li key={link.label}>
-          <Link
-            href={link.href}
-            className="text-sm text-foreground underline underline-offset-4 transition-colors hover:text-brand-primary"
-          >
-            {link.label}
-          </Link>
+          <FooterProjectLink href={link.href} label={link.label} />
         </li>
       ))}
     </ul>
@@ -41,8 +37,7 @@ function FooterProjectLink({
   href: string;
   label: string;
 }) {
-  const linkClassName =
-    "text-sm text-foreground underline underline-offset-4 transition-colors hover:text-brand-primary";
+  const linkClassName = `${type.bodyMedium} text-foreground underline underline-offset-4 transition-colors hover:text-brand-primary`;
 
   if (href.startsWith("http")) {
     return (
@@ -133,14 +128,14 @@ export function SiteFooter() {
                   className="h-10 w-10 shrink-0 text-brand-primary"
                   showTitle={false}
                 />
-                <p className="text-lg font-semibold text-balance text-foreground">
+                <p className={`${type.titleLarge} text-balance text-foreground`}>
                   {siteConfig.name}{" "}
                   <span className="font-normal text-muted">
                     | {siteFooter.projectLine}
                   </span>
                 </p>
               </div>
-              <p className="mt-4 max-w-md text-sm leading-relaxed text-muted text-pretty">
+              <p className={`mt-4 max-w-md ${type.bodyMedium} text-muted text-pretty`}>
                 {siteFooter.description}
               </p>
 
@@ -148,7 +143,7 @@ export function SiteFooter() {
                 <FooterSectionTitle>
                   {siteFooter.newsletter.title}
                 </FooterSectionTitle>
-                <p className="mt-3 text-sm text-muted text-pretty">
+                <p className={`mt-3 ${type.bodyMedium} text-muted text-pretty`}>
                   {siteFooter.newsletter.prompt}
                 </p>
                 <form action="/contact" method="get" className="mt-3 max-w-md">
@@ -168,7 +163,7 @@ export function SiteFooter() {
                       required
                       autoComplete="email"
                       placeholder={siteFooter.newsletter.placeholder}
-                      className={`min-h-11 w-full ${inputRadiusClass} border border-border bg-background py-2 pl-3 pr-12 text-sm text-foreground placeholder:text-muted`}
+                      className={`min-h-11 w-full ${inputRadiusClass} border border-border bg-background py-2 pl-3 pr-12 ${type.bodyLarge} text-foreground placeholder:text-muted`}
                     />
                     <button
                       type="submit"
@@ -247,7 +242,7 @@ export function SiteFooter() {
         </Col>
 
         <Col span={12} className="mt-10 border-t border-border pt-8 lg:mt-12">
-          <p className="text-center text-sm text-muted text-pretty">
+          <p className={`text-center ${type.bodySmall} text-muted text-pretty`}>
             {siteFooter.tagline}
           </p>
         </Col>

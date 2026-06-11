@@ -2,6 +2,45 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+/*
+ * ═══════════════════════════════════════════════════════════════════════════
+ * FLOLABS DESIGN SYSTEM — AI Design and Coding Guide (required)
+ * Full spec: AI Design and Coding Guide.md | Enforced by .cursor/rules/design-guide.mdc
+ *
+ * CONTENT (§1)
+ *  • Preserve user-provided copy exactly; do not rewrite without approval.
+ *  • No em-dashes (—) in UI or copy; use commas or colons instead.
+ *  • Names: FloLabs, CAIPO, FloBrain, MoodChanger, Hephaestus, Flo Chronos.
+ *
+ * LAYOUT & GRID (§4–§5)
+ *  • Mobile 320–767px: 4 columns | Tablet 768–1023px: 8 | Desktop 1024px+: 12.
+ *  • Use Container / Section / Col / ContentColumn — not ad-hoc grids or offsets.
+ *  • Center content in --max-width-content; fluid widths; no horizontal scroll.
+ *  • Breakpoints: --breakpoint-* tokens below. Verify all three viewports.
+ *
+ * SPACING (§7)
+ *  • Section padding: --spacing-section-y* | Gutters: --spacing-gutter-*.
+ *  • Card padding: --spacing-card | Stack gaps: --spacing-stack, --spacing-card-gap.
+ *
+ * COMPONENTS (§8)
+ *  • Reuse Button, Card, layout primitives, lib/ui-styles — no one-off styling.
+ *  • Buttons/cards use --radius-*; min touch target --min-touch-target (44px).
+ *
+ * THEME (§10)
+ *  • Light and dark via .dark + semantic tokens (--color-background, --color-card, …).
+ *  • Text, borders, and icons must stay readable in both modes.
+ *
+ * TYPOGRAPHY (§6) — see TYPOGRAPHY block below; M3 type scale required.
+ *
+ * ASSETS & SEO (§9, §11)
+ *  • Logo: public/logo.svg (header + favicon, currentColor / contrast).
+ *  • OG image: public/og-image.png (16:9). Images: fluid, consistent radius/shadow.
+ *
+ * AESTHETICS (§3)
+ *  • Clean, professional hierarchy. No random gradients, neon glows, or AI clichés.
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
+
 @theme {
   --site-header-height: 4.5rem;
   --color-brand-primary: #1269c7;
@@ -19,6 +58,70 @@
   --radius-button: 0;
   --radius-card: 0;
   --radius-input: 0;
+
+  /* Breakpoints — AI Design and Coding Guide §5 */
+  --breakpoint-mobile-max: 47.9375rem;
+  --breakpoint-tablet-min: 48rem;
+  --breakpoint-tablet-max: 63.9375rem;
+  --breakpoint-desktop-min: 64rem;
+  --breakpoint-large-desktop-min: 90rem;
+
+  /* 12-column grid — §4 (used by components/layout/container.tsx) */
+  --grid-cols-mobile: 4;
+  --grid-cols-tablet: 8;
+  --grid-cols-desktop: 12;
+  --spacing-gutter-mobile: 1rem;
+  --spacing-gutter-tablet: 1.5rem;
+  --spacing-gutter-desktop: 2rem;
+  --spacing-margin-mobile: 1rem;
+  --spacing-margin-tablet: 1.5rem;
+  --spacing-margin-desktop: 2rem;
+
+  /* Unified spacing — §7 */
+  --spacing-card: 1.5rem;
+  --spacing-card-gap: 1.5rem;
+  --spacing-heading-body: 1rem;
+  --spacing-stack: 1.5rem;
+  --max-width-prose: 48rem;
+  --max-width-narrow: 42rem;
+
+  /* Touch targets & icons — §5, §8, §9 */
+  --min-touch-target: 2.75rem;
+  --size-icon-sm: 1rem;
+  --size-icon-md: 1.25rem;
+  --size-icon-lg: 1.5rem;
+
+  /* M3 type scale — https://m3.material.io/styles/typography/type-scale-tokens */
+  --text-display-large: 3.5625rem;
+  --text-display-large--line-height: 4rem;
+  --text-display-medium: 2.8125rem;
+  --text-display-medium--line-height: 3.25rem;
+  --text-display-small: 2.25rem;
+  --text-display-small--line-height: 2.75rem;
+  --text-headline-large: 2rem;
+  --text-headline-large--line-height: 2.5rem;
+  --text-headline-medium: 1.75rem;
+  --text-headline-medium--line-height: 2.25rem;
+  --text-headline-small: 1.5rem;
+  --text-headline-small--line-height: 2rem;
+  --text-title-large: 1.375rem;
+  --text-title-large--line-height: 1.75rem;
+  --text-title-medium: 1rem;
+  --text-title-medium--line-height: 1.5rem;
+  --text-title-small: 0.875rem;
+  --text-title-small--line-height: 1.25rem;
+  --text-body-large: 1rem;
+  --text-body-large--line-height: 1.5rem;
+  --text-body-medium: 0.875rem;
+  --text-body-medium--line-height: 1.25rem;
+  --text-body-small: 0.75rem;
+  --text-body-small--line-height: 1rem;
+  --text-label-large: 0.875rem;
+  --text-label-large--line-height: 1.25rem;
+  --text-label-medium: 0.75rem;
+  --text-label-medium--line-height: 1rem;
+  --text-label-small: 0.6875rem;
+  --text-label-small--line-height: 1rem;
 }
 
 .dark {
@@ -30,17 +133,223 @@
   --color-card-foreground: #f1f5f9;
 }
 
+/*
+ * ═══════════════════════════════════════════════════════════════════════════
+ * TYPOGRAPHY — Material Design 3 type scale (required for all site copy)
+ * https://m3.material.io/styles/typography/type-scale-tokens
+ *
+ * RULES (enforced by CSS defaults, ESLint, .cursor/rules/typography.mdc, design-guide.mdc):
+ *  1. Use semantic HTML (h1–h6, p, label, button, …) — sizes apply automatically.
+ *  2. Or apply a .type-* utility / import { type } from "@/lib/typography".
+ *  3. Or use components/ui/typography.tsx (SectionHeading, Prose, Eyebrow, …).
+ *  4. NEVER use Tailwind default text sizes: text-sm, text-lg, text-2xl, etc.
+ *  5. NEVER use arbitrary font sizes: text-[18px], text-[1.2rem], etc.
+ *
+ * Role map:
+ *  h1 → display-small   |  Hero h1 → .type-display-large
+ *  h2 → headline-large    |  h3 → title-large
+ *  h4 → headline-small    |  h5 → title-medium   |  h6 → title-small
+ *  p, li → body-large     |  small → body-small
+ *  label, button, nav a → label-large   |  input, textarea → body-large
+ * ═══════════════════════════════════════════════════════════════════════════
+ */
+
+@utility type-display-large {
+  font-size: var(--text-display-large);
+  line-height: var(--text-display-large--line-height);
+  font-weight: 400;
+  letter-spacing: -0.015625rem;
+}
+
+@utility type-display-medium {
+  font-size: var(--text-display-medium);
+  line-height: var(--text-display-medium--line-height);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@utility type-display-small {
+  font-size: var(--text-display-small);
+  line-height: var(--text-display-small--line-height);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@utility type-headline-large {
+  font-size: var(--text-headline-large);
+  line-height: var(--text-headline-large--line-height);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@utility type-headline-medium {
+  font-size: var(--text-headline-medium);
+  line-height: var(--text-headline-medium--line-height);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@utility type-headline-small {
+  font-size: var(--text-headline-small);
+  line-height: var(--text-headline-small--line-height);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@utility type-title-large {
+  font-size: var(--text-title-large);
+  line-height: var(--text-title-large--line-height);
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+@utility type-title-medium {
+  font-size: var(--text-title-medium);
+  line-height: var(--text-title-medium--line-height);
+  font-weight: 500;
+  letter-spacing: 0.009375rem;
+}
+
+@utility type-title-small {
+  font-size: var(--text-title-small);
+  line-height: var(--text-title-small--line-height);
+  font-weight: 500;
+  letter-spacing: 0.00625rem;
+}
+
+@utility type-body-large {
+  font-size: var(--text-body-large);
+  line-height: var(--text-body-large--line-height);
+  font-weight: 400;
+  letter-spacing: 0.03125rem;
+}
+
+@utility type-body-medium {
+  font-size: var(--text-body-medium);
+  line-height: var(--text-body-medium--line-height);
+  font-weight: 400;
+  letter-spacing: 0.015625rem;
+}
+
+@utility type-body-small {
+  font-size: var(--text-body-small);
+  line-height: var(--text-body-small--line-height);
+  font-weight: 400;
+  letter-spacing: 0.025rem;
+}
+
+@utility type-label-large {
+  font-size: var(--text-label-large);
+  line-height: var(--text-label-large--line-height);
+  font-weight: 500;
+  letter-spacing: 0.00625rem;
+}
+
+@utility type-label-medium {
+  font-size: var(--text-label-medium);
+  line-height: var(--text-label-medium--line-height);
+  font-weight: 500;
+  letter-spacing: 0.03125rem;
+}
+
+@utility type-label-small {
+  font-size: var(--text-label-small);
+  line-height: var(--text-label-small--line-height);
+  font-weight: 500;
+  letter-spacing: 0.03125rem;
+}
+
+@layer base {
+  img,
+  picture,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  button,
+  [role="button"],
+  input[type="button"],
+  input[type="submit"],
+  input[type="reset"] {
+    min-height: var(--min-touch-target);
+  }
+
+  nav a {
+    min-height: var(--min-touch-target);
+    display: inline-flex;
+    align-items: center;
+  }
+
+  h1 {
+    @apply type-display-small text-balance;
+  }
+
+  h2 {
+    @apply type-headline-large text-balance;
+  }
+
+  h3 {
+    @apply type-title-large text-balance;
+  }
+
+  h4 {
+    @apply type-headline-small text-balance;
+  }
+
+  h5 {
+    @apply type-title-medium text-balance;
+  }
+
+  h6 {
+    @apply type-title-small text-balance;
+  }
+
+  p,
+  li {
+    @apply type-body-large text-pretty;
+  }
+
+  small {
+    @apply type-body-small;
+  }
+
+  label {
+    @apply type-label-large;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font-family: inherit;
+  }
+
+  button {
+    @apply type-label-large;
+  }
+
+  input,
+  textarea,
+  select {
+    @apply type-body-large;
+  }
+
+  nav a {
+    @apply type-label-large;
+  }
+}
+
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
 }
 
 body {
+  @apply type-body-large;
   background-color: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans);
-  font-size: 1rem;
-  line-height: 1.6;
 }
 
 ::selection {

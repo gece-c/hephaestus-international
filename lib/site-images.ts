@@ -37,9 +37,9 @@ export const siteImages = {
     height: 768,
   },
   lemnos: {
-    src: "/images/lemnos.webp",
-    width: 656,
-    height: 1200,
+    src: "/images/lemnos-coast.webp",
+    width: 1024,
+    height: 575,
   },
   nameBridge: {
     src: "/images/name-bridge.webp",

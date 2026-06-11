@@ -4,11 +4,12 @@ import { MobileNav } from "@/components/layout/mobile-nav";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { Container, Col } from "@/components/layout/container";
 import { navPrimaryLinks, navUtilityLinks } from "@/content/site-content";
+import { type } from "@/lib/typography";
 
 function headerNavLinkClass(href: string) {
   return href === "/contact"
-    ? "text-sm font-medium text-pretty text-brand-primary hover:opacity-90"
-    : "text-sm font-medium text-pretty text-muted hover:text-foreground";
+    ? `${type.labelLarge} text-pretty text-brand-primary hover:opacity-90`
+    : `${type.labelLarge} text-pretty text-muted hover:text-foreground`;
 }
 
 export function SiteHeader() {

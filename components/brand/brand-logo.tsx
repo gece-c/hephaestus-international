@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { siteConfig } from "@/content/site-content";
+import { type } from "@/lib/typography";
 
 function LogoMark({ className }: { className?: string }) {
   return (
@@ -65,7 +66,7 @@ export function BrandLogo({
       <LogoMark className={className} />
       <span className="sr-only">{siteConfig.name}</span>
       {showTitle ? (
-        <span className="hidden text-base font-semibold tracking-tight text-balance text-foreground sm:inline md:text-lg">
+        <span className={`hidden ${type.titleMedium} text-balance text-foreground sm:inline`}>
           {siteConfig.name}
         </span>
       ) : null}

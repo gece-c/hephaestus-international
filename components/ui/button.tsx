@@ -24,7 +24,7 @@ export function Button({
   external?: boolean;
   className?: string;
 } & ButtonHTMLAttributes<HTMLButtonElement>) {
-  const base = `inline-flex items-center justify-center ${buttonRadiusClass} px-5 py-2.5 text-sm font-medium text-pretty text-balance transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary min-h-11`;
+  const base = `inline-flex items-center justify-center ${buttonRadiusClass} px-5 py-2.5 type-label-large text-pretty text-balance transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary min-h-11`;
 
   const classes = `${base} ${variants[variant]} ${className}`;
 
