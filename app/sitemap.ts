@@ -2,6 +2,8 @@ import type { MetadataRoute } from "next";
 import { siteConfig } from "@/content/site-content";
 import { getAllProjectIds } from "@/lib/projects";
 
+export const dynamic = "force-static";
+
 const routes = [
   "",
   "/about",

@@ -4,10 +4,12 @@
  * Paragraphs group PDF line wraps; wording is unchanged.
  */
 
+import { siteUrl } from "@/lib/site-url";
+
 export const siteConfig = {
   name: "Hephaestus International",
   tagline: "Center of Excellence and Ethics",
-  url: "https://hephaestus.international",
+  url: siteUrl,
   contactEmail: "info@hephaestus.international",
   linkedInLabel: "FloLabs Innovation on LinkedIn",
   linkedInUrl: "https://www.linkedin.com/company/flolabs-innovation/",
