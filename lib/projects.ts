@@ -90,22 +90,27 @@ export function getFooterProjectLinkColumns(
   );
 }
 
-export type FooterProjectLink = {
-  project: ProjectEntry;
-  label: string;
-};
+export type FooterProjectLinkItem =
+  | { label: string; href: string }
+  | { label: string; id: ProjectId };
 
-/** Footer project links in the approved column layout and display labels. */
-export function getFooterProjectLinks(): readonly (readonly FooterProjectLink[])[] {
-  return siteFooter.projectColumns.map((column) =>
-    column.map(({ id, label }) => {
-      const project = getProjectById(id);
-      if (!project) {
-        throw new Error(`Unknown footer project id: ${id}`);
-      }
-      return { project, label };
-    }),
-  );
+/** Footer project links in the approved display order and labels. */
+export function getFooterProjectLinkList(): readonly { label: string; href: string }[] {
+  return siteFooter.projects.links.map((link) => {
+    if ("href" in link) {
+      return { label: link.label, href: link.href };
+    }
+
+    const project = getProjectById(link.id);
+    if (!project) {
+      throw new Error(`Unknown footer project id: ${link.id}`);
+    }
+
+    return {
+      label: link.label,
+      href: getFooterProjectHref(project),
+    };
+  });
 }
 
 export function getFooterProjectHref(project: ProjectEntry): string {

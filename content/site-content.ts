@@ -40,7 +40,7 @@ export const navUtilityLinks = [
 export const navLinks = [...navPrimaryLinks, ...navUtilityLinks] as const;
 
 export const siteFooter = {
-  projectLine: "a FloLabs project",
+  projectLine: "by FloLabs Innovations Group",
   description:
     "Where ancient history meets modern innovation. Where craft becomes code, curiosity becomes capability, and intention becomes infrastructure.",
   tagline: "Live long and prosper.",
@@ -51,46 +51,53 @@ export const siteFooter = {
     submitLabel: "Subscribe to newsletter",
   },
   socialTitle: "Social Media",
-  checkMoreTitle: "Check More",
   navigation: {
     title: "Navigation",
     links: [
+      { label: "Home", href: "/" },
       ...navPrimaryLinks,
       navUtilityLinks[0],
+    ],
+  },
+  projects: {
+    title: "Projects",
+    links: [
+      {
+        id: "athletic-performance-intelligence",
+        label: "Athletic Performance",
+      },
+      {
+        label: "Bootcamp University",
+        href: "https://www.bootcampuniversity.org/",
+      },
+      { id: "caipo", label: "CAIPO" },
+      { id: "connecting-the-dots", label: "Connecting the Dots" },
+      { id: "flotravel", label: "Flo Travel" },
+      { id: "flobrain", label: "FloBrain" },
+      { id: "flolabs-international", label: "FloLabs International" },
+      { id: "flostudios", label: "FloStudios" },
+      { id: "hephaestus-international", label: "Hephaestus International" },
+      { id: "moodchanger", label: "MoodChanger" },
+      {
+        id: "legal-ethics",
+        label: "Legal & Ethics Ventures Institute",
+      },
+      { id: "humanoid-robots", label: "RoboCollective" },
+      { id: "space-ventures", label: "Space Ventures Institute" },
+      { id: "tarrl", label: "TARRL" },
     ],
   },
   company: {
     title: "Company",
     links: [
-      { label: "About Us", href: "/about" },
       { label: "Careers", href: "/internships" },
+      { label: "Contact Us", href: "/contact" },
       {
         label: "Merch",
         href: "https://flolabsrd.notion.site/merch-background",
       },
     ],
   },
-  projectColumns: [
-    [
-      { id: "caipo", label: "CAIPO" },
-      { id: "moodchanger", label: "MoodChanger" },
-      { id: "humanoid-robots", label: "RoboCollective" },
-      {
-        id: "athletic-performance-intelligence",
-        label: "Athletic Performance",
-      },
-    ],
-    [
-      { id: "flobrain", label: "FloBrain" },
-      { id: "flotravel", label: "FloTravel" },
-      { id: "space-ventures", label: "Space Ventures Institute" },
-      { id: "connecting-the-dots", label: "Connecting the Dots" },
-    ],
-    [
-      { id: "flolabs-international", label: "FloLabs International" },
-      { id: "flostudios", label: "FloStudios" },
-    ],
-  ],
 } as const;
 
 export const hero = {
