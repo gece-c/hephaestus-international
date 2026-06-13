@@ -32,7 +32,7 @@ export function getChippedSurfaceClass(seed: number | string = 0): ChippedSurfac
 }
 
 const glassSurfaceBaseClass =
-  "border border-border/50 bg-card/50 backdrop-blur-xl backdrop-saturate-150 dark:border-white/15 dark:bg-black/35";
+  "border border-border bg-card backdrop-blur-xl backdrop-saturate-150 shadow-[0_1px_2px_rgb(0_0_0_/_0.06),0_4px_14px_rgb(0_0_0_/_0.08)] dark:border-white/15 dark:bg-black/35 dark:shadow-none";
 
 /** Bordered interactive shells (icon buttons, toggles, menu triggers). */
 export const buttonChromeClass = `${buttonRadiusClass} ${chippedSurfaceClass}`;

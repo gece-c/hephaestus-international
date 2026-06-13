@@ -28,7 +28,7 @@ export const contentTodos = [
 export const navPrimaryLinks = [
   { href: "/about", label: "About us" },
   { href: "/projects", label: "Projects" },
-  { href: "/blogs", label: "Blogs" },
+  { href: "/gallery", label: "Gallery" },
   { href: "/internships", label: "Internships" },
 ] as const;
 
@@ -352,12 +352,204 @@ export const internshipsPage = {
   note: "Subject Matter Accelerator Programs. Over 30 Unique Positions Available.",
 } as const;
 
-export const blogsPage = {
-  title: "Blogs",
-  heading: "Blogs",
-  intro:
-    "Explore Blogs on AI Breakthroughs, Internships & Emerging Tech Trends.",
-  empty: "New posts will appear here soon.",
+export type GalleryItemMedia =
+  | {
+      type: "image";
+      src: string;
+      width: number;
+      height: number;
+      alt: string;
+    }
+  | {
+      type: "video";
+      poster: string;
+      posterWidth: number;
+      posterHeight: number;
+      alt: string;
+    };
+
+export type GalleryItem = {
+  id: string;
+  title: string;
+  description?: string;
+  href: string;
+  media: GalleryItemMedia;
+  /** Facebook or other iframe embed URL for inline playback on the gallery page. */
+  embedSrc?: string;
+};
+
+/** Gallery tiles link to external pages for full stories, articles, or videos. */
+export const galleryItems: readonly GalleryItem[] = [
+  {
+    id: "carl-sagan-cosmos-lost-history",
+    title: 'Carl Sagan, Cosmos: "The Knowledge We Lost To History"',
+    description:
+      "Carl Sagan on Cosmos, shared by Saganism on Facebook. Play here or open the reel.",
+    href: "https://www.facebook.com/share/v/1CfWSqLy2j/",
+    embedSrc:
+      "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F753412424454490&show_text=false&width=560&height=315",
+    media: {
+      type: "video",
+      poster: "/images/carl-sagan-cosmos-lost-history.jpg",
+      posterWidth: 406,
+      posterHeight: 720,
+      alt: 'Carl Sagan Cosmos reel preview, "The Knowledge We Lost To History"',
+    },
+  },
+  {
+    id: "carl-sagan-death-of-hypatia",
+    title: "Carl Sagan and the Death of Hypatia (Cosmos Audio)",
+    description:
+      "Carl Sagan on Hypatia from Cosmos, shared by Saganism on Facebook. Play here or open the reel.",
+    href: "https://www.facebook.com/share/v/1HVpEuofjQ/",
+    embedSrc:
+      "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F860185246978132&show_text=false&width=560&height=315",
+    media: {
+      type: "video",
+      poster: "/images/carl-sagan-hypatia-cosmos.jpg",
+      posterWidth: 1152,
+      posterHeight: 2048,
+      alt: "Carl Sagan on the death of Hypatia from Cosmos, reel preview",
+    },
+  },
+  {
+    id: "limnos-from-above",
+    title: "Limnos from Above",
+    description:
+      "Sunset photography from Limnos from Above. See the full post for more.",
+    href: "https://www.facebook.com/groups/236778251861578/permalink/1194551059417621/",
+    media: {
+      type: "image",
+      src: "/images/limnos-from-above-gallery.png",
+      width: 1024,
+      height: 575,
+      alt: "Sunset over Mount Athos and the sea, Limnos from Above photography",
+    },
+  },
+  {
+    id: "limnos-from-above-sea-stacks",
+    title: "Limnos from Above: Sea Stacks at Sunset",
+    description:
+      "Sunset between sea stacks on Limnos. See the full post for more.",
+    href: "https://www.facebook.com/groups/236778251861578/permalink/1179467540925973",
+    media: {
+      type: "image",
+      src: "/images/limnos-from-above-sea-stacks.png",
+      width: 1024,
+      height: 575,
+      alt: "Sunset between sea stacks on Limnos, Limnos from Above photography",
+    },
+  },
+  {
+    id: "limnos-hephaistia-theatre-360",
+    title: "Limnos from Above: Ancient Theatre of Hephaistia (360°)",
+    description:
+      "360° photograph of the Ancient Theatre of Hephaistia on Limnos. See the full post for more.",
+    href: "https://www.facebook.com/groups/236778251861578/permalink/1161231762749551/",
+    media: {
+      type: "image",
+      src: "/images/limnos-hephaistia-theatre-360.jpg",
+      width: 600,
+      height: 600,
+      alt: "360° view of the Ancient Theatre of Hephaistia on Limnos, Limnos from Above photography",
+    },
+  },
+  {
+    id: "john-hazlewood-five-years-later",
+    title: "5 Years Later",
+    description:
+      "Photos shared by John Andrew Hazlewood on Facebook. See the full post for more.",
+    href: "https://www.facebook.com/john.a.hazlewood/posts/5-years-later-/10234695141053810/",
+    media: {
+      type: "image",
+      src: "/images/limnos-coastal-bay-sunset.png",
+      width: 550,
+      height: 248,
+      alt: "Preview image for John Andrew Hazlewood Facebook post, 5 Years Later",
+    },
+  },
+  {
+    id: "limnos-from-above-video",
+    title: "Limnos from Above (Η Λήμνος από ψηλά)",
+    description:
+      "Aerial views of Limnos by Dimitris Eleftherakis on Facebook. Play here or open the reel.",
+    href: "https://www.facebook.com/share/v/18xaGEJKNA/",
+    embedSrc:
+      "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F795948636178330&show_text=false&width=560&height=315",
+    media: {
+      type: "video",
+      poster: "/images/limnos-from-above-reel.jpg",
+      posterWidth: 1280,
+      posterHeight: 720,
+      alt: "Aerial reel preview from Limnos from Above by Dimitris Eleftherakis",
+    },
+  },
+  {
+    id: "talos-minoan-greek-reporter",
+    title: "Was Talos, the Protector of Ancient Crete, Actually a Minoan?",
+    description:
+      "GreekReporter on Talos, the bronze automaton created by Hephaestus, and links to Minoan Crete.",
+    href: "https://greekreporter.com/2026/02/17/talos-protector-ancient-crete-minoan/",
+    media: {
+      type: "image",
+      src: "/images/talos-greek-reporter.jpg",
+      width: 1020,
+      height: 912,
+      alt: "Talos, a giant bronze automaton described as a creation of Hephaestus in Greek mythology",
+    },
+  },
+  {
+    id: "hypatia-greek-reporter",
+    title: "Hypatia: The Female Greek Philosopher Killed for Her Beliefs",
+    description:
+      "GreekReporter on Hypatia, the Alexandrian philosopher, astronomer, and mathematician.",
+    href: "https://greekreporter.com/2026/03/02/hypatia-greek-philosopher/",
+    media: {
+      type: "image",
+      src: "/images/hypatia-greek-reporter.jpg",
+      width: 700,
+      height: 335,
+      alt: "Death of the Greek philosopher Hypatia in Alexandria, unknown artist, public domain",
+    },
+  },
+  {
+    id: "connecting-the-dots",
+    title: "Connecting the Dots",
+    description:
+      "FloLabs conversations on AI, robotics, entrepreneurship, and education.",
+    href: "https://www.youtube.com/@flolabsinnovation",
+    media: {
+      type: "video",
+      poster: "/images/pillars-background.webp",
+      posterWidth: 1024,
+      posterHeight: 682,
+      alt: "Connecting the Dots video series preview",
+    },
+  },
+  {
+    id: "flolabs-linkedin",
+    title: "FloLabs Innovation on LinkedIn",
+    description: "Updates, breakthroughs, and emerging tech from the FloLabs ecosystem.",
+    href: "https://www.linkedin.com/company/flolabs-innovation/",
+    media: {
+      type: "image",
+      src: "/images/positioning.webp",
+      width: 800,
+      height: 1200,
+      alt: "FloLabs Innovation on LinkedIn",
+    },
+  },
+] as const;
+
+export const galleryPage = {
+  title: "Gallery",
+  heading: "Gallery",
+  empty: "New gallery items will appear here soon.",
+  externalLinkLabel: "Learn more",
+  watchExternalLabel: "Watch on Facebook",
+  viewFullImageLabel: "View full image",
+  playVideoLabel: "Play video",
+  closeViewerLabel: "Close",
 } as const;
 
 export const loginPage = {

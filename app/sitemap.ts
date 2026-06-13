@@ -8,7 +8,7 @@ const routes = [
   "/projects",
   ...getAllProjectIds().map((id) => `/projects/${id}`),
   "/internships",
-  "/blogs",
+  "/gallery",
   "/contact",
   "/login",
   "/privacy",
