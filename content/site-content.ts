@@ -4,7 +4,7 @@
  * Paragraphs group PDF line wraps; wording is unchanged.
  */
 
-import { siteUrl } from "@/lib/site-url";
+import { siteUrl, withBasePath } from "@/lib/site-url";
 
 export const siteConfig = {
   name: "Hephaestus International",
@@ -399,7 +399,7 @@ export const galleryItems: readonly GalleryItem[] = [
       "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F753412424454490&show_text=false&width=560&height=315",
     media: {
       type: "video",
-      poster: "/images/carl-sagan-cosmos-lost-history.jpg",
+      poster: withBasePath("/images/carl-sagan-cosmos-lost-history.jpg"),
       posterWidth: 406,
       posterHeight: 720,
       alt: 'Carl Sagan Cosmos reel preview, "The Knowledge We Lost To History"',
@@ -415,7 +415,7 @@ export const galleryItems: readonly GalleryItem[] = [
       "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F860185246978132&show_text=false&width=560&height=315",
     media: {
       type: "video",
-      poster: "/images/carl-sagan-hypatia-cosmos.jpg",
+      poster: withBasePath("/images/carl-sagan-hypatia-cosmos.jpg"),
       posterWidth: 1152,
       posterHeight: 2048,
       alt: "Carl Sagan on the death of Hypatia from Cosmos, reel preview",
@@ -429,7 +429,7 @@ export const galleryItems: readonly GalleryItem[] = [
     href: "https://www.facebook.com/groups/236778251861578/permalink/1194551059417621/",
     media: {
       type: "image",
-      src: "/images/limnos-from-above-gallery.png",
+      src: withBasePath("/images/limnos-from-above-gallery.png"),
       width: 1024,
       height: 575,
       alt: "Sunset over Mount Athos and the sea, Limnos from Above photography",
@@ -443,7 +443,7 @@ export const galleryItems: readonly GalleryItem[] = [
     href: "https://www.facebook.com/groups/236778251861578/permalink/1179467540925973",
     media: {
       type: "image",
-      src: "/images/limnos-from-above-sea-stacks.png",
+      src: withBasePath("/images/limnos-from-above-sea-stacks.png"),
       width: 1024,
       height: 575,
       alt: "Sunset between sea stacks on Limnos, Limnos from Above photography",
@@ -457,7 +457,7 @@ export const galleryItems: readonly GalleryItem[] = [
     href: "https://www.facebook.com/groups/236778251861578/permalink/1161231762749551/",
     media: {
       type: "image",
-      src: "/images/limnos-hephaistia-theatre-360.jpg",
+      src: withBasePath("/images/limnos-hephaistia-theatre-360.jpg"),
       width: 600,
       height: 600,
       alt: "360° view of the Ancient Theatre of Hephaistia on Limnos, Limnos from Above photography",
@@ -471,7 +471,7 @@ export const galleryItems: readonly GalleryItem[] = [
     href: "https://www.facebook.com/john.a.hazlewood/posts/5-years-later-/10234695141053810/",
     media: {
       type: "image",
-      src: "/images/limnos-coastal-bay-sunset.png",
+      src: withBasePath("/images/limnos-coastal-bay-sunset.png"),
       width: 550,
       height: 248,
       alt: "Preview image for John Andrew Hazlewood Facebook post, 5 Years Later",
@@ -487,7 +487,7 @@ export const galleryItems: readonly GalleryItem[] = [
       "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F795948636178330&show_text=false&width=560&height=315",
     media: {
       type: "video",
-      poster: "/images/limnos-from-above-reel.jpg",
+      poster: withBasePath("/images/limnos-from-above-reel.jpg"),
       posterWidth: 1280,
       posterHeight: 720,
       alt: "Aerial reel preview from Limnos from Above by Dimitris Eleftherakis",
@@ -501,7 +501,7 @@ export const galleryItems: readonly GalleryItem[] = [
     href: "https://greekreporter.com/2026/02/17/talos-protector-ancient-crete-minoan/",
     media: {
       type: "image",
-      src: "/images/talos-greek-reporter.jpg",
+      src: withBasePath("/images/talos-greek-reporter.jpg"),
       width: 1020,
       height: 912,
       alt: "Talos, a giant bronze automaton described as a creation of Hephaestus in Greek mythology",
@@ -515,7 +515,7 @@ export const galleryItems: readonly GalleryItem[] = [
     href: "https://greekreporter.com/2026/03/02/hypatia-greek-philosopher/",
     media: {
       type: "image",
-      src: "/images/hypatia-greek-reporter.jpg",
+      src: withBasePath("/images/hypatia-greek-reporter.jpg"),
       width: 700,
       height: 335,
       alt: "Death of the Greek philosopher Hypatia in Alexandria, unknown artist, public domain",
@@ -529,7 +529,7 @@ export const galleryItems: readonly GalleryItem[] = [
     href: "https://www.youtube.com/@flolabsinnovation",
     media: {
       type: "video",
-      poster: "/images/pillars-background.webp",
+      poster: withBasePath("/images/pillars-background.webp"),
       posterWidth: 1024,
       posterHeight: 682,
       alt: "Connecting the Dots video series preview",
@@ -542,7 +542,7 @@ export const galleryItems: readonly GalleryItem[] = [
     href: "https://www.linkedin.com/company/flolabs-innovation/",
     media: {
       type: "image",
-      src: "/images/positioning.webp",
+      src: withBasePath("/images/positioning.webp"),
       width: 800,
       height: 1200,
       alt: "FloLabs Innovation on LinkedIn",

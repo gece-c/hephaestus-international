@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { seo, siteConfig } from "@/content/site-content";
+import { withBasePath } from "@/lib/site-url";
 
 const siteUrl = siteConfig.url;
 
@@ -22,9 +23,9 @@ export function buildMetadata({
     metadataBase: new URL(siteUrl),
     alternates: { canonical: url },
     icons: {
-      icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-      shortcut: "/icon.svg",
-      apple: "/icon.svg",
+      icon: [{ url: withBasePath("/icon.svg"), type: "image/svg+xml" }],
+      shortcut: withBasePath("/icon.svg"),
+      apple: withBasePath("/icon.svg"),
     },
     openGraph: {
       type: "website",
@@ -35,7 +36,7 @@ export function buildMetadata({
       description: pageDescription,
       images: [
         {
-          url: "/og-image.png",
+          url: withBasePath("/og-image.png"),
           width: 1200,
           height: 630,
           alt: siteConfig.name,
@@ -46,7 +47,7 @@ export function buildMetadata({
       card: "summary_large_image",
       title: pageTitle,
       description: pageDescription,
-      images: ["/og-image.png"],
+      images: [withBasePath("/og-image.png")],
     },
   };
 }

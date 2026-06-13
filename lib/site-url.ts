@@ -11,3 +11,9 @@ export const siteUrl =
   (isGithubPages
     ? `https://${githubPagesOwner}.github.io/${githubPagesRepo}`
     : productionUrl);
+
+/** Prefix public asset paths for GitHub Pages project sites. */
+export function withBasePath(path: string): string {
+  const normalized = path.startsWith("/") ? path : `/${path}`;
+  return `${basePath}${normalized}`;
+}
