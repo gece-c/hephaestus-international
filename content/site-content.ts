@@ -34,10 +34,7 @@ export const navPrimaryLinks = [
   { href: "/internships", label: "Internships" },
 ] as const;
 
-export const navUtilityLinks = [
-  { href: "/contact", label: "Contact" },
-  { href: "/login", label: "Log in" },
-] as const;
+export const navUtilityLinks = [{ href: "/contact", label: "Contact" }] as const;
 
 export const navLinks = [...navPrimaryLinks, ...navUtilityLinks] as const;
 
@@ -69,22 +66,24 @@ export const siteFooter = {
         label: "Athletic Performance",
       },
       {
-        label: "Bootcamp University",
-        href: "https://www.bootcampuniversity.org/",
+        id: "innovation-bootcamp-university",
+        label: "Innovation Bootcamp University",
       },
       { id: "caipo", label: "CAIPO" },
       { id: "connecting-the-dots", label: "Connecting the Dots" },
       { id: "flotravel", label: "Flo Travel" },
       { id: "flobrain", label: "FloBrain" },
+      { id: "flolabs-innovations", label: "FloLabs Innovations Group" },
       { id: "flolabs-international", label: "FloLabs International" },
       { id: "flostudios", label: "FloStudios" },
       { id: "hephaestus-international", label: "Hephaestus International" },
       { id: "moodchanger", label: "MoodChanger" },
+      { id: "moodchanger-pets", label: "MoodChanger for Pets" },
       {
         id: "legal-ethics",
         label: "Legal & Ethics Ventures Institute",
       },
-      { id: "humanoid-robots", label: "RoboCollective" },
+      { id: "robocollective", label: "RoboCollective" },
       { id: "space-ventures", label: "Space Ventures Institute" },
       { id: "tarrl", label: "TARRL" },
     ],
@@ -94,6 +93,7 @@ export const siteFooter = {
     links: [
       { label: "Careers", href: "/internships" },
       { label: "Contact Us", href: "/contact" },
+      { label: "Privacy Policy", href: "/privacy" },
       {
         label: "Merch",
         href: "https://flolabsrd.notion.site/merch-background",
@@ -299,8 +299,8 @@ export const ecosystem = {
       ],
     },
     {
-      id: "roboshows",
-      title: "RoboShows are Our Playground: Bringing History to Life",
+      id: "robocollective",
+      title: "RoboCollective is Our Playground: Bringing History to Life",
       paragraphs: [
         "Just as Hephaestus created Talos and Pandora, displaying innovation and ingenuity in Lemnos, we bring that spirit into the modern era.",
         "Through RoboShows, public performances of robots and embodied AI, we showcase our creations in ways that inspire, entertain, and educate.",
@@ -561,12 +561,6 @@ export const galleryPage = {
   closeViewerLabel: "Close",
 } as const;
 
-export const loginPage = {
-  title: "Log in",
-  heading: "Centralize your whole journey in one place.",
-  body: "Sign in to access your programs, applications, and learning resources. Account access is provided to enrolled participants.",
-} as const;
-
 export const contactPage = {
   title: "Contact Us",
   heading: "Contact Us",
@@ -585,6 +579,7 @@ export const privacyPage = {
 /**
  * Initiative names and external URLs.
  * storytellingId: approved Version 3 PDF copy (ecosystem.items).
+ * tileIntro: short card teaser only (detail pages use paragraphs / storytellingId).
  * paragraphs / focusPoints: project-specific copy on the catalog entry.
  */
 /** Alphabetical by title. Display order is also enforced in getProjectsCatalogSorted(). */
@@ -593,6 +588,8 @@ export const projectsCatalog = [
     id: "athletic-performance-intelligence",
     title: "Athletic Performance Intelligence",
     href: "https://www.athleticperformanceintelligence.com/",
+    tileIntro:
+      "Performance data lives everywhere except together. Unify mental, physical, and behavioral signals into one FloBrain-powered view.",
   },
   {
     id: "caipo",
@@ -604,6 +601,8 @@ export const projectsCatalog = [
     id: "connecting-the-dots",
     title: "Connecting The Dots",
     href: "https://www.youtube.com/@flolabsinnovation",
+    tileIntro:
+      "Behind every FloLabs project is a conversation worth sharing. Episodes that connect AI, robotics, and education across the ecosystem.",
     paragraphs: [
       "Connecting the Dots is a FloLabs media and storytelling project that turns conversations, meetings, and founder insights into clear episodes about innovation. The series helps explain how different FloLabs projects, ideas, and teams connect across AI, robotics, entrepreneurship, education, and real-world problem solving. It gives viewers a behind-the-scenes look at the challenges, thinking, and vision behind building something new.",
     ],
@@ -620,56 +619,94 @@ export const projectsCatalog = [
     title: "FloBrain",
     href: "https://www.flobrain.ai/",
     storytellingId: "flobrain",
+    tileIntro:
+      "The central intelligence layer for every device: memory, orchestration, and real-time AI across web, mobile, wearables, and robotics.",
   },
   {
     id: "flolabs-innovations",
     title: "FloLabs Innovations Group",
     href: "https://www.flolabsinnovations.com/",
+    tileIntro:
+      "From classrooms to clinics to orbit, pioneering AI and robotics across education, healthcare, travel, and space.",
   },
   {
     id: "flolabs-international",
     title: "FloLabs International",
     href: "https://www.flolabs.international/",
+    tileIntro:
+      "Builders learn by shipping. A global incubator pairing experiential learning with real venture execution in AI and robotics.",
   },
-  { id: "flostudios", title: "FloStudios", href: "https://www.flostudios.ai/" },
-  { id: "flotravel", title: "FloTravel", href: "https://www.flomadtravel.com/" },
+  {
+    id: "flostudios",
+    title: "FloStudios",
+    href: "https://www.flostudios.ai/",
+    tileIntro:
+      "Where creativity meets code: digital experiences for the FloLabs ecosystem, from live platforms to brand identity.",
+  },
+  {
+    id: "flotravel",
+    title: "FloTravel",
+    href: "https://www.flomadtravel.com/",
+    tileIntro:
+      "Tell it where you want to go. Conversational AI plans flights, stays, reservations, and experiences in one personal journey.",
+  },
   {
     id: "hephaestus-international",
     title: "Hephaestus International",
     href: "https://hephaestus.international/",
+    tileIntro:
+      "Where the forge meets the future: immersive, hands-on learning in AI and robotics on real marketable projects.",
   },
   {
-    id: "humanoid-robots",
-    title: "Humanoid Robots",
-    href: "https://robocollective.ai/",
+    id: "innovation-bootcamp-university",
+    title: "Innovation Bootcamp University",
+    href: "https://www.bootcampuniversity.org/",
+    tileIntro:
+      "Start as a student, graduate as a working professional. Structured learning connected to paid internships in AI and robotics.",
   },
   {
     id: "legal-ethics",
     title: "Legal & Ethics Ventures Institute",
     href: "https://www.legalethicsventuresinstitute.com/",
+    tileIntro:
+      "Widening the doors to legal careers with hands-on client work, ethics training, and AI tools for career changers.",
   },
   {
     id: "moodchanger",
     title: "MoodChanger",
     href: "https://www.moodchanger.ai/",
+    tileIntro:
+      "Unified wearables and routines into personalized insights, with a 24/7 FloBrain-powered coach for people and athletes.",
   },
   {
     id: "moodchanger-pets",
     title: "MoodChanger for Pets",
     href: "https://moodchanger.ai/pets",
+    tileIntro:
+      "Pets cannot tell you when stress builds beneath the surface. AI that spots anxiety and behavior patterns early.",
   },
   {
-    id: "roboshows",
-    title: "RoboShows",
-    href: "https://www.robocollective.ai/",
-    storytellingId: "roboshows",
+    id: "robocollective",
+    title: "RoboCollective",
+    href: "https://robocollective.ai/",
+    storytellingId: "robocollective",
+    tileIntro:
+      "Like Hephaestus and Talos before us, we bring robots to life through shows that inspire, entertain, and educate.",
   },
   {
     id: "space-ventures",
     title: "Space Ventures Institute",
     href: "https://www.spaceventuresinstitute.com/",
+    tileIntro:
+      "Space jobs can feel distant. A remote-first venture studio where builders ship real work on AI, robotics, and space.",
   },
-  { id: "tarrl", title: "TARRL", href: "https://www.tarrl.org/" },
+  {
+    id: "tarrl",
+    title: "TARRL",
+    href: "https://www.tarrl.org/",
+    tileIntro:
+      "Real robots sit behind locked lab doors. An open, remote-first embodied AI lab where researchers ship reproducible work.",
+  },
 ] as const;
 
 export const projectsPage = {

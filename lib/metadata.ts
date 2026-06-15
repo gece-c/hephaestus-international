@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { seo, siteConfig } from "@/content/site-content";
+import { siteImages } from "@/lib/site-images";
 import { withBasePath } from "@/lib/site-url";
+
+const socialPreviewImage = siteImages.heroBackground;
 
 const siteUrl = siteConfig.url;
 
@@ -23,9 +26,9 @@ export function buildMetadata({
     metadataBase: new URL(siteUrl),
     alternates: { canonical: url },
     icons: {
-      icon: [{ url: withBasePath("/icon.svg"), type: "image/svg+xml" }],
-      shortcut: withBasePath("/icon.svg"),
-      apple: withBasePath("/icon.svg"),
+      icon: [{ url: withBasePath("/logo.svg"), type: "image/svg+xml" }],
+      shortcut: withBasePath("/logo.svg"),
+      apple: withBasePath("/logo.svg"),
     },
     openGraph: {
       type: "website",
@@ -36,9 +39,9 @@ export function buildMetadata({
       description: pageDescription,
       images: [
         {
-          url: withBasePath("/og-image.png"),
-          width: 1200,
-          height: 630,
+          url: socialPreviewImage.src,
+          width: socialPreviewImage.width,
+          height: socialPreviewImage.height,
           alt: siteConfig.name,
         },
       ],
@@ -47,7 +50,7 @@ export function buildMetadata({
       card: "summary_large_image",
       title: pageTitle,
       description: pageDescription,
-      images: [withBasePath("/og-image.png")],
+      images: [socialPreviewImage.src],
     },
   };
 }

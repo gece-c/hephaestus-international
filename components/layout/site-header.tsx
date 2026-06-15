@@ -35,7 +35,7 @@ export function SiteHeader() {
           <div className="flex items-center gap-4 lg:gap-5">
             <nav
               className="hidden items-center gap-5 lg:flex"
-              aria-label="Contact and account"
+              aria-label="Contact"
             >
               {navUtilityLinks.map((link) => (
                 <Link

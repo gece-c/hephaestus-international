@@ -33,7 +33,7 @@ export default function ProjectsPage() {
             <ContentColumn centered>
               <SectionHeading as="h1">{projectsPage.heading}</SectionHeading>
             </ContentColumn>
-            <ContentColumn className="mt-8">
+            <ContentColumn centered width="full" className="mt-8">
               <ProseParagraph className={`${type.titleLarge} text-foreground`}>
                 {projectsPage.intro}
               </ProseParagraph>

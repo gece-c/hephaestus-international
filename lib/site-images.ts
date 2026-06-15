@@ -26,4 +26,5 @@ export const siteImages = {
   ecosystemBridge: asset("/images/ecosystem-bridge.webp", 1440, 812),
   ecosystemBackground: asset("/images/ecosystem-background.webp", 1024, 683),
   closing: asset("/images/closing.webp", 1024, 578),
+  internshipsBackground: asset("/images/internships-background.webp", 819, 1024),
 } as const satisfies Record<string, SiteImageAsset>;

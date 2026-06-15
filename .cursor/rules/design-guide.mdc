@@ -42,7 +42,7 @@ Source: `AI Design and Coding Guide.md` and tokens in `app/globals.css`.
 ## Assets & SEO (§9, §11)
 
 - `public/logo.svg` in header and as favicon (`currentColor`, both themes).
-- OG/Twitter meta with `public/og-image.png` (16:9). Consistent icon sizes and image framing.
+- OG/Twitter meta with `siteImages.heroBackground` (`public/images/hero-background.webp`). Consistent icon sizes and image framing.
 
 ## Before finishing (§13)
 

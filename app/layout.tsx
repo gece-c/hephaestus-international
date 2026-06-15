@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Marcellus } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { buildMetadata } from "@/lib/metadata";
 import "./globals.css";
@@ -9,9 +9,10 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const marcellus = Marcellus({
+  variable: "--font-marcellus",
   subsets: ["latin"],
+  weight: "400",
 });
 
 export const metadata: Metadata = buildMetadata({});
@@ -22,10 +23,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} min-h-screen antialiased`}
-      >
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${marcellus.variable}`}
+      suppressHydrationWarning
+    >
+      <body className="min-h-screen antialiased">
         <ThemeProvider>{children}</ThemeProvider>
       </body>
     </html>

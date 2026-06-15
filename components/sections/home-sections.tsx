@@ -458,12 +458,23 @@ const LEARNING_ENGINE_TEXT =
   "text-white [text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_8px_rgb(0_0_0_/_0.88),0_4px_20px_rgb(0_0_0_/_0.6)]";
 
 function LearningParagraph({ text }: { text: string }) {
-  if (text.includes("Hypatia")) {
+  if (text.includes("Hypatia") && text.includes("(Insert the link*)")) {
     const parts = text.split("(Insert the link*)");
+    const hypatiaHref = learningEngine.hypatiaHref;
+
     return (
       <ProseParagraph className={LEARNING_ENGINE_TEXT}>
         {parts[0]}
-        <span className="text-white/75">(Insert the link*)</span>
+        {hypatiaHref ? (
+          <a
+            href={hypatiaHref}
+            className="text-white underline decoration-white/60 underline-offset-2 hover:decoration-white"
+          >
+            Hypatia
+          </a>
+        ) : (
+          <span className="text-white/75">(Insert the link*)</span>
+        )}
         {parts[1] ?? ""}
       </ProseParagraph>
     );

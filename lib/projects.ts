@@ -52,12 +52,22 @@ export function getProjectFocusPoints(
   return "focusPoints" in project ? project.focusPoints : [];
 }
 
-/** Teaser for list tiles: first body paragraph only (excludes storytelling headlines). */
+const TILE_INTRO_MAX_LENGTH = 140;
+
+/** Teaser for list tiles: tileIntro, else first body paragraph (excludes storytelling headlines). */
 export function getProjectTileIntro(project: ProjectEntry): string | undefined {
+  if ("tileIntro" in project && project.tileIntro) {
+    return truncateTileIntro(project.tileIntro);
+  }
+
   const [first] = getProjectTileIntroParagraphs(project);
   if (!first) return undefined;
-  if (first.length <= 160) return first;
-  return `${first.slice(0, 157).trimEnd()}…`;
+  return truncateTileIntro(first);
+}
+
+function truncateTileIntro(text: string): string {
+  if (text.length <= TILE_INTRO_MAX_LENGTH) return text;
+  return `${text.slice(0, TILE_INTRO_MAX_LENGTH - 1).trimEnd()}…`;
 }
 
 function getProjectTileIntroParagraphs(
@@ -78,29 +88,9 @@ export function getProjectExternalHref(
   return "href" in project ? project.href : undefined;
 }
 
-/** Split sorted projects into vertical columns for the footer grid. */
-export function getFooterProjectLinkColumns(
-  columnCount = 3,
-): readonly (readonly ProjectEntry[])[] {
-  const sorted = getProjectsCatalogSorted();
-  const columnSize = Math.ceil(sorted.length / columnCount);
-
-  return Array.from({ length: columnCount }, (_, index) =>
-    sorted.slice(index * columnSize, (index + 1) * columnSize),
-  );
-}
-
-export type FooterProjectLinkItem =
-  | { label: string; href: string }
-  | { label: string; id: ProjectId };
-
 /** Footer project links in the approved display order and labels. */
 export function getFooterProjectLinkList(): readonly { label: string; href: string }[] {
   return siteFooter.projects.links.map((link) => {
-    if ("href" in link) {
-      return { label: link.label, href: link.href };
-    }
-
     const project = getProjectById(link.id);
     if (!project) {
       throw new Error(`Unknown footer project id: ${link.id}`);

@@ -34,7 +34,7 @@
  *
  * ASSETS & SEO (§9, §11)
  *  • Logo: public/logo.svg (header + favicon, currentColor / contrast).
- *  • OG image: public/og-image.png (16:9). Images: fluid, consistent radius/shadow.
+ *  • Social previews: hero background (`public/images/hero-background.webp` via `siteImages.heroBackground`).
  *
  * AESTHETICS (§3)
  *  • Clean, professional hierarchy. No random gradients, neon glows, or AI clichés.
@@ -155,10 +155,12 @@
  */
 
 @utility type-display-large {
+  font-family: var(--font-marcellus), Georgia, "Times New Roman", serif;
   font-size: var(--text-display-large);
   line-height: var(--text-display-large--line-height);
   font-weight: 400;
-  letter-spacing: -0.015625rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 @utility type-display-medium {
@@ -169,10 +171,12 @@
 }
 
 @utility type-display-small {
+  font-family: var(--font-marcellus), Georgia, "Times New Roman", serif;
   font-size: var(--text-display-small);
   line-height: var(--text-display-small--line-height);
   font-weight: 400;
-  letter-spacing: 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 @utility type-headline-large {
@@ -573,4 +577,16 @@ body {
   opacity: 0.045;
   mix-blend-mode: soft-light;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke-width='0.45' d='M14 172 L30 136 L33 133 L40 96 L43 93'/%3E%3Cpath stroke-width='0.38' d='M172 22 L148 56 L146 74 L144 78'/%3E%3Cpath stroke-width='0.34' d='M96 184 L94 146 L92 126'/%3E%3Cpath stroke-width='0.32' d='M48 38 L54 44 L58 54'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/*
+ * HubSpot embedded application forms — dark mode uses a light panel so HubSpot's
+ * default label colors stay readable without per-field overrides.
+ */
+html.dark .hubspot-application-form-shell {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #0f172a;
+  color-scheme: light;
+  padding: var(--spacing-card);
 }

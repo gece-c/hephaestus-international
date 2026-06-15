@@ -89,9 +89,11 @@ export default async function ProjectDetailPage({ params }: PageProps) {
           <ProseParagraph className={`${type.titleMedium} text-foreground`}>
             {projectsPage.focusPointsTitle}
           </ProseParagraph>
-          <ul className={`mt-4 list-disc space-y-2 pl-5 ${type.bodyLarge} text-muted`}>
+          <ul
+            className={`mt-4 list-disc space-y-2 pl-5 marker:text-foreground ${type.bodyLarge}`}
+          >
             {focusPoints.map((point) => (
-              <li key={point} className="text-pretty">
+              <li key={point} className="text-pretty text-muted">
                 {point}
               </li>
             ))}
