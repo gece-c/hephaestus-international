@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { seo, siteConfig } from "@/content/site-content";
+import { brandLogoPath } from "@/lib/brand-assets";
 import { siteImages } from "@/lib/site-images";
 import { withBasePath } from "@/lib/site-url";
 
@@ -26,9 +27,9 @@ export function buildMetadata({
     metadataBase: new URL(siteUrl),
     alternates: { canonical: url },
     icons: {
-      icon: [{ url: withBasePath("/logo.svg"), type: "image/svg+xml" }],
-      shortcut: withBasePath("/logo.svg"),
-      apple: withBasePath("/logo.svg"),
+      icon: [{ url: withBasePath(brandLogoPath), type: "image/svg+xml" }],
+      shortcut: withBasePath(brandLogoPath),
+      apple: withBasePath(brandLogoPath),
     },
     openGraph: {
       type: "website",

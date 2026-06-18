@@ -44,11 +44,14 @@ import {
   photoGradientBottomHeavyClass,
   photoGradientLeftClass,
   photoGradientVerticalSoftClass,
+  photoBrandAccentClass,
   photoRadialCenterClass,
-  photoRadialLeftClass,
+  photoTextColumnScrimClass,
   photoTintClosingClass,
   photoTintMediumClass,
   photoTintStrongClass,
+  photoWhiteTextClass,
+  photoWhiteTextSoftClass,
 } from "@/lib/ui-styles";
 
 export function HeroSection() {
@@ -103,8 +106,8 @@ export function DidYouKnowSection() {
                 </Card>
               ))}
             </div>
-            <Card chipSeed="did-you-know-closing" className="mt-4">
-              <p className={`${type.titleMedium} text-pretty ${glassTextClass}`}>
+            <Card chipSeed="did-you-know-closing" className="mt-4 text-center">
+              <p className={`${type.titleLarge} text-pretty ${glassTextClass}`}>
                 {didYouKnow.closing}
               </p>
             </Card>
@@ -122,6 +125,9 @@ export function PositioningSection() {
         image={siteImages.positioning}
         alt={positioning.title}
         overlay="heavy"
+        heightMode="cover"
+        coverHeightClass="h-[max(36rem,min(125vw,90rem))]"
+        imagePosition="object-center"
         contentClassName="py-12 md:py-16 lg:py-20"
       >
         <Container>
@@ -302,8 +308,7 @@ export function NameBridgeTransition() {
   );
 }
 
-const NAME_ORIGINS_TEXT =
-  "text-white [text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_8px_rgb(0_0_0_/_0.88),0_4px_20px_rgb(0_0_0_/_0.6)]";
+const NAME_ORIGINS_TEXT = photoWhiteTextSoftClass;
 
 const NAME_ORIGINS_LEFT_ACCENTS = [
   "Hephaestus International",
@@ -331,27 +336,21 @@ function nameOriginsAccentPattern(terms: readonly string[]) {
 function NameOriginsAccentLine({
   text,
   accents,
-  align,
 }: {
   text: string;
   accents: readonly string[];
-  align: "left" | "right";
 }) {
   const parts = text
     .split(nameOriginsAccentPattern(accents))
     .filter((part) => part.length > 0);
 
   return (
-    <p
-      className={`${type.bodyMedium} ${NAME_ORIGINS_TEXT} ${
-        align === "right" ? "text-right" : "text-left"
-      }`}
-    >
+    <p className={`${type.bodyLarge} ${NAME_ORIGINS_TEXT} text-center`}>
       {parts.map((part, index) =>
         (accents as readonly string[]).includes(part) ? (
           <span
             key={`${part}-${index}`}
-            className="text-brand-primary [text-shadow:1.25px_0_0_#fff,-1.25px_0_0_#fff,0_1.25px_0_#fff,0_-1.25px_0_#fff] dark:[text-shadow:none]"
+            className={photoBrandAccentClass}
           >
             {part}
           </span>
@@ -363,37 +362,29 @@ function NameOriginsAccentLine({
   );
 }
 
-function NameOriginsZigzag() {
+function NameOriginsContent() {
   const blocks = nameOrigins.leftBlocks.flatMap((leftLines, index) => [
     {
       lines: leftLines,
-      align: "left" as const,
       accents: NAME_ORIGINS_LEFT_ACCENTS,
     },
     {
       lines: nameOrigins.rightBlocks[index],
-      align: "right" as const,
       accents: NAME_ORIGINS_RIGHT_ACCENTS,
     },
   ]);
 
   return (
     <div
-      className={`absolute inset-x-[5%] top-[13%] bottom-[11%] flex flex-col justify-between ${NAME_ORIGINS_TEXT}`}
+      className={`absolute inset-x-[8%] top-[13%] bottom-[11%] flex flex-col items-center justify-between ${NAME_ORIGINS_TEXT}`}
     >
       {blocks.map((block, index) => (
-        <div
-          key={`${block.align}-${index}`}
-          className={`max-w-[50%] space-y-0.5 ${
-            block.align === "right" ? "self-end text-right" : "self-start text-left"
-          }`}
-        >
+        <div key={index} className="max-w-[80%] space-y-1 text-center sm:max-w-[75%]">
           {block.lines.map((line) => (
             <NameOriginsAccentLine
               key={line}
               text={line}
               accents={block.accents}
-              align={block.align}
             />
           ))}
         </div>
@@ -418,23 +409,27 @@ export function NameOriginsSection() {
         />
         <div className={`pointer-events-none absolute inset-0 z-[5] ${photoTintStrongClass}`} aria-hidden />
         <div
-          className={`pointer-events-none absolute inset-0 z-[5] ${photoRadialLeftClass}`}
+          className={`pointer-events-none absolute inset-0 z-[5] ${photoRadialCenterClass}`}
           aria-hidden
         />
         <div
           className={`pointer-events-none absolute inset-0 z-[5] ${photoGradientVerticalSoftClass}`}
           aria-hidden
         />
+        <div
+          className={`pointer-events-none absolute inset-0 z-[6] ${photoTextColumnScrimClass}`}
+          aria-hidden
+        />
         <div className="absolute inset-0 z-10">
           <SectionHeading
             as="h2"
-            className={`absolute inset-x-[8%] top-[5%] text-center ${type.headlineSmall} ${NAME_ORIGINS_TEXT}`}
+            className={`absolute inset-x-[8%] top-[5%] text-center ${type.headlineSmall} ${photoWhiteTextClass}`}
           >
             {nameOrigins.title}
           </SectionHeading>
-          <NameOriginsZigzag />
+          <NameOriginsContent />
           <p
-            className={`absolute inset-x-[8%] bottom-[4%] text-center ${type.labelLarge} underline ${NAME_ORIGINS_TEXT}`}
+            className={`absolute inset-x-[8%] bottom-[4%] text-center ${type.labelLarge} underline ${photoWhiteTextClass}`}
           >
             {nameOrigins.footer}
           </p>
@@ -484,17 +479,19 @@ function LearningParagraph({ text }: { text: string }) {
 
 export function LearningEngineSection() {
   const image = siteImages.learningEngine;
+  const coverHeight = "min-h-[max(36rem,min(125vw,90rem))]";
 
   return (
     <Section id="learning-engine" padding="none">
-      <div className={`relative isolate ${imageBleedClass}`}>
+      <div
+        className={`relative isolate overflow-hidden ${imageBleedClass} ${coverHeight}`}
+      >
         <Image
           src={image.src}
           alt={learningEngine.title}
-          width={image.width}
-          height={image.height}
+          fill
           sizes="100vw"
-          className="block h-auto w-full"
+          className="object-cover object-[38%_center]"
         />
         <div className={`pointer-events-none absolute inset-0 z-[5] ${photoTintMediumClass}`} aria-hidden />
         <div
@@ -505,7 +502,9 @@ export function LearningEngineSection() {
           className={`pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-[70%] md:h-[65%] ${photoGradientBottomHeavyClass}`}
           aria-hidden
         />
-        <div className="absolute inset-0 z-10 flex flex-col justify-end py-12 md:py-16 lg:py-20">
+        <div
+          className={`relative z-10 flex flex-col justify-end ${coverHeight} py-12 md:py-16 lg:py-20`}
+        >
           <Container>
             <Col span={12} className="lg:col-span-8">
               <SectionHeading className={LEARNING_ENGINE_TEXT}>

@@ -48,6 +48,22 @@ export function glassSurfaceWithChip(seed?: number | string): string {
 export const glassTextClass =
   "text-foreground dark:text-white [text-shadow:0_1px_2px_rgb(0_0_0_/_0.45)] dark:[text-shadow:0_1px_3px_rgb(0_0_0_/_0.85)]";
 
+/** Greece blue accent on photography — readable halo without light-mode white outline. */
+export const photoBrandAccentClass =
+  "font-semibold text-brand-primary [text-shadow:0_0_8px_rgb(0_0_0_/_0.95),0_1px_3px_rgb(0_0_0_/_1),0_2px_10px_rgb(0_0_0_/_0.88)]";
+
+/** Focused scrim for spread photo copy — tall band, keeps manuscript edges visible. */
+export const photoTextColumnScrimClass =
+  "bg-[radial-gradient(ellipse_92%_98%_at_50%_46%,rgba(0,0,0,0.34),transparent_76%)] dark:bg-[radial-gradient(ellipse_92%_98%_at_50%_46%,rgba(0,0,0,0.46),transparent_74%)]";
+
+/** Shared white copy shadow on full-bleed photography sections. */
+export const photoWhiteTextClass =
+  "text-white [text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_8px_rgb(0_0_0_/_0.88),0_4px_20px_rgb(0_0_0_/_0.6)]";
+
+/** Softer white copy for long photo passages — less glow fatigue. */
+export const photoWhiteTextSoftClass =
+  "text-white/95 [text-shadow:0_1px_3px_rgb(0_0_0_/_0.85),0_2px_12px_rgb(0_0_0_/_0.55)]";
+
 /** Subtle full-bleed tint — lighter in light theme, deeper in dark theme. */
 export const photoTintClass = "bg-black/10 dark:bg-black/28";
 
