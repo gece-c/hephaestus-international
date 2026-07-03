@@ -30,7 +30,7 @@
  *  • Light and dark via .dark + semantic tokens (--color-background, --color-card, …).
  *  • Text, borders, and icons must stay readable in both modes.
  *
- * TYPOGRAPHY (§6) — see TYPOGRAPHY block below; M3 type scale required.
+ * TYPOGRAPHY (§6) — see TYPOGRAPHY block below; presentation scale from Version 3.pdf.
  *
  * ASSETS & SEO (§9, §11)
  *  • Logo: public/logo.svg (header + favicon, currentColor / contrast).
@@ -91,37 +91,59 @@
   --size-icon-md: 1.25rem;
   --size-icon-lg: 1.5rem;
 
-  /* M3 type scale — https://m3.material.io/styles/typography/type-scale-tokens */
-  --text-display-large: 3.5625rem;
-  --text-display-large--line-height: 4rem;
-  --text-display-medium: 2.8125rem;
-  --text-display-medium--line-height: 3.25rem;
-  --text-display-small: 2.25rem;
-  --text-display-small--line-height: 2.75rem;
-  --text-headline-large: 2rem;
-  --text-headline-large--line-height: 2.5rem;
-  --text-headline-medium: 1.75rem;
-  --text-headline-medium--line-height: 2.25rem;
-  --text-headline-small: 1.5rem;
-  --text-headline-small--line-height: 2rem;
-  --text-title-large: 1.375rem;
-  --text-title-large--line-height: 1.75rem;
-  --text-title-medium: 1rem;
-  --text-title-medium--line-height: 1.5rem;
-  --text-title-small: 0.875rem;
-  --text-title-small--line-height: 1.25rem;
-  --text-body-large: 1rem;
-  --text-body-large--line-height: 1.5rem;
-  --text-body-medium: 0.875rem;
-  --text-body-medium--line-height: 1.25rem;
-  --text-body-small: 0.75rem;
-  --text-body-small--line-height: 1rem;
-  --text-label-large: 0.875rem;
-  --text-label-large--line-height: 1.25rem;
-  --text-label-medium: 0.75rem;
-  --text-label-medium--line-height: 1rem;
-  --text-label-small: 0.6875rem;
-  --text-label-small--line-height: 1rem;
+  /*
+   * Presentation type scale — fluid sizes from Hephaestus International. Version 3.pdf
+   * Slide width: 900pt. Sizes scale with viewport; clamp() keeps mobile readable.
+   */
+  --slide-ref-width: 900;
+  --text-slide-title: clamp(1.75rem, calc(30 / var(--slide-ref-width) * 100vw), 3rem);
+  --text-slide-title--line-height: 1.2;
+  --text-slide-headline: clamp(1.5rem, calc(24 / var(--slide-ref-width) * 100vw), 2.5rem);
+  --text-slide-headline--line-height: 1.25;
+  --text-slide-subhead: clamp(1.125rem, calc(18 / var(--slide-ref-width) * 100vw), 1.75rem);
+  --text-slide-subhead--line-height: 1.3;
+  --text-slide-lead: clamp(1rem, calc(15 / var(--slide-ref-width) * 100vw), 1.375rem);
+  --text-slide-lead--line-height: 1.35;
+  --text-slide-body: clamp(0.9375rem, calc(12 / var(--slide-ref-width) * 100vw), 1.125rem);
+  --text-slide-body--line-height: 1.4;
+  --text-slide-body-lg: clamp(1rem, calc(14 / var(--slide-ref-width) * 100vw), 1.25rem);
+  --text-slide-body-lg--line-height: 1.4;
+  --text-slide-number: clamp(1rem, calc(14 / var(--slide-ref-width) * 100vw), 1.25rem);
+  --text-slide-number--line-height: 1.2;
+  --text-slide-caption: clamp(0.8125rem, calc(10 / var(--slide-ref-width) * 100vw), 0.9375rem);
+  --text-slide-caption--line-height: 1.35;
+
+  /* Legacy token aliases — existing type-* utilities resolve to presentation sizes */
+  --text-display-large: var(--text-slide-title);
+  --text-display-large--line-height: var(--text-slide-title--line-height);
+  --text-display-medium: var(--text-slide-headline);
+  --text-display-medium--line-height: var(--text-slide-headline--line-height);
+  --text-display-small: var(--text-slide-title);
+  --text-display-small--line-height: var(--text-slide-title--line-height);
+  --text-headline-large: var(--text-slide-title);
+  --text-headline-large--line-height: var(--text-slide-title--line-height);
+  --text-headline-medium: var(--text-slide-subhead);
+  --text-headline-medium--line-height: var(--text-slide-subhead--line-height);
+  --text-headline-small: var(--text-slide-headline);
+  --text-headline-small--line-height: var(--text-slide-headline--line-height);
+  --text-title-large: var(--text-slide-lead);
+  --text-title-large--line-height: var(--text-slide-lead--line-height);
+  --text-title-medium: var(--text-slide-lead);
+  --text-title-medium--line-height: var(--text-slide-lead--line-height);
+  --text-title-small: var(--text-slide-body);
+  --text-title-small--line-height: var(--text-slide-body--line-height);
+  --text-body-large: var(--text-slide-body);
+  --text-body-large--line-height: var(--text-slide-body--line-height);
+  --text-body-medium: var(--text-slide-body);
+  --text-body-medium--line-height: var(--text-slide-body--line-height);
+  --text-body-small: var(--text-slide-caption);
+  --text-body-small--line-height: var(--text-slide-caption--line-height);
+  --text-label-large: var(--text-slide-lead);
+  --text-label-large--line-height: var(--text-slide-lead--line-height);
+  --text-label-medium: var(--text-slide-body);
+  --text-label-medium--line-height: var(--text-slide-body--line-height);
+  --text-label-small: var(--text-slide-body);
+  --text-label-small--line-height: var(--text-slide-body--line-height);
 }
 
 .dark {
@@ -135,24 +157,74 @@
 
 /*
  * ═══════════════════════════════════════════════════════════════════════════
- * TYPOGRAPHY — Material Design 3 type scale (required for all site copy)
- * https://m3.material.io/styles/typography/type-scale-tokens
+ * TYPOGRAPHY — Presentation scale (Hephaestus International. Version 3.pdf)
  *
- * RULES (enforced by CSS defaults, ESLint, .cursor/rules/typography.mdc, design-guide.mdc):
+ * RULES (.cursor/rules/typography.mdc):
  *  1. Use semantic HTML (h1–h6, p, label, button, …) — sizes apply automatically.
  *  2. Or apply a .type-* utility / import { type } from "@/lib/typography".
  *  3. Or use components/ui/typography.tsx (SectionHeading, Prose, Eyebrow, …).
- *  4. NEVER use Tailwind default text sizes: text-sm, text-lg, text-2xl, etc.
- *  5. NEVER use arbitrary font sizes: text-[18px], text-[1.2rem], etc.
+ *  4. Prefer type.slide* tokens on the homepage for PDF-accurate roles.
  *
- * Role map:
- *  h1 → display-small   |  Hero h1 → .type-display-large
- *  h2 → headline-large    |  h3 → title-large
- *  h4 → headline-small    |  h5 → title-medium   |  h6 → title-small
- *  p, li → body-large     |  small → body-small
- *  label, button, nav a → label-large   |  input, textarea → body-large
+ * PDF sizes (pt on 900pt slide): title 30 | headline 24 | subhead 18 |
+ *   lead 15 | body 12 | number 14
  * ═══════════════════════════════════════════════════════════════════════════
  */
+
+@utility type-slide-title {
+  font-size: var(--text-slide-title);
+  line-height: var(--text-slide-title--line-height);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+@utility type-slide-headline {
+  font-size: var(--text-slide-headline);
+  line-height: var(--text-slide-headline--line-height);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+@utility type-slide-subhead {
+  font-size: var(--text-slide-subhead);
+  line-height: var(--text-slide-subhead--line-height);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+@utility type-slide-lead {
+  font-size: var(--text-slide-lead);
+  line-height: var(--text-slide-lead--line-height);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+@utility type-slide-body {
+  font-size: var(--text-slide-body);
+  line-height: var(--text-slide-body--line-height);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@utility type-slide-body-lg {
+  font-size: var(--text-slide-body-lg);
+  line-height: var(--text-slide-body-lg--line-height);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@utility type-slide-number {
+  font-size: var(--text-slide-number);
+  line-height: var(--text-slide-number--line-height);
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+@utility type-slide-caption {
+  font-size: var(--text-slide-caption);
+  line-height: var(--text-slide-caption--line-height);
+  font-weight: 400;
+  letter-spacing: 0;
+}
 
 @utility type-display-large {
   font-family: var(--font-marcellus), Georgia, "Times New Roman", serif;
@@ -203,7 +275,7 @@
 @utility type-title-large {
   font-size: var(--text-title-large);
   line-height: var(--text-title-large--line-height);
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0;
 }
 
@@ -340,7 +412,7 @@
   }
 
   nav a {
-    @apply type-label-large;
+    @apply type-body-small font-medium;
   }
 }
 
@@ -577,6 +649,43 @@ body {
   opacity: 0.045;
   mix-blend-mode: soft-light;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cg fill='none' stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath stroke-width='0.45' d='M14 172 L30 136 L33 133 L40 96 L43 93'/%3E%3Cpath stroke-width='0.38' d='M172 22 L148 56 L146 74 L144 78'/%3E%3Cpath stroke-width='0.34' d='M96 184 L94 146 L92 126'/%3E%3Cpath stroke-width='0.32' d='M48 38 L54 44 L58 54'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+@keyframes link-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  35% {
+    transform: translateY(-0.18em);
+  }
+  55% {
+    transform: translateY(0.04em);
+  }
+  75% {
+    transform: translateY(-0.07em);
+  }
+}
+
+.link-bounce-hover {
+  display: inline-block;
+  vertical-align: baseline;
+  transition: color 0.15s ease;
+}
+
+.link-bounce-hover:hover {
+  color: var(--color-brand-primary);
+  animation: link-bounce 0.45s ease;
+}
+
+.link-bounce-hover[class~="text-brand-primary"]:hover {
+  filter: brightness(1.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link-bounce-hover:hover {
+    animation: none;
+  }
 }
 
 /*

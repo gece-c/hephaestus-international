@@ -27,7 +27,7 @@ export function ContentColumn({
   return (
     <Col span={12} className={className}>
       <div
-        className={`mx-auto w-full ${widthClass[width]} ${centered ? "text-center" : "text-left"}`}
+        className={`mx-auto w-full min-w-0 ${widthClass[width]} ${centered ? "text-center" : "text-left"}`}
       >
         {children}
       </div>

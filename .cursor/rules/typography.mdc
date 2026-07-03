@@ -1,37 +1,29 @@
 ---
-description: Material Design 3 typography — required for all text in this project
+description: Presentation typography — fluid sizes from Version 3.pdf
 globs: "**/*.{tsx,ts,css}"
 alwaysApply: true
 ---
 
-# M3 typography (required)
+# Presentation typography (required)
 
-All text must use the [Material Design 3 type scale](https://m3.material.io/styles/typography/type-scale-tokens).
+Text sizes follow **Hephaestus International. Version 3.pdf** (900pt slide width), not Material Design 3.
 
 ## How to size text
 
-1. **Prefer semantic HTML** — `h1`–`h6`, `p`, `label`, `button`, `nav a`, etc. Base styles in `app/globals.css` apply the correct M3 role automatically.
-2. **Or** `import { type } from "@/lib/typography"` and use `type.bodyLarge`, `type.headlineLarge`, etc.
-3. **Or** use `components/ui/typography.tsx` (`SectionHeading`, `Prose`, `Eyebrow`, …).
-4. **Or** apply a `.type-*` utility class directly (`type-title-large`, `type-body-medium`, …).
+1. **Prefer semantic HTML** — `h1`–`h6`, `p`, `label`, `button`, `nav a`, etc. Base styles in `app/globals.css` apply presentation-proportional sizes automatically.
+2. **Homepage story sections** — use `type.slideTitle`, `type.slideHeadline`, `type.slideLead`, `type.slideBody`, etc. from `@/lib/typography` for PDF-accurate roles.
+3. **Or** use `components/ui/typography.tsx` (`SectionHeading` with `scale`, `Prose`, …).
+4. **Or** apply a `.type-slide-*` / legacy `.type-*` utility class directly.
 
-## Forbidden
+## PDF role reference (pt on 900pt slide)
 
-- Tailwind default sizes: `text-sm`, `text-base`, `text-lg`, `text-xl`, `text-2xl`, …
-- Arbitrary sizes: `text-[14px]`, `text-[1.125rem]`
-- Responsive font-size hacks: `md:text-3xl`, `lg:text-5xl`
+| Token | PDF pt | Use for |
+|-------|--------|---------|
+| `slide-title` | 30 | Hero lines, section titles, transition copy |
+| `slide-headline` | 24 | Secondary titles (positioning, pillars) |
+| `slide-subhead` | 18 | Closing CTA questions, emphasis lines |
+| `slide-lead` | 15 | Subtitles, card titles, emphasized body |
+| `slide-body` | 12 | Default body, fact cards |
+| `slide-number` | 14 | Pillar numbers |
 
-## Role reference
-
-| Token | Use for |
-|-------|---------|
-| `display-large` | Home hero title only |
-| `display-small` | Page titles (`h1`) |
-| `headline-large` | Section titles (`h2`) |
-| `title-large` | Subsections, card titles (`h3`), lead copy |
-| `body-large` | Default body (`p`, `li`) |
-| `body-medium` | Secondary body, captions |
-| `body-small` | Fine print (`small`) |
-| `label-large` | Buttons, nav links, form labels |
-
-Tokens and defaults live in `app/globals.css`. ESLint flags non-M3 text size classes.
+Sizes are fluid (`clamp` + `vw`) so full-bleed sections scale like the deck. Tokens live in `app/globals.css`.

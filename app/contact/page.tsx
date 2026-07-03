@@ -5,6 +5,7 @@ import { ProseParagraph, SectionHeading } from "@/components/ui/typography";
 import { contactPage, siteConfig } from "@/content/site-content";
 import { buildMetadata } from "@/lib/metadata";
 import { type } from "@/lib/typography";
+import { externalBodyLinkClass } from "@/lib/ui-styles";
 
 export const metadata: Metadata = buildMetadata({
   title: `${contactPage.title} | Hephaestus International`,
@@ -43,7 +44,7 @@ export default function ContactPage() {
             href={siteConfig.linkedInUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-brand-primary hover:underline"
+            className={externalBodyLinkClass}
           >
             {siteConfig.linkedInLabel}
           </a>

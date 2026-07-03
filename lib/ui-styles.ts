@@ -48,6 +48,15 @@ export function glassSurfaceWithChip(seed?: number | string): string {
 export const glassTextClass =
   "text-foreground dark:text-white [text-shadow:0_1px_2px_rgb(0_0_0_/_0.45)] dark:[text-shadow:0_1px_3px_rgb(0_0_0_/_0.85)]";
 
+/** Shared hover: brand blue + slight bounce (see globals.css `.link-bounce-hover`). */
+export const linkBounceHoverClass = "link-bounce-hover inline-block";
+
+/** Footer text links. */
+export const footerLinkClass = `${linkBounceHoverClass} transition-colors hover:text-brand-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary`;
+
+/** Inline external links in body copy (opens in a new tab). */
+export const externalBodyLinkClass = `${linkBounceHoverClass} font-semibold text-brand-primary no-underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary`;
+
 /** Greece blue accent on photography — readable halo without light-mode white outline. */
 export const photoBrandAccentClass =
   "font-semibold text-brand-primary [text-shadow:0_0_8px_rgb(0_0_0_/_0.95),0_1px_3px_rgb(0_0_0_/_1),0_2px_10px_rgb(0_0_0_/_0.88)]";

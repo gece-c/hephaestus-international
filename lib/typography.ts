@@ -1,11 +1,19 @@
 /**
- * Material Design 3 type scale — use these classes for all text sizing.
- * Semantic HTML (h1–h6, p, label, …) picks up matching styles from globals.css.
+ * Presentation type scale from Hephaestus International. Version 3.pdf.
+ * Fluid sizes scale with viewport (900pt slide reference). Legacy type.* keys
+ * map to the same utilities for existing components.
  *
- * @see https://m3.material.io/styles/typography/type-scale-tokens
- * @see app/globals.css (tokens, .type-* utilities, and base-layer defaults)
+ * @see app/globals.css
  */
 export const type = {
+  slideTitle: "type-slide-title",
+  slideHeadline: "type-slide-headline",
+  slideSubhead: "type-slide-subhead",
+  slideLead: "type-slide-lead",
+  slideBody: "type-slide-body",
+  slideBodyLg: "type-slide-body-lg",
+  slideNumber: "type-slide-number",
+  slideCaption: "type-slide-caption",
   displayLarge: "type-display-large",
   displayMedium: "type-display-medium",
   displaySmall: "type-display-small",

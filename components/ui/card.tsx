@@ -13,7 +13,7 @@ export function Card({
 }) {
   return (
     <div
-      className={`${cardRadiusClass} ${glassSurfaceWithChip(chipSeed)} p-6 text-card-foreground ${className}`}
+      className={`${cardRadiusClass} ${glassSurfaceWithChip(chipSeed)} min-w-0 p-6 text-card-foreground ${className}`}
     >
       {children}
     </div>

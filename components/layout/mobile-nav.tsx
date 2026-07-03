@@ -14,7 +14,7 @@ export function MobileNav() {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className={`min-h-11 ${buttonChromeClass} border border-border px-4 ${type.labelLarge}`}
+        className={`min-h-11 ${buttonChromeClass} border border-border px-4 ${type.bodySmall} font-medium`}
         aria-expanded={open}
         aria-controls="mobile-menu"
       >
@@ -32,8 +32,8 @@ export function MobileNav() {
                   href={link.href}
                   className={
                     link.href === "/contact"
-                      ? `block ${buttonRadiusClass} px-3 py-3 ${type.labelLarge} text-brand-primary hover:bg-card`
-                      : `block ${buttonRadiusClass} px-3 py-3 ${type.labelLarge} hover:bg-card`
+                      ? `block ${buttonRadiusClass} px-3 py-3 ${type.bodySmall} font-medium text-brand-primary hover:bg-card`
+                      : `block ${buttonRadiusClass} px-3 py-3 ${type.bodySmall} font-medium hover:bg-card`
                   }
                   onClick={() => setOpen(false)}
                 >

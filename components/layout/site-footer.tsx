@@ -1,14 +1,16 @@
 import Link from "next/link";
 import { BrandLogo } from "@/components/brand/brand-logo";
 import { Container, Col } from "@/components/layout/container";
+import { FooterCollapsibleSection } from "@/components/layout/footer-collapsible-section";
 import { siteConfig, siteFooter } from "@/content/site-content";
 import { getFooterProjectLinkList } from "@/lib/projects";
 import { type } from "@/lib/typography";
+import { footerLinkClass } from "@/lib/ui-styles";
 
 function FooterSectionTitle({ children }: { children: React.ReactNode }) {
   return (
     <p
-      className={`${type.labelLarge} font-bold uppercase tracking-[0.2em] text-foreground`}
+      className={`${type.labelMedium} font-semibold uppercase tracking-[0.2em] text-balance text-foreground`}
     >
       {children}
     </p>
@@ -22,7 +24,7 @@ function FooterLink({
   href: string;
   label: string;
 }) {
-  const linkClassName = `${type.bodyMedium} text-foreground transition-colors hover:text-brand-primary`;
+  const linkClassName = `${type.bodySmall} text-foreground ${footerLinkClass}`;
 
   if (href.startsWith("http")) {
     return (
@@ -101,7 +103,7 @@ function YouTubeIcon({ className }: { className?: string }) {
   );
 }
 
-const socialIconHeightClass = "h-7";
+const socialIconHeightClass = "h-6";
 
 function SocialIconLink({
   href,
@@ -117,7 +119,7 @@ function SocialIconLink({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex min-h-11 items-center text-foreground transition-colors hover:text-brand-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary"
+      className={`inline-flex min-h-11 items-center text-foreground ${footerLinkClass}`}
       aria-label={label}
     >
       {children}
@@ -138,6 +140,48 @@ function LinkedInIcon({ className }: { className?: string }) {
   );
 }
 
+function InstagramIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden
+    >
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+    </svg>
+  );
+}
+
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden
+    >
+      <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" />
+    </svg>
+  );
+}
+
+function RedditIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden
+    >
+      <path d="M12 0A12 12 0 000 12a12 12 0 0012 12 12 12 0 0012-12A12 12 0 0012 0zm5.01 4.744c.688 0 1.25.561 1.25 1.249a1.25 1.25 0 01-2.498.056l-2.597-.547-.8 3.747c1.824.07 3.48.632 4.674 1.488.308-.309.73-.491 1.207-.491.968 0 1.754.786 1.754 1.754 0 .716-.435 1.333-1.01 1.614a3.111 3.111 0 01.042.52c0 2.694-3.13 4.87-7.004 4.87-3.874 0-7.004-2.176-7.004-4.87 0-.183.015-.366.043-.534A1.748 1.748 0 014.028 12c0-.968.786-1.754 1.754-1.754.463 0 .898.196 1.207.49 1.207-.883 2.878-1.43 4.744-1.487l.885-4.182a.342.342 0 01.14-.197.35.35 0 01.238-.042l2.906.617a1.214 1.214 0 011.108-.701zM9.25 12C8.561 12 8 12.562 8 13.25c0 .687.561 1.248 1.25 1.248.687 0 1.248-.561 1.248-1.249 0-.688-.561-1.249-1.249-1.249zm5.5 0c-.687 0-1.248.561-1.248 1.25 0 .687.561 1.248 1.249 1.248.688 0 1.249-.561 1.249-1.249 0-.687-.562-1.249-1.25-1.249zm-5.466 3.99a.327.327 0 00-.231.094.33.33 0 000 .463c.842.842 2.484.913 2.961.913.477 0 2.105-.056 2.961-.913a.361.361 0 00.029-.463.33.33 0 00-.464 0c-.547.533-1.684.73-2.512.73-.828 0-1.979-.196-2.512-.73a.326.326 0 00-.232-.095z" />
+    </svg>
+  );
+}
+
 export function SiteFooter() {
   const projectLinks = getFooterProjectLinkList();
 
@@ -153,21 +197,19 @@ export function SiteFooter() {
                   showTitle={false}
                 />
                 <div>
-                  <p className={`${type.titleLarge} text-balance text-foreground`}>
-                    {siteConfig.name}
-                  </p>
-                  <p className={`mt-1 ${type.bodyMedium} text-muted`}>
-                    | {siteFooter.projectLine}
+                  <p className={`${type.titleSmall} font-semibold text-balance text-foreground`}>
+                    {siteConfig.name}{" "}
+                    <span className="font-normal text-muted">| {siteFooter.projectLine}</span>
                   </p>
                 </div>
               </div>
-              <p className={`mt-4 max-w-md ${type.bodyMedium} text-muted text-pretty`}>
+              <p className={`mt-4 max-w-md ${type.bodySmall} leading-relaxed text-muted text-pretty`}>
                 {siteFooter.description}
               </p>
 
               <div className="mt-8">
                 <FooterSectionTitle>{siteFooter.newsletter.title}</FooterSectionTitle>
-                <p className={`mt-3 ${type.bodyMedium} text-muted text-pretty`}>
+                <p className={`mt-3 ${type.bodySmall} text-muted text-pretty`}>
                   {siteFooter.newsletter.prompt}
                 </p>
                 <form action="/contact" method="get" className="mt-3 max-w-md">
@@ -183,7 +225,7 @@ export function SiteFooter() {
                       required
                       autoComplete="email"
                       placeholder={siteFooter.newsletter.placeholder}
-                      className={`min-h-11 min-w-0 flex-1 border-0 bg-neutral-200 py-2 pl-3 ${type.bodyLarge} text-neutral-950 placeholder:text-neutral-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary`}
+                      className={`min-h-11 min-w-0 flex-1 border-0 bg-neutral-200 py-2 pl-3 ${type.bodySmall} text-neutral-950 placeholder:text-neutral-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary`}
                     />
                     <button
                       type="submit"
@@ -198,7 +240,7 @@ export function SiteFooter() {
 
               <div className="mt-8">
                 <FooterSectionTitle>{siteFooter.socialTitle}</FooterSectionTitle>
-                <div className="mt-4 flex items-center gap-4">
+                <div className="mt-4 flex flex-wrap items-center gap-4">
                   <SocialIconLink
                     href={siteConfig.youtubeUrl}
                     label={siteConfig.youtubeLabel}
@@ -209,25 +251,46 @@ export function SiteFooter() {
                     href={siteConfig.linkedInUrl}
                     label={siteConfig.linkedInLabel}
                   >
-                    <LinkedInIcon className={`block ${socialIconHeightClass} w-7`} />
+                    <LinkedInIcon className={`block ${socialIconHeightClass} w-6`} />
+                  </SocialIconLink>
+                  <SocialIconLink
+                    href={siteConfig.instagramUrl}
+                    label={siteConfig.instagramLabel}
+                  >
+                    <InstagramIcon className={`block ${socialIconHeightClass} w-6`} />
+                  </SocialIconLink>
+                  <SocialIconLink
+                    href={siteConfig.tiktokUrl}
+                    label={siteConfig.tiktokLabel}
+                  >
+                    <TikTokIcon className={`block ${socialIconHeightClass} w-6`} />
+                  </SocialIconLink>
+                  <SocialIconLink
+                    href={siteConfig.redditUrl}
+                    label={siteConfig.redditLabel}
+                  >
+                    <RedditIcon className={`block ${socialIconHeightClass} w-6`} />
                   </SocialIconLink>
                 </div>
               </div>
             </div>
 
             <div className="lg:col-span-2">
-              <FooterSectionTitle>{siteFooter.navigation.title}</FooterSectionTitle>
-              <FooterLinkList links={siteFooter.navigation.links} />
+              <FooterCollapsibleSection title={siteFooter.navigation.title}>
+                <FooterLinkList links={siteFooter.navigation.links} />
+              </FooterCollapsibleSection>
             </div>
 
             <div className="lg:col-span-3">
-              <FooterSectionTitle>{siteFooter.projects.title}</FooterSectionTitle>
-              <FooterLinkList links={projectLinks} />
+              <FooterCollapsibleSection title={siteFooter.projects.title}>
+                <FooterLinkList links={projectLinks} />
+              </FooterCollapsibleSection>
             </div>
 
             <div className="lg:col-span-2">
-              <FooterSectionTitle>{siteFooter.company.title}</FooterSectionTitle>
-              <FooterLinkList links={siteFooter.company.links} />
+              <FooterCollapsibleSection title={siteFooter.company.title}>
+                <FooterLinkList links={siteFooter.company.links} />
+              </FooterCollapsibleSection>
             </div>
           </div>
         </Col>

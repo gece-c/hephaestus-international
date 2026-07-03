@@ -36,7 +36,7 @@ Source: `AI Design and Coding Guide.md` and tokens in `app/globals.css`.
 
 ## Typography (§6)
 
-- M3 type scale only — see `.cursor/rules/typography.mdc`.
+- Presentation type scale from Version 3.pdf — see `.cursor/rules/typography.mdc`.
 - Headings use `text-balance`; prevent orphan words on headings and CTAs.
 
 ## Assets & SEO (§9, §11)

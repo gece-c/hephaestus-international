@@ -3,27 +3,41 @@ import { SectionBackdrop } from "@/components/ui/section-image";
 import type { SiteImageAsset } from "@/lib/site-images";
 import { type } from "@/lib/typography";
 
+const TRANSITION_TEXT_SHADOW =
+  "text-white [&_p]:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_8px_rgb(0_0_0_/_0.88),0_4px_20px_rgb(0_0_0_/_0.6)]";
+
 export function TransitionBlock({
   lines,
   className = "",
   image,
   imageAlt,
+  alternateHeadlineSizes = false,
 }: {
   lines: readonly string[];
   className?: string;
   image?: SiteImageAsset;
   imageAlt?: string;
+  /** Slide 5: alternate 30pt / 24pt lines */
+  alternateHeadlineSizes?: boolean;
 }) {
   const body = (
     <Container>
-      <Col span={12} className="md:col-span-10 lg:col-span-8">
-        <div className="max-w-2xl text-left">
-          <div className={`space-y-3 ${type.headlineSmall} text-pretty text-white [&_p]:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_8px_rgb(0_0_0_/_0.88),0_4px_20px_rgb(0_0_0_/_0.6)]`}>
-            {lines.map((line) => (
-              <p key={line} className="text-pretty">
-                {line}
-              </p>
-            ))}
+      <Col span={12} className="md:col-span-11 lg:col-span-10">
+        <div className="w-full max-w-5xl text-left">
+          <div className={`space-y-3 ${TRANSITION_TEXT_SHADOW}`}>
+            {lines.map((line, index) => {
+              const sizeClass = alternateHeadlineSizes
+                ? index % 2 === 0
+                  ? type.slideTitle
+                  : type.slideHeadline
+                : type.slideTitle;
+
+              return (
+                <p key={line} className={`text-balance ${sizeClass}`}>
+                  {line}
+                </p>
+              );
+            })}
           </div>
         </div>
       </Col>

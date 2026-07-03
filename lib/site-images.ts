@@ -14,7 +14,7 @@ function asset(path: string, width: number, height: number): SiteImageAsset {
 export const siteImages = {
   heroBackground: asset("/images/hero-background.webp", 1440, 980),
   didYouKnowBackground: asset("/images/did-you-know-lemnos.webp", 1024, 768),
-  pillarsBackground: asset("/images/pillars-background.webp", 1024, 682),
+  pillarsBackground: asset("/images/pillars-background.webp", 1920, 1280),
   positioning: asset("/images/positioning.webp", 800, 1200),
   rootsTransition: asset("/images/roots-transition.webp", 1440, 812),
   mappingLegacy: asset("/images/mapping-legacy.webp", 1364, 768),
@@ -24,7 +24,7 @@ export const siteImages = {
   engineBridge: asset("/images/engine-bridge.webp", 1440, 812),
   learningEngine: asset("/images/learning-engine.webp", 600, 1200),
   ecosystemBridge: asset("/images/ecosystem-bridge.webp", 1440, 812),
-  ecosystemBackground: asset("/images/ecosystem-background.webp", 1024, 683),
+  ecosystemBackground: asset("/images/ecosystem-background.webp", 1920, 1280),
   closing: asset("/images/closing.webp", 1024, 578),
   internshipsBackground: asset("/images/internships-background.webp", 819, 1024),
 } as const satisfies Record<string, SiteImageAsset>;

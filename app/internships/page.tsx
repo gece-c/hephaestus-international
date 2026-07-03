@@ -111,7 +111,7 @@ export default async function InternshipsPage() {
                         )}
 
                         <span
-                          className={`mt-6 inline-flex min-h-11 items-center ${type.labelLarge} text-brand-primary group-hover:underline`}
+                          className={`mt-6 inline-flex min-h-11 items-center text-balance ${type.labelLarge} text-brand-primary group-hover:underline`}
                         >
                           View role
                         </span>

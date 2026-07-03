@@ -13,15 +13,18 @@ export function BrandLogo({
   return (
     <Link
       href="/"
-      className="inline-flex items-center gap-3 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary"
+      className="inline-flex min-w-0 items-center gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-primary sm:gap-3"
     >
-      <LogoMark className={className} />
-      <span className="sr-only">{siteConfig.name}</span>
+      <LogoMark className={`${className} shrink-0`} />
       {showTitle ? (
-        <span className={`hidden ${type.titleMedium} text-balance text-foreground sm:inline`}>
+        <span
+          className={`min-w-0 ${type.labelMedium} font-semibold leading-tight tracking-tight text-balance text-foreground`}
+        >
           {siteConfig.name}
         </span>
-      ) : null}
+      ) : (
+        <span className="sr-only">{siteConfig.name}</span>
+      )}
     </Link>
   );
 }

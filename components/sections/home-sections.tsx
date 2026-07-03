@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Col, Container, Section } from "@/components/layout/container";
@@ -6,12 +5,12 @@ import { ContentColumn } from "@/components/layout/content-column";
 import { TransitionBlock } from "@/components/sections/transition-block";
 import { HeroBackdrop } from "@/components/ui/hero-backdrop";
 import {
-  imageBleedClass,
+  PhotoGridOverlay,
   SectionBackdrop,
   SectionCoverBackdrop,
+  SectionImageSplit,
 } from "@/components/ui/section-image";
 import {
-  Eyebrow,
   Prose,
   ProseParagraph,
   SectionHeading,
@@ -41,18 +40,18 @@ import {
   photoCoverOverlayClass,
   photoCoverOverlayStrongClass,
   photoGradientBottomClosingClass,
-  photoGradientBottomHeavyClass,
-  photoGradientLeftClass,
   photoGradientVerticalSoftClass,
   photoBrandAccentClass,
+  externalBodyLinkClass,
   photoRadialCenterClass,
   photoTextColumnScrimClass,
   photoTintClosingClass,
-  photoTintMediumClass,
   photoTintStrongClass,
   photoWhiteTextClass,
   photoWhiteTextSoftClass,
 } from "@/lib/ui-styles";
+
+const glassTitlePillClass = `inline-block max-w-full ${cardRadiusClass} ${glassSurfaceClass} px-5 py-3`;
 
 export function HeroSection() {
   return (
@@ -62,16 +61,15 @@ export function HeroSection() {
       priority
     >
       <div className="mx-auto w-full max-w-3xl text-center [&_h1]:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_10px_rgb(0_0_0_/_0.9),0_4px_28px_rgb(0_0_0_/_0.65)] [&_p]:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_8px_rgb(0_0_0_/_0.88),0_4px_20px_rgb(0_0_0_/_0.6)]">
-        <Eyebrow className="text-white">{hero.subtitle}</Eyebrow>
-        <SectionHeading as="h1" scale="hero" className="mt-4 text-white">
+        <SectionHeading as="h1" scale="title" className="text-white">
           {hero.title}
         </SectionHeading>
-        <div className={`mt-8 space-y-3 ${type.bodyLarge} text-pretty text-white/90`}>
-          {hero.taglines.map((line) => (
-            <p key={line} className="text-balance">
-              {line}
-            </p>
-          ))}
+        <p className={`mt-4 ${type.slideSubhead} text-balance text-white`}>
+          {hero.subtitle}
+        </p>
+        <div className="mt-8 space-y-3 text-pretty text-white/90">
+          <p className={`${type.slideLead} text-balance`}>{hero.taglines[0]}</p>
+          <p className={`${type.slideBody} text-balance`}>{hero.taglines[1]}</p>
         </div>
       </div>
     </HeroBackdrop>
@@ -88,26 +86,24 @@ export function DidYouKnowSection() {
       >
         <Container className="py-16 md:py-24 lg:py-28">
           <ContentColumn centered className="mb-8">
-            <div
-              className={`inline-flex ${cardRadiusClass} ${glassSurfaceClass} px-5 py-3`}
-            >
-              <SectionHeading as="h2" className={glassTextClass}>
+            <div className={glassTitlePillClass}>
+              <SectionHeading as="h2" scale="title" className={glassTextClass}>
                 {didYouKnow.leadIn}
               </SectionHeading>
             </div>
           </ContentColumn>
           <ContentColumn width="full">
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 xl:grid-cols-4">
               {didYouKnow.facts.map((fact, index) => (
                 <Card key={fact} chipSeed={index} className="h-full min-w-0">
-                  <p className={`${type.bodyMedium} text-pretty ${glassTextClass}`}>
+                  <p className={`${type.slideBody} text-pretty ${glassTextClass}`}>
                     {fact}
                   </p>
                 </Card>
               ))}
             </div>
             <Card chipSeed="did-you-know-closing" className="mt-4 text-center">
-              <p className={`${type.titleLarge} text-pretty ${glassTextClass}`}>
+              <p className={`${type.slideLead} text-balance ${glassTextClass}`}>
                 {didYouKnow.closing}
               </p>
             </Card>
@@ -118,38 +114,35 @@ export function DidYouKnowSection() {
   );
 }
 
+
+const MOBILE_PHOTO_HEADING_SHADOW =
+  "max-lg:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_10px_rgb(0_0_0_/_0.9),0_4px_28px_rgb(0_0_0_/_0.65)]";
+
 export function PositioningSection() {
   return (
     <Section id="positioning" padding="none">
-      <SectionBackdrop
+      <SectionImageSplit
         image={siteImages.positioning}
         alt={positioning.title}
         overlay="heavy"
-        heightMode="cover"
-        coverHeightClass="h-[max(36rem,min(125vw,90rem))]"
-        imagePosition="object-center"
-        contentClassName="py-12 md:py-16 lg:py-20"
       >
-        <Container>
-          <Col
-            span={12}
-            className="[&_h2]:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_10px_rgb(0_0_0_/_0.9),0_4px_28px_rgb(0_0_0_/_0.65)] [&_p]:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_8px_rgb(0_0_0_/_0.88),0_4px_20px_rgb(0_0_0_/_0.6)]"
+        <SectionHeading
+          scale="title"
+          className={`max-lg:text-white ${MOBILE_PHOTO_HEADING_SHADOW}`}
+        >
+          {positioning.title}
+        </SectionHeading>
+        <div className="mt-6 w-full">
+          <Prose
+            size="lg"
+            className="max-w-none [&_p]:type-slide-subhead [&_p]:text-balance max-lg:text-white/90 max-lg:[&_p]:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_8px_rgb(0_0_0_/_0.88),0_4px_20px_rgb(0_0_0_/_0.6)] lg:[&_p]:[text-shadow:none]"
           >
-            <SectionHeading className="text-white">
-              {positioning.title}
-            </SectionHeading>
-            <div className="mt-6 w-full md:mt-8">
-              <Prose size="lg" className="max-w-none text-white/90">
-                {positioning.paragraphs.map((paragraph) => (
-                  <ProseParagraph key={paragraph}>
-                    {paragraph}
-                  </ProseParagraph>
-                ))}
-              </Prose>
-            </div>
-          </Col>
-        </Container>
-      </SectionBackdrop>
+            {positioning.paragraphs.map((paragraph) => (
+              <ProseParagraph key={paragraph}>{paragraph}</ProseParagraph>
+            ))}
+          </Prose>
+        </div>
+      </SectionImageSplit>
     </Section>
   );
 }
@@ -159,15 +152,13 @@ export function PillarsSection() {
     <Section id="pillars" padding="none">
       <SectionCoverBackdrop
         image={siteImages.pillarsBackground}
-        alt="Circuit board assembly on a manufacturing line"
+        alt="Rustic blacksmith workshop with tools and an anvil"
         overlayClassName={photoCoverOverlayStrongClass}
       >
         <Container className="py-16 md:py-24 lg:py-28">
           <ContentColumn centered className="mb-12">
-            <div
-              className={`inline-flex ${cardRadiusClass} ${glassSurfaceClass} px-5 py-3`}
-            >
-              <SectionHeading as="h2" className={glassTextClass}>
+            <div className={glassTitlePillClass}>
+              <SectionHeading as="h2" scale="headline" className={glassTextClass}>
                 {pillars.title}
               </SectionHeading>
             </div>
@@ -176,13 +167,13 @@ export function PillarsSection() {
             <div className="grid gap-6 md:grid-cols-3">
               {pillars.items.map((pillar) => (
                 <Card key={pillar.number} chipSeed={pillar.number} className="h-full">
-                  <span className={`${type.displaySmall} text-brand-primary`}>
+                  <span className={`${type.slideNumber} text-brand-primary`}>
                     {pillar.number}
                   </span>
-                  <SectionHeading as="h3" className={`mt-4 ${glassTextClass}`}>
+                  <SectionHeading as="h3" scale="lead" className={`mt-4 ${glassTextClass}`}>
                     {pillar.title}
                   </SectionHeading>
-                  <div className={`mt-4 ${type.bodyMedium} ${glassTextClass}`}>
+                  <div className={`mt-4 ${type.slideBody} ${glassTextClass}`}>
                     {pillar.paragraphs.map((paragraph) => (
                       <p key={paragraph} className="text-pretty">
                         {paragraph}
@@ -205,6 +196,7 @@ export function RootsTransition() {
       lines={roots.lines}
       image={siteImages.rootsTransition}
       imageAlt="Everything starts somewhere"
+      alternateHeadlineSizes
     />
   );
 }
@@ -250,10 +242,15 @@ const lemnosAccentPattern = new RegExp(
 );
 
 function LemnosParagraph({ text }: { text: string }) {
+  const isLead =
+    text.startsWith("Each journey") ||
+    text.startsWith("Our forge") ||
+    text.startsWith("Our workshop") ||
+    text.startsWith("Our first lab");
   const parts = text.split(lemnosAccentPattern).filter((part) => part.length > 0);
 
   return (
-    <ProseParagraph>
+    <ProseParagraph className={isLead ? type.slideLead : type.slideBody}>
       {parts.map((part, index) =>
         (LEMNOS_ACCENT_TERMS as readonly string[]).includes(part) ? (
           <span
@@ -345,7 +342,7 @@ function NameOriginsAccentLine({
     .filter((part) => part.length > 0);
 
   return (
-    <p className={`${type.bodyLarge} ${NAME_ORIGINS_TEXT} text-center`}>
+    <p className={`${type.slideBody} sm:type-slide-lead text-balance text-center ${NAME_ORIGINS_TEXT}`}>
       {parts.map((part, index) =>
         (accents as readonly string[]).includes(part) ? (
           <span
@@ -376,10 +373,10 @@ function NameOriginsContent() {
 
   return (
     <div
-      className={`absolute inset-x-[8%] top-[13%] bottom-[11%] flex flex-col items-center justify-between ${NAME_ORIGINS_TEXT}`}
+      className={`flex flex-col items-center gap-6 sm:gap-8 ${NAME_ORIGINS_TEXT}`}
     >
       {blocks.map((block, index) => (
-        <div key={index} className="max-w-[80%] space-y-1 text-center sm:max-w-[75%]">
+        <div key={index} className="w-full max-w-[92%] space-y-0.5 text-center sm:max-w-[80%] sm:space-y-1">
           {block.lines.map((line) => (
             <NameOriginsAccentLine
               key={line}
@@ -398,43 +395,46 @@ export function NameOriginsSection() {
 
   return (
     <Section id="name-origins" padding="none">
-      <div className={`relative isolate ${imageBleedClass}`}>
-        <Image
-          src={image.src}
-          alt={nameOrigins.title}
-          width={image.width}
-          height={image.height}
-          sizes="100vw"
-          className="block h-auto w-full"
-        />
-        <div className={`pointer-events-none absolute inset-0 z-[5] ${photoTintStrongClass}`} aria-hidden />
-        <div
-          className={`pointer-events-none absolute inset-0 z-[5] ${photoRadialCenterClass}`}
-          aria-hidden
-        />
-        <div
-          className={`pointer-events-none absolute inset-0 z-[5] ${photoGradientVerticalSoftClass}`}
-          aria-hidden
-        />
-        <div
-          className={`pointer-events-none absolute inset-0 z-[6] ${photoTextColumnScrimClass}`}
-          aria-hidden
-        />
-        <div className="absolute inset-0 z-10">
-          <SectionHeading
-            as="h2"
-            className={`absolute inset-x-[8%] top-[5%] text-center ${type.headlineSmall} ${photoWhiteTextClass}`}
-          >
-            {nameOrigins.title}
-          </SectionHeading>
-          <NameOriginsContent />
-          <p
-            className={`absolute inset-x-[8%] bottom-[4%] text-center ${type.labelLarge} underline ${photoWhiteTextClass}`}
-          >
-            {nameOrigins.footer}
-          </p>
-        </div>
-      </div>
+      <PhotoGridOverlay
+        image={image}
+        alt={nameOrigins.title}
+        alignClass="justify-between"
+        contentClassName="gap-8 px-[6%] py-8 sm:gap-10 sm:px-[8%] sm:py-10"
+        overlayLayers={
+          <>
+            <div
+              className={`pointer-events-none absolute inset-0 z-[5] ${photoTintStrongClass}`}
+              aria-hidden
+            />
+            <div
+              className={`pointer-events-none absolute inset-0 z-[5] ${photoRadialCenterClass}`}
+              aria-hidden
+            />
+            <div
+              className={`pointer-events-none absolute inset-0 z-[5] ${photoGradientVerticalSoftClass}`}
+              aria-hidden
+            />
+            <div
+              className={`pointer-events-none absolute inset-0 z-[6] ${photoTextColumnScrimClass}`}
+              aria-hidden
+            />
+          </>
+        }
+      >
+        <SectionHeading
+          as="h2"
+          scale="title"
+          className={`shrink-0 text-center ${photoWhiteTextClass}`}
+        >
+          {nameOrigins.title}
+        </SectionHeading>
+        <NameOriginsContent />
+        <p
+          className={`shrink-0 text-balance text-center ${type.slideSubhead} underline ${photoWhiteTextClass}`}
+        >
+          {nameOrigins.footer}
+        </p>
+      </PhotoGridOverlay>
     </Section>
   );
 }
@@ -449,78 +449,53 @@ export function EngineBridgeTransition() {
   );
 }
 
-const LEARNING_ENGINE_TEXT =
-  "text-white [text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_8px_rgb(0_0_0_/_0.88),0_4px_20px_rgb(0_0_0_/_0.6)]";
+const LEARNING_ENGINE_BODY =
+  "max-lg:text-white/90 max-lg:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_8px_rgb(0_0_0_/_0.88),0_4px_20px_rgb(0_0_0_/_0.6)] lg:text-muted lg:[text-shadow:none]";
 
 function LearningParagraph({ text }: { text: string }) {
-  if (text.includes("Hypatia") && text.includes("(Insert the link*)")) {
+  if (text.includes("(Insert the link*)")) {
     const parts = text.split("(Insert the link*)");
     const hypatiaHref = learningEngine.hypatiaHref;
 
     return (
-      <ProseParagraph className={LEARNING_ENGINE_TEXT}>
+      <ProseParagraph className={LEARNING_ENGINE_BODY}>
         {parts[0]}
         {hypatiaHref ? (
           <a
             href={hypatiaHref}
-            className="text-white underline decoration-white/60 underline-offset-2 hover:decoration-white"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`${photoBrandAccentClass} ${externalBodyLinkClass} lg:[text-shadow:none]`}
           >
             Hypatia
           </a>
         ) : (
-          <span className="text-white/75">(Insert the link*)</span>
+          <span className="max-lg:text-white/75 lg:text-muted">(Insert the link*)</span>
         )}
         {parts[1] ?? ""}
       </ProseParagraph>
     );
   }
-  return <ProseParagraph className={LEARNING_ENGINE_TEXT}>{text}</ProseParagraph>;
+  return <ProseParagraph className={LEARNING_ENGINE_BODY}>{text}</ProseParagraph>;
 }
 
 export function LearningEngineSection() {
-  const image = siteImages.learningEngine;
-  const coverHeight = "min-h-[max(36rem,min(125vw,90rem))]";
-
   return (
     <Section id="learning-engine" padding="none">
-      <div
-        className={`relative isolate overflow-hidden ${imageBleedClass} ${coverHeight}`}
+      <SectionImageSplit
+        image={siteImages.learningEngine}
+        alt={learningEngine.title}
+        mobileOverlay="learning"
       >
-        <Image
-          src={image.src}
-          alt={learningEngine.title}
-          fill
-          sizes="100vw"
-          className="object-cover object-[38%_center]"
-        />
-        <div className={`pointer-events-none absolute inset-0 z-[5] ${photoTintMediumClass}`} aria-hidden />
-        <div
-          className={`pointer-events-none absolute inset-0 z-[5] ${photoGradientLeftClass}`}
-          aria-hidden
-        />
-        <div
-          className={`pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-[70%] md:h-[65%] ${photoGradientBottomHeavyClass}`}
-          aria-hidden
-        />
-        <div
-          className={`relative z-10 flex flex-col justify-end ${coverHeight} py-12 md:py-16 lg:py-20`}
-        >
-          <Container>
-            <Col span={12} className="lg:col-span-8">
-              <SectionHeading className={LEARNING_ENGINE_TEXT}>
-                {learningEngine.title}
-              </SectionHeading>
-              <div
-                className={`mt-8 w-full space-y-4 text-pretty text-white/90 ${type.bodyLarge} ${LEARNING_ENGINE_TEXT}`}
-              >
-                {learningEngine.paragraphs.map((paragraph) => (
-                  <LearningParagraph key={paragraph} text={paragraph} />
-                ))}
-              </div>
-            </Col>
-          </Container>
+        <SectionHeading className={`max-lg:text-white ${MOBILE_PHOTO_HEADING_SHADOW}`}>
+          {learningEngine.title}
+        </SectionHeading>
+        <div className={`mt-8 w-full space-y-4 text-pretty ${type.slideBodyLg} ${LEARNING_ENGINE_BODY}`}>
+          {learningEngine.paragraphs.map((paragraph) => (
+            <LearningParagraph key={paragraph} text={paragraph} />
+          ))}
         </div>
-      </div>
+      </SectionImageSplit>
     </Section>
   );
 }
@@ -540,19 +515,17 @@ export function EcosystemSection() {
     <Section id="ecosystem" padding="none">
       <SectionCoverBackdrop
         image={siteImages.ecosystemBackground}
-        alt="Electronic components organized in a parts tray"
+        alt="Library of Celsus at Ephesus with classical columns and stone facade"
         overlayClassName="bg-background/40 dark:bg-black/50"
       >
         <Container className="py-16 md:py-24 lg:py-28">
           <ContentColumn centered className="mb-12">
-            <div
-              className={`inline-flex ${cardRadiusClass} ${glassSurfaceClass} px-5 py-3`}
-            >
-              <SectionHeading as="h2" className={glassTextClass}>
+            <div className={glassTitlePillClass}>
+              <SectionHeading as="h2" scale="title" className={glassTextClass}>
                 {ecosystem.title}
               </SectionHeading>
             </div>
-            <p className={`mt-4 ${type.titleLarge} text-pretty ${glassTextClass}`}>
+            <p className={`mt-4 ${type.slideLead} text-balance ${glassTextClass}`}>
               {ecosystem.subtitle}
             </p>
           </ContentColumn>
@@ -560,10 +533,10 @@ export function EcosystemSection() {
             <div className="space-y-6">
               {ecosystem.items.map((item) => (
                 <Card key={item.id} chipSeed={item.id}>
-                  <SectionHeading as="h3" className={glassTextClass}>
+                  <SectionHeading as="h3" scale="lead" className={glassTextClass}>
                     {item.title}
                   </SectionHeading>
-                  <div className={`mt-4 space-y-3 ${type.bodyMedium} ${glassTextClass}`}>
+                  <div className={`mt-4 space-y-3 ${type.slideBody} ${glassTextClass}`}>
                     {item.paragraphs.map((paragraph) => (
                       <p key={paragraph} className="text-pretty">
                         {paragraph}
@@ -588,45 +561,48 @@ export function ClosingCtaSection() {
 
   return (
     <Section id="join" padding="none">
-      <div className={`relative isolate ${imageBleedClass}`}>
-        <Image
-          src={image.src}
-          alt="Join Hephaestus International"
-          width={image.width}
-          height={image.height}
-          sizes="100vw"
-          className="block h-auto w-full"
-        />
-        <div className={`pointer-events-none absolute inset-0 z-[5] ${photoTintClosingClass}`} aria-hidden />
-        <div
-          className={`pointer-events-none absolute inset-0 z-[5] ${photoRadialCenterClass}`}
-          aria-hidden
-        />
-        <div
-          className={`pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-[55%] ${photoGradientBottomClosingClass}`}
-          aria-hidden
-        />
-        <div className="absolute inset-0 z-10 flex flex-col justify-end py-16 md:py-20 lg:py-24">
-          <Container>
-            <ContentColumn centered width="narrow">
-              <p className={`${type.titleLarge} text-pretty text-white/95 ${CLOSING_CTA_TEXT}`}>
+      <PhotoGridOverlay
+        image={image}
+        alt="Join Hephaestus International"
+        alignClass="justify-end"
+        contentClassName="py-16 md:py-20 lg:py-24"
+        overlayLayers={
+          <>
+            <div
+              className={`pointer-events-none absolute inset-0 z-[5] ${photoTintClosingClass}`}
+              aria-hidden
+            />
+            <div
+              className={`pointer-events-none absolute inset-0 z-[5] ${photoRadialCenterClass}`}
+              aria-hidden
+            />
+            <div
+              className={`pointer-events-none absolute inset-x-0 bottom-0 z-[5] h-[55%] ${photoGradientBottomClosingClass}`}
+              aria-hidden
+            />
+          </>
+        }
+      >
+        <Container>
+          <ContentColumn centered width="narrow">
+            <p className={`${type.slideLead} text-balance text-white/95 ${CLOSING_CTA_TEXT}`}>
                 {closingCta.lead}
               </p>
-              <p className={`mt-8 ${type.headlineSmall} text-balance ${CLOSING_CTA_TEXT}`}>
+              <p className={`mt-8 ${type.slideLead} text-balance ${CLOSING_CTA_TEXT}`}>
                 {closingCta.prompt}
               </p>
               <ul
-                className={`mt-6 space-y-3 ${type.titleLarge} text-pretty text-white/90 ${CLOSING_CTA_TEXT}`}
+                className={`mt-6 space-y-3 ${type.slideSubhead} text-balance text-white/90 ${CLOSING_CTA_TEXT} [&_li]:text-balance`}
               >
                 {closingCta.questions.map((question) => (
                   <li key={question}>{question}</li>
                 ))}
               </ul>
-              <p className={`mt-8 ${type.headlineMedium} text-balance ${CLOSING_CTA_TEXT}`}>
+              <p className={`mt-8 ${type.slideLead} text-balance ${CLOSING_CTA_TEXT}`}>
                 {closingCta.headline}
               </p>
               <p
-                className={`mt-4 ${type.titleLarge} text-balance text-brand-primary [text-shadow:1.25px_0_0_#fff,-1.25px_0_0_#fff,0_1.25px_0_#fff,0_-1.25px_0_#fff,0_1px_2px_rgb(0_0_0_/_0.9),0_2px_8px_rgb(0_0_0_/_0.75)] dark:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_8px_rgb(0_0_0_/_0.88),0_4px_20px_rgb(0_0_0_/_0.6)]`}
+                className={`mt-4 ${type.slideLead} text-balance text-brand-primary [text-shadow:1.25px_0_0_#fff,-1.25px_0_0_#fff,0_1.25px_0_#fff,0_-1.25px_0_#fff,0_1px_2px_rgb(0_0_0_/_0.9),0_2px_8px_rgb(0_0_0_/_0.75)] dark:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_8px_rgb(0_0_0_/_0.88),0_4px_20px_rgb(0_0_0_/_0.6)]`}
               >
                 {closingCta.tagline}
               </p>
@@ -640,8 +616,7 @@ export function ClosingCtaSection() {
               </div>
             </ContentColumn>
           </Container>
-        </div>
-      </div>
+      </PhotoGridOverlay>
     </Section>
   );
 }

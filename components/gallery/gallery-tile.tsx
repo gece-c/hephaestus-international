@@ -42,7 +42,7 @@ export function GalleryTile({ item }: { item: GalleryItem }) {
             </span>
           ) : null}
         </div>
-        <div className="flex flex-1 flex-col p-6">
+        <div className="flex min-w-0 flex-1 flex-col p-6">
           <h3 className={`${type.titleLarge} text-balance text-card-foreground`}>
             {item.title}
           </h3>
@@ -52,7 +52,7 @@ export function GalleryTile({ item }: { item: GalleryItem }) {
             </p>
           ) : null}
           <span
-            className={`mt-4 inline-flex min-h-11 items-center ${type.labelLarge} text-brand-primary group-hover:underline`}
+            className={`mt-4 inline-flex min-h-11 items-center text-balance ${type.labelLarge} text-brand-primary group-hover:underline`}
           >
             {linkLabel}
           </span>

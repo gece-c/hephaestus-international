@@ -15,10 +15,15 @@ export const siteConfig = {
   linkedInUrl: "https://www.linkedin.com/company/flolabs-innovation/",
   youtubeUrl: "https://www.youtube.com/@flolabsinnovation",
   youtubeLabel: "FloLabs Innovation on YouTube",
+  instagramUrl: "https://www.instagram.com/flolabsinnovations/",
+  instagramLabel: "FloLabs Innovations on Instagram",
+  tiktokUrl: "https://www.tiktok.com/@flomadlabs",
+  tiktokLabel: "FloLabs on TikTok",
+  redditUrl: "https://www.reddit.com/user/FloLabs_Innovations/",
+  redditLabel: "FloLabs Innovations on Reddit",
 } as const;
 
 export const contentTodos = [
-  "Hypatia link: slide 11 (Insert the link*) needs URL from stakeholder",
   "Grammar: For us, is the place (slide 7)",
   "Typo: But with very system (slide 11)",
   "Slide 2 trailing = on Lemnos date line",
@@ -63,7 +68,7 @@ export const siteFooter = {
     links: [
       {
         id: "athletic-performance-intelligence",
-        label: "Athletic Performance",
+        label: "Athletic Performance Intelligence",
       },
       {
         id: "innovation-bootcamp-university",
@@ -71,6 +76,7 @@ export const siteFooter = {
       },
       { id: "caipo", label: "CAIPO" },
       { id: "connecting-the-dots", label: "Connecting the Dots" },
+      { id: "cosmos-intelligence", label: "Cosmos Intelligence" },
       { id: "flotravel", label: "Flo Travel" },
       { id: "flobrain", label: "FloBrain" },
       { id: "flolabs-innovations", label: "FloLabs Innovations Group" },
@@ -115,14 +121,16 @@ export const didYouKnow = {
   leadIn: "Did you know …",
   facts: [
     'Hephaestus is pronounced "Efestos".',
+    "When Hera cast the infant Hephaestus from Olympus, myth says he fell on Lemnos, where the island\u2019s people helped raise the god who would become the master smith.",
     "Lemnos, situated in Greece, a magnificent place yet undiscovered wonder of the world...",
     "Lemnos was believed to be one of Hephaestus\u2019 favourite places, and ancient stories connected the island with his forge.",
     "Hephaestus was probably there around 2,000 BC, or maybe earlier, around 10,000 BC when the first inhabitants were there.",
+    "One myth says Hephaestus created a magical golden chair that trapped Hera until Dionysus brought him back to Olympus.",
+    "Hephaestus forged Zeus\u2019s thunderbolts, Athena\u2019s aegis, and Hermes\u2019s winged sandals. In myth, the whole pantheon ran on his engineering.",
     "Greek myth imagined Hephaestus building self-moving golden tripods, almost like ancient robot servants for the gods.",
     "Hephaestus was said to have golden assistants with intelligence, speech, and strength, a very old mythological image of artificial helpers.",
     "Talos is the first trace of artificial intelligence created by Hephaestus.",
     'The famous "Pandora\'s Box" saying comes from Greek mythology, where Hephaestus created Pandora with the jar containing all manner of mystery and evil.',
-    "One myth says Hephaestus created a magical golden chair that trapped Hera until Dionysus brought him back to Olympus.",
     "Hephaestus once made an almost invisible bronze net to trap Ares and Aphrodite, proving that even on Olympus, the best revenge was engineering.",
   ],
   closing: "Ready to hear the story?",
@@ -260,15 +268,14 @@ export const learningEngine = {
     "Where learning was not preserved for its own sake, but applied, challenged, and advanced.",
     "A system designed to unite people through understanding.",
     "But with very system comes a center…",
-    "For Alexandria, that center was Hypatia. (Insert the link*)",
+    "For Alexandria, that center was (Insert the link*).",
     "Not just a name in history, but a symbol in motion.",
     "A gatekeeper of access, a translator of knowledge, proof that learning only transforms when it is shared, lived, and experienced.",
     "Today, that spirit drives us. Here…",
     "We've created a living system that keeps our ecosystem in motion.",
     "Where exploration sparks practice, ideas evolve through experience, and understanding compounds through use, uniting people in a shared dance of learning.",
   ],
-  // TODO: Replace with approved Hypatia URL
-  hypatiaHref: undefined as string | undefined,
+  hypatiaHref: "https://www.facebook.com/reel/860185246978132",
 } as const;
 
 export const formBridge = {
@@ -332,24 +339,80 @@ export const seo = {
     "From Origins to the Architecture of Intelligence. Be at the Center of the Future.",
 } as const;
 
-/** Live site functional copy (v1 preserved per plan) */
+/** About page copy: approved homepage themes plus experiential learning pathway context. */
 export const aboutPage = {
   title: "About us",
-  heading: "Hephaestus International",
-  program: "EXECUTIVE MANAGEMENT PROGRAM",
+  description:
+    "Hephaestus International is the experiential learning and talent pathway within FloLabs Innovations Group. Hands-on AI and robotics on Lemnos, Greece, with global remote options.",
+  heading: "About us",
   intro:
-    "Provides students a remote , unique , powerful , and immersive hands on educational experience.",
-  objectivesTitle: "Objectives",
-  objectives:
-    "Experiential Learning: Unique and immersive educational training with hands-on, real world experience. Provide practical experience working on innovative marketable projects.",
-  missionTitle: "Mission",
+    "Hephaestus International is the experiential learning and talent pathway within FloLabs Innovations Group. We offer hands-on internships in AI and robotics on real marketable projects, on-site on Lemnos, Greece, or remotely worldwide.",
+  floLabs: {
+    title: "Part of FloLabs Innovations Group",
+    paragraphs: [
+      "Hephaestus International is the experiential learning and talent acquisition pathway within FloLabs Innovations Group.",
+      "From classrooms to clinics to orbit, FloLabs pioneers AI and robotics across education, healthcare, travel, and space. Hephaestus is where that work becomes hands-on: learners join real projects, grow through making, and move toward roles that matter.",
+    ],
+    href: "https://www.flolabsinnovations.com/",
+    label: "Visit FloLabs Innovations Group",
+  },
+  pathway: {
+    title: "Learn, build, earn",
+    intro:
+      "Our internship starts with learning. As you reach the agreed level of skill, time, and contribution on a project, you can move into earning within the program.",
+    steps: [
+      {
+        title: "Learn",
+        body: "Start with structured, hands-on training on real AI and robotics projects. Revitalize trade school models for today: curiosity, STEM, innovation, and problem-solving through doing.",
+      },
+      {
+        title: "Build",
+        body: "Work alongside researchers, engineers, and founders across the FloLabs ecosystem. Contribute to marketable work in humanoid robotics, wearables, EdTech, and more.",
+      },
+      {
+        title: "Earn",
+        body: "Once you meet the agreed milestones, transition from learning into paid roles. Structured pathways connect education to professional work, including paid internships in AI and robotics.",
+      },
+    ],
+  },
+  whereWeWork: {
+    title: "Lemnos and beyond",
+    paragraphs: [
+      "Our forge. Our workshop. Our first lab is on Lemnos, Greece, where ancient craftsmanship meets modern innovation.",
+      "Programs are available on-site or remotely, connected through a global team. For robotics-based projects, on-site work on Lemnos can make hands-on testing and iteration easier, but many roles can be done from anywhere.",
+    ],
+  },
+  whoItsFor: {
+    title: "Who it's for",
+    items: [
+      {
+        title: "Students",
+        body: "High school, college, and university learners ready for hands-on work in AI and robotics, not just classroom theory.",
+      },
+      {
+        title: "Career changers",
+        body: "People bringing new perspective and discipline to technology, looking for experiential pathways into jobs of the future.",
+      },
+      {
+        title: "AI and robotics enthusiasts",
+        body: "Builders, makers, and curious minds who want to learn by working on real projects with a team at the forefront of innovation.",
+      },
+    ],
+  },
+  missionTitle: "Our mission",
   mission:
-    "Inspire and empower individuals through transformative educational experiences that foster global perspectives, innovative thinking, and practical skills. We aim to cultivate a culture of curiosity and creativity, create jobs of the future, and build innovative solutions for a rapidly changing world.",
-  teamTitle: "Our Team",
+    "Inspire and empower individuals through transformative educational experiences that foster global perspectives, innovative thinking, and practical skills. We cultivate curiosity and creativity, create jobs of the future, and build innovative solutions for a rapidly changing world.",
+  teamTitle: "Our team",
   teamBody:
-    "Meet the Flo Team. Our team consists of passionate innovators, researchers, and industry experts dedicated to advancing AI and robotics technologies. Together, we're building the future through cutting-edge research, experiential learning, and collaborative innovation.",
-  storyLinkLabel: "Explore our story",
+    "Meet the Flo Team. Our team consists of passionate innovators, researchers, and industry experts dedicated to advancing AI and robotics technologies. Together, we are building the future through cutting-edge research, experiential learning, and collaborative innovation.",
+  storyLinkLabel: "Explore our full story",
   storyLinkHref: "/#positioning",
+  internshipsLabel: "View internships",
+  internshipsHref: "/internships",
+  projectsLabel: "Explore projects",
+  projectsHref: "/projects",
+  contactLabel: "Contact us",
+  contactHref: "/contact",
 } as const;
 
 export const internshipsPage = {
@@ -613,6 +676,13 @@ export const projectsCatalog = [
       "Connecting different projects into one bigger vision",
       "Making complex ideas easier to understand publicly",
     ],
+  },
+  {
+    id: "cosmos-intelligence",
+    title: "Cosmos Intelligence",
+    href: "https://cosmosintelligence.org/",
+    tileIntro:
+      "AI search across public space data. Open research on cosmic structure, signals, and information patterns.",
   },
   {
     id: "flobrain",

@@ -11,7 +11,7 @@ export function Container({
     <div
       className={`mx-auto w-full max-w-[var(--max-width-content)] px-4 sm:px-6 lg:px-8 ${className}`}
     >
-      <div className="grid grid-cols-4 gap-4 md:grid-cols-8 md:gap-6 lg:grid-cols-12 lg:gap-8">
+      <div className="grid grid-cols-4 gap-4 md:grid-cols-8 md:gap-6 lg:grid-cols-12 lg:gap-8 [&>*]:min-w-0">
         {children}
       </div>
     </div>
@@ -69,5 +69,5 @@ export function Col({
             ? "col-span-4 md:col-span-8 lg:col-span-10"
             : "col-span-4 md:col-span-8 lg:col-span-12";
 
-  return <div className={`${spanClass} ${className}`}>{children}</div>;
+  return <div className={`${spanClass} min-w-0 ${className}`}>{children}</div>;
 }

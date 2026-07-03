@@ -59,6 +59,16 @@
       "file": "/images/closing.webp",
       "source": "pdf-extracted/slide-14-img-03.jpeg",
       "description": "Slide 14 — join us CTA background"
+    },
+    {
+      "file": "/images/pillars-background.webp",
+      "source": "pexels.com/photo/rustic-blacksmith-workshop-with-tools-and-anvil-30688207",
+      "description": "Slide 4 — how we built the future (forge workshop), Denys Gromov / Pexels"
+    },
+    {
+      "file": "/images/ecosystem-background.webp",
+      "source": "unsplash.com/photos/library-of-celsus-with-columns-and-a-blue-sky-PJJXFvmmZFg",
+      "description": "Slide 13 — where intelligence takes form (Library of Celsus), José Pablo Domínguez / Unsplash"
     }
   ]
 }
