@@ -34,7 +34,7 @@ export default function ProjectsPage() {
               <SectionHeading as="h1">{projectsPage.heading}</SectionHeading>
             </ContentColumn>
             <ContentColumn centered width="full" className="mt-8">
-              <ProseParagraph className={`${type.titleLarge} text-foreground`}>
+              <ProseParagraph balance className={`${type.titleLarge} text-foreground`}>
                 {projectsPage.intro}
               </ProseParagraph>
             </ContentColumn>

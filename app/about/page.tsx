@@ -27,7 +27,7 @@ export default function AboutPage() {
               <SectionHeading as="h1">{aboutPage.heading}</SectionHeading>
             </ContentColumn>
             <ContentColumn width="full" className="mt-8">
-              <ProseParagraph className={`${type.titleLarge} text-foreground`}>
+              <ProseParagraph balance className={`${type.titleLarge} text-foreground`}>
                 {aboutPage.intro}
               </ProseParagraph>
             </ContentColumn>

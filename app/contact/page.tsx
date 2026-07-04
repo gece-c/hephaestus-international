@@ -16,7 +16,7 @@ export const metadata: Metadata = buildMetadata({
 export default function ContactPage() {
   return (
     <PageShell title={contactPage.heading}>
-      <ProseParagraph className={`${type.titleLarge} text-foreground`}>
+      <ProseParagraph balance className={`${type.titleLarge} text-foreground`}>
         {contactPage.intro}
       </ProseParagraph>
       <div>

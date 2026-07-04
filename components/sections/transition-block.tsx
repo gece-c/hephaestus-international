@@ -1,5 +1,6 @@
 import { Col, Container, Section } from "@/components/layout/container";
 import { SectionBackdrop } from "@/components/ui/section-image";
+import { preventOrphans } from "@/lib/prevent-orphans";
 import type { SiteImageAsset } from "@/lib/site-images";
 import { type } from "@/lib/typography";
 
@@ -34,7 +35,7 @@ export function TransitionBlock({
 
               return (
                 <p key={line} className={`text-balance ${sizeClass}`}>
-                  {line}
+                  {preventOrphans(line)}
                 </p>
               );
             })}

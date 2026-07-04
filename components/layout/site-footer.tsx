@@ -3,6 +3,7 @@ import { BrandLogo } from "@/components/brand/brand-logo";
 import { Container, Col } from "@/components/layout/container";
 import { FooterCollapsibleSection } from "@/components/layout/footer-collapsible-section";
 import { siteConfig, siteFooter } from "@/content/site-content";
+import { balanceText } from "@/lib/prevent-orphans";
 import { getFooterProjectLinkList } from "@/lib/projects";
 import { type } from "@/lib/typography";
 import { footerLinkClass } from "@/lib/ui-styles";
@@ -12,7 +13,7 @@ function FooterSectionTitle({ children }: { children: React.ReactNode }) {
     <p
       className={`${type.labelMedium} font-semibold uppercase tracking-[0.2em] text-balance text-foreground`}
     >
-      {children}
+      {balanceText(children)}
     </p>
   );
 }
@@ -24,7 +25,7 @@ function FooterLink({
   href: string;
   label: string;
 }) {
-  const linkClassName = `${type.bodySmall} text-foreground ${footerLinkClass}`;
+  const linkClassName = `${type.bodySmall} text-foreground text-balance ${footerLinkClass}`;
 
   if (href.startsWith("http")) {
     return (

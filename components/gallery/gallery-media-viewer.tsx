@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useId, useRef } from "react";
 import { galleryPage } from "@/content/site-content";
+import { balanceText } from "@/lib/prevent-orphans";
 import { type } from "@/lib/typography";
 
 export type GalleryMediaViewerContent =
@@ -167,9 +168,9 @@ export function GalleryMediaViewer({ content, watchHref, onClose }: GalleryMedia
             href={watchHref}
             target="_blank"
             rel="noopener noreferrer"
-            className={`mt-6 inline-flex min-h-11 items-center ${type.labelLarge} text-white underline-offset-4 hover:underline`}
+            className={`mt-6 inline-flex min-h-11 items-center text-balance ${type.labelLarge} text-white underline-offset-4 hover:underline`}
           >
-            {galleryPage.externalLinkLabel}
+            {balanceText(galleryPage.externalLinkLabel)}
           </a>
         ) : null}
       </div>

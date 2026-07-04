@@ -402,7 +402,7 @@
   }
 
   button {
-    @apply type-label-large;
+    @apply type-label-large text-balance;
   }
 
   input,
@@ -412,7 +412,7 @@
   }
 
   nav a {
-    @apply type-body-small font-medium;
+    @apply type-body-small font-medium text-balance;
   }
 }
 

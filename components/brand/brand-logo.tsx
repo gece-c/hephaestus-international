@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { LogoMark } from "@/components/brand/logo-mark";
 import { siteConfig } from "@/content/site-content";
+import { balanceText } from "@/lib/prevent-orphans";
 import { type } from "@/lib/typography";
 
 export function BrandLogo({
@@ -20,7 +21,7 @@ export function BrandLogo({
         <span
           className={`min-w-0 ${type.labelMedium} font-semibold leading-tight tracking-tight text-balance text-foreground`}
         >
-          {siteConfig.name}
+          {balanceText(siteConfig.name)}
         </span>
       ) : (
         <span className="sr-only">{siteConfig.name}</span>

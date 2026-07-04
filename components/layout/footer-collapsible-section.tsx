@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
+import { balanceText } from "@/lib/prevent-orphans";
 import { type } from "@/lib/typography";
 
 function ChevronDownIcon({
@@ -34,7 +35,7 @@ function SectionTitle({ children }: { children: ReactNode }) {
     <p
       className={`${type.labelMedium} font-semibold uppercase tracking-[0.2em] text-balance text-foreground`}
     >
-      {children}
+      {balanceText(children)}
     </p>
   );
 }

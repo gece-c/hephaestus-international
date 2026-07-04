@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { type ButtonHTMLAttributes, type ReactNode } from "react";
+import { balanceText } from "@/lib/prevent-orphans";
 import { buttonRadiusClass, chippedSurfaceClass } from "@/lib/ui-styles";
 
 type Variant = "primary" | "secondary" | "ghost";
@@ -36,7 +37,7 @@ export function Button({
         rel="noopener noreferrer"
         className={classes}
       >
-        {children}
+        {balanceText(children)}
       </a>
     );
   }
@@ -44,14 +45,14 @@ export function Button({
   if (href) {
     return (
       <Link href={href} className={classes}>
-        {children}
+        {balanceText(children)}
       </Link>
     );
   }
 
   return (
     <button type="button" className={classes} {...props}>
-      {children}
+      {balanceText(children)}
     </button>
   );
 }

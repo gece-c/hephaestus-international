@@ -14,6 +14,7 @@ import {
   Prose,
   ProseParagraph,
   SectionHeading,
+  BalancedText,
 } from "@/components/ui/typography";
 import {
   hero,
@@ -32,6 +33,7 @@ import {
   closingCta,
 } from "@/content/site-content";
 import { siteImages } from "@/lib/site-images";
+import { preventOrphans, preventOrphansInParagraph } from "@/lib/prevent-orphans";
 import { type } from "@/lib/typography";
 import {
   cardRadiusClass,
@@ -64,12 +66,12 @@ export function HeroSection() {
         <SectionHeading as="h1" scale="title" className="text-white">
           {hero.title}
         </SectionHeading>
-        <p className={`mt-4 ${type.slideSubhead} text-balance text-white`}>
+        <BalancedText className={`mt-4 ${type.slideSubhead} text-white`}>
           {hero.subtitle}
-        </p>
+        </BalancedText>
         <div className="mt-8 space-y-3 text-pretty text-white/90">
-          <p className={`${type.slideLead} text-balance`}>{hero.taglines[0]}</p>
-          <p className={`${type.slideBody} text-balance`}>{hero.taglines[1]}</p>
+          <BalancedText className={type.slideLead}>{hero.taglines[0]}</BalancedText>
+          <BalancedText className={type.slideBody}>{hero.taglines[1]}</BalancedText>
         </div>
       </div>
     </HeroBackdrop>
@@ -97,15 +99,15 @@ export function DidYouKnowSection() {
               {didYouKnow.facts.map((fact, index) => (
                 <Card key={fact} chipSeed={index} className="h-full min-w-0">
                   <p className={`${type.slideBody} text-pretty ${glassTextClass}`}>
-                    {fact}
+                    {preventOrphansInParagraph(fact)}
                   </p>
                 </Card>
               ))}
             </div>
             <Card chipSeed="did-you-know-closing" className="mt-4 text-center">
-              <p className={`${type.slideLead} text-balance ${glassTextClass}`}>
+              <BalancedText className={`${type.slideLead} ${glassTextClass}`}>
                 {didYouKnow.closing}
-              </p>
+              </BalancedText>
             </Card>
           </ContentColumn>
         </Container>
@@ -337,7 +339,7 @@ function NameOriginsAccentLine({
   text: string;
   accents: readonly string[];
 }) {
-  const parts = text
+  const parts = preventOrphans(text)
     .split(nameOriginsAccentPattern(accents))
     .filter((part) => part.length > 0);
 
@@ -429,11 +431,11 @@ export function NameOriginsSection() {
           {nameOrigins.title}
         </SectionHeading>
         <NameOriginsContent />
-        <p
-          className={`shrink-0 text-balance text-center ${type.slideSubhead} underline ${photoWhiteTextClass}`}
+        <BalancedText
+          className={`shrink-0 text-center ${type.slideSubhead} underline ${photoWhiteTextClass}`}
         >
           {nameOrigins.footer}
-        </p>
+        </BalancedText>
       </PhotoGridOverlay>
     </Section>
   );
@@ -525,9 +527,9 @@ export function EcosystemSection() {
                 {ecosystem.title}
               </SectionHeading>
             </div>
-            <p className={`mt-4 ${type.slideLead} text-balance ${glassTextClass}`}>
+            <BalancedText className={`mt-4 ${type.slideLead} ${glassTextClass}`}>
               {ecosystem.subtitle}
-            </p>
+            </BalancedText>
           </ContentColumn>
           <ContentColumn>
             <div className="space-y-6">
@@ -585,27 +587,29 @@ export function ClosingCtaSection() {
       >
         <Container>
           <ContentColumn centered width="narrow">
-            <p className={`${type.slideLead} text-balance text-white/95 ${CLOSING_CTA_TEXT}`}>
+            <BalancedText className={`${type.slideLead} text-white/95 ${CLOSING_CTA_TEXT}`}>
                 {closingCta.lead}
-              </p>
-              <p className={`mt-8 ${type.slideLead} text-balance ${CLOSING_CTA_TEXT}`}>
+              </BalancedText>
+              <BalancedText className={`mt-8 ${type.slideLead} ${CLOSING_CTA_TEXT}`}>
                 {closingCta.prompt}
-              </p>
+              </BalancedText>
               <ul
-                className={`mt-6 space-y-3 ${type.slideSubhead} text-balance text-white/90 ${CLOSING_CTA_TEXT} [&_li]:text-balance`}
+                className={`mt-6 space-y-3 ${type.slideSubhead} text-white/90 ${CLOSING_CTA_TEXT}`}
               >
                 {closingCta.questions.map((question) => (
-                  <li key={question}>{question}</li>
+                  <BalancedText as="li" key={question} className={type.slideSubhead}>
+                    {question}
+                  </BalancedText>
                 ))}
               </ul>
-              <p className={`mt-8 ${type.slideLead} text-balance ${CLOSING_CTA_TEXT}`}>
+              <BalancedText className={`mt-8 ${type.slideLead} ${CLOSING_CTA_TEXT}`}>
                 {closingCta.headline}
-              </p>
-              <p
-                className={`mt-4 ${type.slideLead} text-balance text-brand-primary [text-shadow:1.25px_0_0_#fff,-1.25px_0_0_#fff,0_1.25px_0_#fff,0_-1.25px_0_#fff,0_1px_2px_rgb(0_0_0_/_0.9),0_2px_8px_rgb(0_0_0_/_0.75)] dark:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_8px_rgb(0_0_0_/_0.88),0_4px_20px_rgb(0_0_0_/_0.6)]`}
+              </BalancedText>
+              <BalancedText
+                className={`mt-4 ${type.slideLead} text-brand-primary [text-shadow:1.25px_0_0_#fff,-1.25px_0_0_#fff,0_1.25px_0_#fff,0_-1.25px_0_#fff,0_1px_2px_rgb(0_0_0_/_0.9),0_2px_8px_rgb(0_0_0_/_0.75)] dark:[text-shadow:0_1px_2px_rgb(0_0_0_/_0.95),0_2px_8px_rgb(0_0_0_/_0.88),0_4px_20px_rgb(0_0_0_/_0.6)] ${CLOSING_CTA_TEXT}`}
               >
                 {closingCta.tagline}
-              </p>
+              </BalancedText>
               <div className="mt-10 flex flex-wrap justify-center gap-4">
                 <Button href={closingCta.primaryHref}>
                   {closingCta.primaryLabel}

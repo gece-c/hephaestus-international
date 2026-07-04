@@ -1,4 +1,5 @@
 import { type ElementType, type ReactNode } from "react";
+import { balanceText } from "@/lib/prevent-orphans";
 import { type, type TypeScale } from "@/lib/typography";
 
 export function Prose({
@@ -25,11 +26,34 @@ export function Prose({
 export function ProseParagraph({
   children,
   className = "",
+  balance = false,
 }: {
   children: ReactNode;
   className?: string;
+  /** Use for lead lines and short display copy that should not end with a single orphan word. */
+  balance?: boolean;
 }) {
-  return <p className={`text-pretty ${className}`}>{children}</p>;
+  return (
+    <p
+      className={`${balance ? "text-balance" : "text-pretty"} ${className}`.trim()}
+    >
+      {balance ? balanceText(children) : children}
+    </p>
+  );
+}
+
+export function BalancedText({
+  as: Tag = "p",
+  children,
+  className = "",
+}: {
+  as?: "p" | "span" | "li";
+  children: ReactNode;
+  className?: string;
+}) {
+  return (
+    <Tag className={`text-balance ${className}`.trim()}>{balanceText(children)}</Tag>
+  );
 }
 
 export function SectionHeading({
@@ -62,7 +86,7 @@ export function SectionHeading({
 
   return (
     <Tag className={`${type[sizeClass]} text-balance ${className}`}>
-      {children}
+      {balanceText(children)}
     </Tag>
   );
 }
@@ -78,7 +102,7 @@ export function Eyebrow({
     <p
       className={`${type.slideLead} uppercase tracking-widest text-brand-primary text-balance ${className}`}
     >
-      {children}
+      {balanceText(children)}
     </p>
   );
 }
