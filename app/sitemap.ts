@@ -18,7 +18,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...internships.map((item) => `/internships/${item.slug}`),
     "/gallery",
     "/contact",
-    "/privacy",
   ];
 
   return routes.map((route) => ({

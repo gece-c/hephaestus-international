@@ -27,7 +27,6 @@ export const contentTodos = [
   "Grammar: For us, is the place (slide 7)",
   "Typo: But with very system (slide 11)",
   "Slide 2 trailing = on Lemnos date line",
-  "Privacy policy body: legal review required",
   "Contact form endpoint: confirm API vs mailto",
   "Footer YouTube URL: confirm channel URL with stakeholder",
 ] as const;
@@ -47,7 +46,7 @@ export const siteFooter = {
   projectLine: "by FloLabs Innovations Group",
   description:
     "Where ancient history meets modern innovation. Where craft becomes code, curiosity becomes capability, and intention becomes infrastructure.",
-  tagline: "Live long and prosper.",
+  tagline: "Live Long and Prosper.",
   newsletter: {
     title: "Newsletter",
     prompt: "Receive the newest FloLabs updates at:",
@@ -99,7 +98,6 @@ export const siteFooter = {
     links: [
       { label: "Careers", href: "/internships" },
       { label: "Contact Us", href: "/contact" },
-      { label: "Privacy Policy", href: "/privacy" },
       {
         label: "Merch",
         href: "https://flolabsrd.notion.site/merch-background",
@@ -630,13 +628,6 @@ export const contactPage = {
   intro: "Have questions? We'd love to hear from you.",
   formTitle: "Send Us a Message",
   otherTitle: "Other Ways to Reach Us",
-} as const;
-
-export const privacyPage = {
-  title: "Privacy Policy",
-  heading: "Privacy Policy",
-  // TODO: Legal review required
-  body: "This privacy policy page is a placeholder pending legal review. For inquiries, contact info@hephaestus.international.",
 } as const;
 
 /**
