@@ -107,12 +107,6 @@ export default async function InternshipDetailPage({ params }: PageProps) {
         <p className={`${type.bodyMedium} text-muted`}>{internship.company}</p>
       ) : null}
 
-      {internship.duration || internship.schedule ? (
-        <p className={`${type.bodyMedium} text-muted`}>
-          {[internship.duration, internship.schedule].filter(Boolean).join(" · ")}
-        </p>
-      ) : null}
-
       {internship.summary ? (
         <ProseParagraph className={`${type.titleLarge} text-foreground`}>
           {internship.summary}
