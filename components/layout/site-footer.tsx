@@ -2,7 +2,7 @@ import Link from "next/link";
 import { BrandLogo } from "@/components/brand/brand-logo";
 import { Container, Col } from "@/components/layout/container";
 import { FooterCollapsibleSection } from "@/components/layout/footer-collapsible-section";
-import { siteConfig, siteFooter } from "@/content/site-content";
+import { siteConfig, siteFooter, socialMediaLinks } from "@/content/site-content";
 import { balanceText } from "@/lib/prevent-orphans";
 import { getFooterProjectLinkList } from "@/lib/projects";
 import { type } from "@/lib/typography";
@@ -90,21 +90,7 @@ function SendIcon({ className }: { className?: string }) {
   );
 }
 
-function YouTubeIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 3.5 24 17"
-      fill="currentColor"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      aria-hidden
-    >
-      <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8ZM9.75 15.5v-7l6 3.5-6 3.5Z" />
-    </svg>
-  );
-}
-
-const socialIconHeightClass = "h-6";
+const socialIconClass = "size-6 shrink-0";
 
 function SocialIconLink({
   href,
@@ -120,11 +106,25 @@ function SocialIconLink({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`inline-flex min-h-11 items-center text-foreground ${footerLinkClass}`}
+      className={`inline-flex size-10 items-center justify-center text-foreground sm:size-11 ${footerLinkClass}`}
       aria-label={label}
     >
       {children}
     </a>
+  );
+}
+
+function YouTubeIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden
+    >
+      <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8ZM9.75 15.5v-7l6 3.5-6 3.5Z" />
+    </svg>
   );
 }
 function LinkedInIcon({ className }: { className?: string }) {
@@ -169,6 +169,20 @@ function TikTokIcon({ className }: { className?: string }) {
   );
 }
 
+function FacebookIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden
+    >
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+    </svg>
+  );
+}
+
 function RedditIcon({ className }: { className?: string }) {
   return (
     <svg
@@ -182,6 +196,15 @@ function RedditIcon({ className }: { className?: string }) {
     </svg>
   );
 }
+
+const socialIcons = {
+  youtube: YouTubeIcon,
+  linkedin: LinkedInIcon,
+  facebook: FacebookIcon,
+  instagram: InstagramIcon,
+  tiktok: TikTokIcon,
+  reddit: RedditIcon,
+} as const;
 
 export function SiteFooter() {
   const projectLinks = getFooterProjectLinkList();
@@ -241,37 +264,15 @@ export function SiteFooter() {
 
               <div className="mt-8">
                 <FooterSectionTitle>{siteFooter.socialTitle}</FooterSectionTitle>
-                <div className="mt-4 flex flex-wrap items-center gap-4">
-                  <SocialIconLink
-                    href={siteConfig.youtubeUrl}
-                    label={siteConfig.youtubeLabel}
-                  >
-                    <YouTubeIcon className={`block ${socialIconHeightClass} w-auto`} />
-                  </SocialIconLink>
-                  <SocialIconLink
-                    href={siteConfig.linkedInUrl}
-                    label={siteConfig.linkedInLabel}
-                  >
-                    <LinkedInIcon className={`block ${socialIconHeightClass} w-6`} />
-                  </SocialIconLink>
-                  <SocialIconLink
-                    href={siteConfig.instagramUrl}
-                    label={siteConfig.instagramLabel}
-                  >
-                    <InstagramIcon className={`block ${socialIconHeightClass} w-6`} />
-                  </SocialIconLink>
-                  <SocialIconLink
-                    href={siteConfig.tiktokUrl}
-                    label={siteConfig.tiktokLabel}
-                  >
-                    <TikTokIcon className={`block ${socialIconHeightClass} w-6`} />
-                  </SocialIconLink>
-                  <SocialIconLink
-                    href={siteConfig.redditUrl}
-                    label={siteConfig.redditLabel}
-                  >
-                    <RedditIcon className={`block ${socialIconHeightClass} w-6`} />
-                  </SocialIconLink>
+                <div className="mt-4 flex flex-wrap items-center gap-1.5 sm:gap-2">
+                  {socialMediaLinks.map(({ id, href, label }) => {
+                    const Icon = socialIcons[id];
+                    return (
+                      <SocialIconLink key={id} href={href} label={label}>
+                        <Icon className={socialIconClass} />
+                      </SocialIconLink>
+                    );
+                  })}
                 </div>
               </div>
             </div>

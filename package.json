@@ -9,7 +9,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest run",
-    "export-internships": "node scripts/export-internships.mjs"
+    "export-internships": "node scripts/export-internships.mjs",
+    "convert-images": "python scripts/convert-raster-to-webp.py"
   },
   "dependencies": {
     "next": "^15.1.0",

@@ -15,6 +15,8 @@ export const siteConfig = {
   linkedInUrl: "https://www.linkedin.com/company/flolabs-innovation/",
   youtubeUrl: "https://www.youtube.com/@flolabsinnovation",
   youtubeLabel: "FloLabs Innovation on YouTube",
+  facebookUrl: "https://www.facebook.com/people/Flo-Labs-RD/61572285432918/",
+  facebookLabel: "Flo Labs RD on Facebook",
   instagramUrl: "https://www.instagram.com/flolabsinnovations/",
   instagramLabel: "FloLabs Innovations on Instagram",
   tiktokUrl: "https://www.tiktok.com/@flomadlabs",
@@ -22,6 +24,15 @@ export const siteConfig = {
   redditUrl: "https://www.reddit.com/user/FloLabs_Innovations/",
   redditLabel: "FloLabs Innovations on Reddit",
 } as const;
+
+export const socialMediaLinks = [
+  { id: "youtube", href: siteConfig.youtubeUrl, label: siteConfig.youtubeLabel },
+  { id: "linkedin", href: siteConfig.linkedInUrl, label: siteConfig.linkedInLabel },
+  { id: "facebook", href: siteConfig.facebookUrl, label: siteConfig.facebookLabel },
+  { id: "instagram", href: siteConfig.instagramUrl, label: siteConfig.instagramLabel },
+  { id: "tiktok", href: siteConfig.tiktokUrl, label: siteConfig.tiktokLabel },
+  { id: "reddit", href: siteConfig.redditUrl, label: siteConfig.redditLabel },
+] as const;
 
 export const contentTodos = [
   "Grammar: For us, is the place (slide 7)",
@@ -69,10 +80,6 @@ export const siteFooter = {
         id: "athletic-performance-intelligence",
         label: "Athletic Performance Intelligence",
       },
-      {
-        id: "innovation-bootcamp-university",
-        label: "Innovation Bootcamp University",
-      },
       { id: "caipo", label: "CAIPO" },
       { id: "connecting-the-dots", label: "Connecting the Dots" },
       { id: "cosmos-intelligence", label: "Cosmos Intelligence" },
@@ -82,6 +89,10 @@ export const siteFooter = {
       { id: "flolabs-international", label: "FloLabs International" },
       { id: "flostudios", label: "FloStudios" },
       { id: "hephaestus-international", label: "Hephaestus International" },
+      {
+        id: "innovation-bootcamp-university",
+        label: "Innovation Bootcamp University",
+      },
       { id: "moodchanger", label: "MoodChanger" },
       { id: "moodchanger-pets", label: "MoodChanger for Pets" },
       {
@@ -460,7 +471,7 @@ export const galleryItems: readonly GalleryItem[] = [
       "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F753412424454490&show_text=false&width=560&height=315",
     media: {
       type: "video",
-      poster: withBasePath("/images/carl-sagan-cosmos-lost-history.jpg"),
+      poster: withBasePath("/images/carl-sagan-cosmos-lost-history.webp"),
       posterWidth: 406,
       posterHeight: 720,
       alt: 'Carl Sagan Cosmos reel preview, "The Knowledge We Lost To History"',
@@ -476,7 +487,7 @@ export const galleryItems: readonly GalleryItem[] = [
       "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F860185246978132&show_text=false&width=560&height=315",
     media: {
       type: "video",
-      poster: withBasePath("/images/carl-sagan-hypatia-cosmos.jpg"),
+      poster: withBasePath("/images/carl-sagan-hypatia-cosmos.webp"),
       posterWidth: 1152,
       posterHeight: 2048,
       alt: "Carl Sagan on the death of Hypatia from Cosmos, reel preview",
@@ -490,7 +501,7 @@ export const galleryItems: readonly GalleryItem[] = [
     href: "https://www.facebook.com/groups/236778251861578/permalink/1194551059417621/",
     media: {
       type: "image",
-      src: withBasePath("/images/limnos-from-above-gallery.png"),
+      src: withBasePath("/images/limnos-from-above-gallery.webp"),
       width: 1024,
       height: 575,
       alt: "Sunset over Mount Athos and the sea, Limnos from Above photography",
@@ -504,7 +515,7 @@ export const galleryItems: readonly GalleryItem[] = [
     href: "https://www.facebook.com/groups/236778251861578/permalink/1179467540925973",
     media: {
       type: "image",
-      src: withBasePath("/images/limnos-from-above-sea-stacks.png"),
+      src: withBasePath("/images/limnos-from-above-sea-stacks.webp"),
       width: 1024,
       height: 575,
       alt: "Sunset between sea stacks on Limnos, Limnos from Above photography",
@@ -518,7 +529,7 @@ export const galleryItems: readonly GalleryItem[] = [
     href: "https://www.facebook.com/groups/236778251861578/permalink/1161231762749551/",
     media: {
       type: "image",
-      src: withBasePath("/images/limnos-hephaistia-theatre-360.jpg"),
+      src: withBasePath("/images/limnos-hephaistia-theatre-360.webp"),
       width: 600,
       height: 600,
       alt: "360° view of the Ancient Theatre of Hephaistia on Limnos, Limnos from Above photography",
@@ -532,7 +543,7 @@ export const galleryItems: readonly GalleryItem[] = [
     href: "https://www.facebook.com/john.a.hazlewood/posts/5-years-later-/10234695141053810/",
     media: {
       type: "image",
-      src: withBasePath("/images/limnos-coastal-bay-sunset.png"),
+      src: withBasePath("/images/limnos-coastal-bay-sunset.webp"),
       width: 550,
       height: 248,
       alt: "Preview image for John Andrew Hazlewood Facebook post, 5 Years Later",
@@ -548,7 +559,7 @@ export const galleryItems: readonly GalleryItem[] = [
       "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F795948636178330&show_text=false&width=560&height=315",
     media: {
       type: "video",
-      poster: withBasePath("/images/limnos-from-above-reel.jpg"),
+      poster: withBasePath("/images/limnos-from-above-reel.webp"),
       posterWidth: 1280,
       posterHeight: 720,
       alt: "Aerial reel preview from Limnos from Above by Dimitris Eleftherakis",
@@ -562,7 +573,7 @@ export const galleryItems: readonly GalleryItem[] = [
     href: "https://greekreporter.com/2026/02/17/talos-protector-ancient-crete-minoan/",
     media: {
       type: "image",
-      src: withBasePath("/images/talos-greek-reporter.jpg"),
+      src: withBasePath("/images/talos-greek-reporter.webp"),
       width: 1020,
       height: 912,
       alt: "Talos, a giant bronze automaton described as a creation of Hephaestus in Greek mythology",
@@ -576,7 +587,7 @@ export const galleryItems: readonly GalleryItem[] = [
     href: "https://greekreporter.com/2026/03/02/hypatia-greek-philosopher/",
     media: {
       type: "image",
-      src: withBasePath("/images/hypatia-greek-reporter.jpg"),
+      src: withBasePath("/images/hypatia-greek-reporter.webp"),
       width: 700,
       height: 335,
       alt: "Death of the Greek philosopher Hypatia in Alexandria, unknown artist, public domain",
